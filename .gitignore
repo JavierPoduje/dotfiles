@@ -17,3 +17,6 @@
 /nvim/node_modules
 /nvim/.netrwhist
 /nvim/openai-key-secret.txt
+
+.zcompdump-puje*
+.zsh_history
