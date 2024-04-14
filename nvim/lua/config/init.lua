@@ -1,4 +1,3 @@
-require("config.vim-tmux-navigator")
 require("config.autopair")
 require("config.bufferline")
 require("config.bujo")
