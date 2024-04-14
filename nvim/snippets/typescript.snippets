@@ -1,0 +1,26 @@
+snippet fl "for with `let`"
+	for (let ${1:i} = 0; $1 < ${2:something}.length; $1++) {
+		${3: // code goes here}
+	}
+
+snippet cll "import"
+	console.log('${1}: ', $1);
+
+snippet cl "import"
+	console.log('${1}');
+
+snippet cl- "import"
+	console.log('----------------------');
+
+snippet imp "import"
+	import ${1} from '${2}';
+
+snippet impp "import with {}"
+	import { ${1} } from '${2}';
+
+snippet rh "initialize"
+	const ${1:`!v vim_snippets#Filename('$1', 'title')`} = () => {
+
+	}
+
+	export default ${1:`!v vim_snippets#Filename('$1', 'title')`};

@@ -1,0 +1,12 @@
+snippet deb "debug()"
+	debug(${1});
+
+snippet debe "debug();exit;"
+	debug(${1});exit;
+
+snippet dd "dd();exit;"
+	dd(${1});
+
+snippet debq "eloquent query debug"
+	$sql = str_replace_array('?', $${1}->getBindings(), $$1->toSql());
+	debug($sql);exit;

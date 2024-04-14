@@ -1,0 +1,25 @@
+# Move between windows
+alt - j: yabai -m window --focus south
+alt - k: yabai -m window --focus north
+alt - h: yabai -m window --focus west
+alt - l: yabai -m window --focus east
+
+# Change monitor focus
+cmd + alt - left: yabai -m display --focus west
+cmd + alt - right: yabai -m display --focus east
+
+# Change screen focus (for now, this is handled via Mac's mouse-control)
+# cmd - h: yabai -m space --focus prev
+# cmd - l: yabai -m space --focus next
+
+# Move window's screen
+cmd + alt + ctrl - left: yabai -m window --display west; yabai -m display --focus west;
+cmd + alt + ctrl - right: yabai -m window --display east; yabai -m display --focus east;
+
+# Move window's space
+cmd + alt + ctrl - l: yabai -m window --space next;
+cmd + alt + ctrl - h: yabai -m window --space prev;
+
+# Open apps
+cmd + alt - return: kitty # open terminal
+cmd + alt - p: open ~/Documents/shots/ # open shots folder

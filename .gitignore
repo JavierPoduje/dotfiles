@@ -1,0 +1,19 @@
+/configstore/
+/linearmouse/
+/flameshot/
+/gcloud/
+/gh/
+/github-copilot/
+
+# nvim
+/nvim/plugged
+/nvim/session
+/nvim/autoload
+/nvim/undodir
+/nvim/lua/undodir
+/nvim/lua-language-server
+/nvim/bundle
+/nvim/cache/bujo
+/nvim/node_modules
+/nvim/.netrwhist
+/nvim/openai-key-secret.txt

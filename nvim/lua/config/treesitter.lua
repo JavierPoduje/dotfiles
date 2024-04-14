@@ -1,0 +1,22 @@
+require("nvim-treesitter.configs").setup({
+	additional_vim_regex_highlighting = true,
+	highlight = { enable = true },
+	indent = { enable = true },
+	ensure_installed = {
+		"css",
+		"git_rebase",
+		"html",
+		"javascript",
+		"json",
+		"lua",
+		"php",
+		"prisma",
+		"python",
+		"scss",
+		"tsx",
+		"twig",
+		"typescript",
+		"vue",
+		"yaml",
+	},
+})
