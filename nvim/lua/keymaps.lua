@@ -7,106 +7,106 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.multi_cursor_quit_key = "<C-c>"
 
 -- CTRL+C for esc
-vim.keymap.set("i", "<C-c>", "<ESC><ESC>")
+vim.keymap.set("i", "<C-c>", "<ESC><ESC>", { silent = true })
 
 -- more comfortable yanking
-vim.keymap.set("n", "<Leader>yy", 'V"+y')
-vim.keymap.set("v", "<Leader>yy", '"+y')
+vim.keymap.set("n", "<Leader>yy", 'V"+y', { silent = true })
+vim.keymap.set("v", "<Leader>yy", '"+y', { silent = true })
 
 -- sort selected lines
-vim.keymap.set("v", "<Leader>s", ":sort<cr>")
+vim.keymap.set("v", "<Leader>s", ":sort<cr>", { silent = true })
 
 -- move forward in insert mode
-vim.keymap.set("i", "<C-l>", "<Right>")
-vim.keymap.set("i", "<C-j>", "<C-o>h")
+vim.keymap.set("i", "<C-l>", "<Right>", { silent = true })
+vim.keymap.set("i", "<C-j>", "<C-o>h", { silent = true })
 
 -- Set space as leader key
-vim.keymap.set("n", "<Space>", "<NOP><CR>")
+vim.keymap.set("n", "<Space>", "<NOP><CR>", { silent = true })
 
 -- Delete front word in insert mode with CTRL+d
-vim.keymap.set("i", "<C-D>", "X<Esc>ce")
+vim.keymap.set("i", "<C-D>", "X<Esc>ce", { silent = true })
 
 -- Replace all instances of the word under cursor
-vim.keymap.set("n", "<Leader>r", ":%s/<C-r><C-w>//g<Left><Left>")
+vim.keymap.set("n", "<Leader>r", ":%s/<C-r><C-w>//g<Left><Left>", { silent = true })
 -- Replace all instances of the word under cursor in visual mode
-vim.keymap.set("v", "<Leader>r", ":s/<C-r><C-w>//g<Left><Left>")
+vim.keymap.set("v", "<Leader>r", ":s/<C-r><C-w>//g<Left><Left>", { silent = true })
 
 -- Paste but remember
-vim.keymap.set("x", "<Leader>fp", '"_dP')
+vim.keymap.set("x", "<Leader>fp", '"_dP', { silent = true })
 
 -- Format one long line into multiple short lines
-vim.keymap.set("n", "Q", "gq<CR>")
+vim.keymap.set("n", "Q", "gq<CR>", { silent = true })
 
-vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "J", "mzJ`z", { silent = true })
 
 -- Toggle wrap
-vim.keymap.set("n", "<Leader>ww", ":set wrap! linebreak<CR>")
+vim.keymap.set("n", "<Leader>ww", ":set wrap! linebreak<CR>", { silent = true })
 
 -- More options for transit from normal to insert mode
-vim.keymap.set("n", "<Leader>O", "O<Esc>O")
-vim.keymap.set("n", "<Leader>o", "o<CR>")
+vim.keymap.set("n", "<Leader>O", "O<Esc>O", { silent = true })
+vim.keymap.set("n", "<Leader>o", "o<CR>", { silent = true })
 
 -- for JS/Typescript, set all "." to "?." in VISUAL MODE
-vim.keymap.set("v", "<Leader>?", "<ESC><cmd>'<,'>substitute/\\./?./g<CR>")
+vim.keymap.set("v", "<Leader>?", "<ESC><cmd>'<,'>substitute/\\./?./g<CR>", { silent = true })
 
 -- Better navigation
-vim.keymap.set("n", "<Leader>k", ":wincmd k<CR>")
-vim.keymap.set("n", "<Leader>l", ":wincmd l<CR>")
-vim.keymap.set("n", "<Leader>j", ":wincmd j<CR>")
-vim.keymap.set("n", "<Leader>h", ":wincmd h<CR>")
+vim.keymap.set("n", "<Leader>k", ":wincmd k<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>l", ":wincmd l<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>j", ":wincmd j<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>h", ":wincmd h<CR>", { silent = true })
 
 -- Keep it centered
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true })
 
 -- Tab handlers
-vim.keymap.set("n", "<Leader>tx", ":tabclose<CR>")
-vim.keymap.set("n", "<Leader>tn", ":tabn<CR>")
-vim.keymap.set("n", "<Leader>tp", ":tabp<CR>")
+vim.keymap.set("n", "<Leader>tx", ":tabclose<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tn", ":tabn<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>tp", ":tabp<CR>", { silent = true })
 -- go to tab by number
 for char, buff_num in pairs(g.num_by_char) do
-	vim.keymap.set("n", "<Leader>t" .. char, ":tabn" .. buff_num .. "<CR>")
+	vim.keymap.set("n", "<Leader>t" .. char, ":tabn" .. buff_num .. "<CR>", { silent = true })
 end
 
 -- Better marks
 for char, _ in pairs(g.left_num_by_char) do
-	vim.keymap.set("n", "m" .. char, "m" .. char:upper())
-	vim.keymap.set("n", "<Leader>m" .. char, "`" .. char:upper() .. "<CR>")
+	vim.keymap.set("n", "m" .. char, "m" .. char:upper(), { silent = true })
+	vim.keymap.set("n", "<Leader>m" .. char, "`" .. char:upper() .. "<CR>", { silent = true })
 end
 
 -- Navigate quickfix list
-vim.keymap.set("n", "<Leader>cl", ":cnext<CR>")
-vim.keymap.set("n", "<Leader>ch", ":cprev<CR>")
+vim.keymap.set("n", "<Leader>cl", ":cnext<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>ch", ":cprev<CR>", { silent = true })
 
 -- More options for paste
-vim.keymap.set("n", "<Leader>po", "o<Esc>p")
-vim.keymap.set("n", "<Leader>PO", "O<Esc>P")
+vim.keymap.set("n", "<Leader>po", "o<Esc>p", { silent = true })
+vim.keymap.set("n", "<Leader>PO", "O<Esc>P", { silent = true })
 
 -- Show undo tree
-vim.keymap.set("n", "<Leader>u", ":UndotreeShow<CR>")
+vim.keymap.set("n", "<Leader>u", ":UndotreeShow<CR>", { silent = true })
 
 -- Source configuration
-vim.keymap.set("n", "<Leader><CR>", ":so %<CR>", { noremap = true, silent = false })
+vim.keymap.set("n", "<Leader><CR>", ":so %<CR>", { silent = false })
 
 -- Resize windows
-vim.keymap.set("n", "<S-Up>", ":resize +5<CR>")
-vim.keymap.set("n", "<S-Down>", ":resize -5<CR>")
-vim.keymap.set("n", "<S-Right>", ":vertical resize -5<CR>")
-vim.keymap.set("n", "<S-Left>", ":vertical resize +5<CR>")
+vim.keymap.set("n", "<S-Up>", ":resize +5<CR>", { silent = true })
+vim.keymap.set("n", "<S-Down>", ":resize -5<CR>", { silent = true })
+vim.keymap.set("n", "<S-Right>", ":vertical resize -5<CR>", { silent = true })
+vim.keymap.set("n", "<S-Left>", ":vertical resize +5<CR>", { silent = true })
 
 -- Better saving
-vim.keymap.set("n", "<Leader>s", ":write<CR>")
+vim.keymap.set("n", "<Leader>s", ":write<CR>", { silent = true })
 
 -- Better tabbing
-vim.keymap.set("v", "<S-Tab>", "<gv")
-vim.keymap.set("v", "<Tab>", ">gv")
+vim.keymap.set("v", "<S-Tab>", "<gv", { silent = true })
+vim.keymap.set("v", "<Tab>", ">gv", { silent = true })
 
 -- Move visual block up and down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 
 -- By default `W` this calls the fzf's windows preview. I just want to save my file...
 v.nvim_command("command! W  write")
 
 -- Netrw
-vim.keymap.set("n", "<Leader>pe", ":Vex<CR>")
+vim.keymap.set("n", "<Leader>pe", ":Vex<CR>", { silent = true })
