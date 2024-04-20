@@ -82,23 +82,24 @@ local prisma_args = {
 require("formatter").setup({
 	logging = false,
 	filetype = {
+		css = { formatter("prettier", prettier_args("css"), true) },
 		elixir = { formatter("mix format", { current_file }, false) },
+		go = { formatter("gofmt", { current_file }, true) },
 		graphql = { formatter("prettier", prettier_args("graphql"), true) },
 		html = { formatter("prettier", prettier_args("html"), false) },
 		javascript = { formatter("prettier", prettier_args("typescript"), false) },
 		javascriptreact = { formatter("prettier", prettier_args("typescript"), false) },
 		json = { formatter("prettier", prettier_args("json"), true) },
-		vue = { formatter("prettier", vue_args, true) },
 		lua = { formatter("stylua", lua_args, false) },
 		php = { formatter("prettier", php_args, true) },
 		prisma = { formatter("npx", prisma_args, false) },
+		python = { formatter("!black", python_args, true) },
 		rust = { formatter("rustfmt", rust_args, true) },
 		scss = { formatter("prettier", prettier_args("scss"), true) },
-		css = { formatter("prettier", prettier_args("css"), true) },
 		sql = { formatter("sql-formatter", sql_args, true) },
 		typescript = { formatter("prettier", prettier_args("typescript"), false) },
 		typescriptreact = { formatter("prettier", prettier_args("typescript"), false) },
-		python = { formatter("!black", python_args, true) },
+		vue = { formatter("prettier", vue_args, true) },
 	},
 })
 

@@ -33,6 +33,7 @@ end
 for _, protocol in ipairs({
 	"cssls",
 	"eslint",
+	"gopls",
 	"intelephense",
 	"lua_ls",
 	"prismals",

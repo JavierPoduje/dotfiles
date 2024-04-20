@@ -5,6 +5,7 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"css",
 		"git_rebase",
+		"go",
 		"html",
 		"javascript",
 		"json",
