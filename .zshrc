@@ -39,6 +39,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# psql
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
 # Load aliases: keep this at the end of the file to override any aliases defined
 [ -f "$HOME/.config/aliasrc.sh" ] && source "$HOME/.config/aliasrc.sh"
 [ -f "$HOME/Documents/.utils/Chess/aliasrc.sh" ] && source "$HOME/Documents/.utils/Chess/aliasrc.sh"
