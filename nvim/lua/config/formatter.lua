@@ -28,6 +28,8 @@ local vue_args = {
 	"--bracket-same-line",
 	"--parser",
 	"vue",
+	"--arrow-parens",
+	"avoid",
 }
 
 local php_args = {

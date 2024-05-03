@@ -33,6 +33,7 @@ end
 for _, protocol in ipairs({
 	"cssls",
 	"eslint",
+	"golangci_lint_ls",
 	"gopls",
 	"intelephense",
 	"lua_ls",

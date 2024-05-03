@@ -1,0 +1,2 @@
+[educationalsp]2024/04/22 08:00:05 main.go:12: Hey, I started!
+[educationalsp]2024/04/22 08:00:05 main.go:29: Received msg with method: initialize

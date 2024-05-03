@@ -1,7 +1,3 @@
-# Add the following lines to ~/.zshenv:
-# . "$HOME/.cargo/env"
-# ZDOTDIR=~/.config
-#
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -42,7 +38,7 @@ eval "$(pyenv init -)"
 # psql
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
-# Load aliases: keep this at the end of the file to override any aliases defined
+# Load aliases: keep this at the end of the file to override any aliases defined before
 [ -f "$HOME/.config/aliasrc.sh" ] && source "$HOME/.config/aliasrc.sh"
 [ -f "$HOME/Documents/.utils/Chess/aliasrc.sh" ] && source "$HOME/Documents/.utils/Chess/aliasrc.sh"
 [ -f "$HOME/Documents/.utils/Foris/aliasrc.sh" ] && source "$HOME/Documents/.utils/Foris/aliasrc.sh"

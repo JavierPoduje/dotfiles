@@ -101,5 +101,9 @@ v.nvim_command([[
 ]])
 
 vim.api.nvim_create_autocmd("BufEnter", { pattern = "*.lua", command = "setlocal noexpandtab" })
+vim.api.nvim_create_autocmd(
+	"BufEnter",
+	{ pattern = "*.go", command = "setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4" }
+)
 
 vim.g.markdown_fenced_languages = { "html", "python", "lua", "vim", "typescript", "javascript" }

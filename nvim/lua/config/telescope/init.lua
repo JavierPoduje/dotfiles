@@ -30,6 +30,7 @@ telescope.setup({
 		},
 		vimgrep_arguments = {
 			"rg",
+			"--hidden",
 			"--no-heading",
 			"--with-filename",
 			"--line-number",
@@ -97,6 +98,7 @@ vim.keymap.set("n", "<Leader>pb", ":Telescope buffers<CR>")
 vim.keymap.set("n", "<Leader>ps", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>\"\"<left>")
 vim.keymap.set("n", "<Leader>pa", ":Telescope grep_string<CR>")
 vim.keymap.set("n", "<Leader>pgs", ":Telescope live_grep search_dirs=", { noremap = true, silent = false })
+vim.keymap.set("n", "<Leader>pd", ":lua require('telescope.builtin').diagnostics({ bufnr = 0 })<CR>", { noremap = true, silent = false })
 
 -- Customs
 local F = "require'config.telescope.finders'"
