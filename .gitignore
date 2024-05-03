@@ -18,6 +18,9 @@
 /nvim/.netrwhist
 /nvim/openai-key-secret.txt
 
+# tmux
+/tmux/plugins/
+
 .zcompdump-puje*
 .zsh_history
 .zsh_sessions
