@@ -3,10 +3,11 @@ local sorters = require("telescope.sorters")
 local previewers = require("telescope.previewers")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local custom_finders = "require'config.telescope.finders'"
 
-local custom_actions = {}
+local silent = { noremap = true, silent = true }
 
-function custom_actions.fzf_multi_select(prompt_bufnr)
+local fzf_multi_select = function(prompt_bufnr)
 	local picker = action_state.get_current_picker(prompt_bufnr)
 	local num_selections = #picker:get_multi_selection()
 
@@ -25,7 +26,7 @@ telescope.setup({
 				["<ESC>"] = actions.close,
 				["<C-q>"] = actions.delete_buffer,
 				["<Tab>"] = actions.send_to_qflist,
-				["<CR>"] = custom_actions.fzf_multi_select,
+				["<CR>"] = fzf_multi_select,
 			},
 		},
 		vimgrep_arguments = {
@@ -37,8 +38,8 @@ telescope.setup({
 			"--column",
 			"--smart-case",
 		},
-		prompt_prefix = "  ",
-		selection_caret = " ",
+		prompt_prefix = "  ",
+		selection_caret = " ",
 		entry_prefix = "  ",
 		initial_mode = "insert",
 		selection_strategy = "reset",
@@ -93,18 +94,23 @@ telescope.load_extension("fzy_native")
 telescope.load_extension("fzy_native")
 
 -- Native
-vim.keymap.set("n", "<Leader>pf", ":Telescope find_files<CR>")
-vim.keymap.set("n", "<Leader>pb", ":Telescope buffers<CR>")
-vim.keymap.set("n", "<Leader>ps", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>\"\"<left>")
-vim.keymap.set("n", "<Leader>pa", ":Telescope grep_string<CR>")
-vim.keymap.set("n", "<Leader>pgs", ":Telescope live_grep search_dirs=", { noremap = true, silent = false })
-vim.keymap.set("n", "<Leader>pd", ":lua require('telescope.builtin').diagnostics({ bufnr = 0 })<CR>", { noremap = true, silent = false })
+vim.keymap.set("n", "<Leader>pf", ":Telescope find_files<CR>", silent)
+vim.keymap.set("n", "<Leader>pb", ":Telescope buffers<CR>", silent)
+vim.keymap.set(
+	"n",
+	"<Leader>ps",
+	":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>\"\"<left>",
+	silent
+)
+vim.keymap.set("n", "<Leader>pr", ":lua require('telescope.builtin').resume()<CR>", silent)
+vim.keymap.set("n", "<Leader>pa", ":Telescope grep_string<CR>", silent)
+vim.keymap.set("n", "<Leader>pgs", ":Telescope live_grep search_dirs=", silent)
+vim.keymap.set("n", "<Leader>pd", ":lua require('telescope.builtin').diagnostics({ bufnr = 0 })<CR>", silent)
 
 -- Customs
-local F = "require'config.telescope.finders'"
-vim.keymap.set("n", "<Leader>p<Tab>", ":lua " .. F .. ".browse_quickfix_list()<CR>")
-vim.keymap.set("n", "<Leader>pu", ":lua " .. F .. ".browse_utils()<CR>")
-vim.keymap.set("n", "<Leader>pn", ":lua " .. F .. ".browse_nvim()<CR>")
-vim.keymap.set("n", "<Leader>ph", ":lua " .. F .. ".browse_marks()<CR>")
-vim.keymap.set("v", "<Leader>py", ":lua " .. F .. ".get_visual_selection()<CR>")
-vim.keymap.set("n", "<Leader>pt", ":tabs<CR>")
+vim.keymap.set("n", "<Leader>p<Tab>", ":lua " .. custom_finders .. ".browse_quickfix_list()<CR>", silent)
+vim.keymap.set("n", "<Leader>pu", ":lua " .. custom_finders .. ".browse_utils()<CR>", silent)
+vim.keymap.set("n", "<Leader>pn", ":lua " .. custom_finders .. ".browse_nvim()<CR>", silent)
+vim.keymap.set("n", "<Leader>ph", ":lua " .. custom_finders .. ".browse_marks()<CR>", silent)
+vim.keymap.set("v", "<Leader>py", ":lua " .. custom_finders .. ".search_visual_selection()<CR>", silent)
+vim.keymap.set("n", "<Leader>pt", ":tabs<CR>", silent)

@@ -1,19 +1,5 @@
 local F = {}
 
-F.browse_utils = function()
-	require("telescope.builtin").find_files({
-		results_title = "~  Utils ~",
-		cwd = "~/Documents/.utils/",
-		previewer = false,
-		prompt_title = false,
-		layout_strategy = "horizontal",
-		layout_config = {
-			width = 0.4,
-			height = 0.4,
-		},
-	})
-end
-
 F.browse_nvim = function()
 	require("telescope.builtin").find_files({
 		results_title = "~ Vim ~",
@@ -34,7 +20,7 @@ F.browse_marks = function()
 	})
 end
 
-F.get_visual_selection = function()
+F.search_visual_selection = function()
 	local _, start_line, start_col, _ = unpack(vim.fn.getpos("'<"))
 	local _, end_line, end_col, _ = unpack(vim.fn.getpos("'>"))
 	local lines = vim.fn.getline(start_line, end_line)
