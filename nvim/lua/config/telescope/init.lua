@@ -91,7 +91,6 @@ telescope.setup({
 })
 
 telescope.load_extension("fzy_native")
-telescope.load_extension("fzy_native")
 
 -- Native
 vim.keymap.set("n", "<Leader>pf", ":Telescope find_files<CR>", silent)
