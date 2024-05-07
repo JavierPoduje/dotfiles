@@ -103,7 +103,7 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<Leader>pr", ":lua require('telescope.builtin').resume()<CR>", silent)
 vim.keymap.set("n", "<Leader>pa", ":Telescope grep_string<CR>", silent)
-vim.keymap.set("n", "<Leader>pgs", ":Telescope live_grep search_dirs=", silent)
+vim.keymap.set("n", "<Leader>pgs", ":Telescope live_grep search_dirs=")
 vim.keymap.set("n", "<Leader>pd", ":lua require('telescope.builtin').diagnostics({ bufnr = 0 })<CR>", silent)
 
 -- Customs
