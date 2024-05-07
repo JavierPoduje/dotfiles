@@ -57,8 +57,8 @@ vim.keymap.set("n", "<Leader>#", ":e#<CR>", { silent = true })
 -- Open next/previous buffer on the right using vertical split
 local M = "require'config.bufferline.customization'"
 
-v.nvim_command("command! Vs :lua " .. M .. ".split_and_move('next')")
-v.nvim_command("command! VS :lua " .. M .. ".split_and_move('prev')")
+vim.api.nvim_command("command! Vs :lua " .. M .. ".split_and_move('next')")
+vim.api.nvim_command("command! VS :lua " .. M .. ".split_and_move('prev')")
 
 vim.keymap.set("n", "<Leader>xd", ":bd!<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>bd", ":lua " .. M .. ".sweep()<CR>", { silent = true })

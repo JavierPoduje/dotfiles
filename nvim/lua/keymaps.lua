@@ -106,7 +106,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 
 -- By default `W` this calls the fzf's windows preview. I just want to save my file...
-v.nvim_command("command! W  write")
+vim.api.nvim_command("command! W  write")
 
 -- Netrw
 vim.keymap.set("n", "<Leader>pe", ":Vex<CR>", { silent = true })

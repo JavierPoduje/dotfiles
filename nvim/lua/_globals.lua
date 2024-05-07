@@ -13,6 +13,3 @@ JsonToPhp = function()
 	vim.api.nvim_command([[ :%s/\%V}/]/ge ]])
 	vim.api.nvim_command([[ :%s/\%V":\s*/" => /ge ]])
 end
-
-vim = vim
-v = vim.api

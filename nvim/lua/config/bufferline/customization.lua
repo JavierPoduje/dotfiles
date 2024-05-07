@@ -3,8 +3,8 @@ local M = {}
 -- Delete all buffers but the focused one
 -- @return void
 M.sweep = function()
-	v.nvim_exec(":BufferLineCloseRight", true)
-	v.nvim_exec(":BufferLineCloseLeft", true)
+	vim.api.nvim_exec(":BufferLineCloseRight", true)
+	vim.api.nvim_exec(":BufferLineCloseLeft", true)
 end
 
 -- Split the window vertically, focus on the new one and move to `next` or
@@ -12,12 +12,12 @@ end
 -- @param direction string: `next` or `prev`, determine where to move.
 -- @return void
 M.split_and_move = function(direction)
-	v.nvim_exec(":vs", true)
-	v.nvim_exec(":wincmd l", true)
+	vim.api.nvim_exec(":vs", true)
+	vim.api.nvim_exec(":wincmd l", true)
 	if direction == "next" then
-		v.nvim_exec(":BufferLineCycleNext", true)
+		vim.api.nvim_exec(":BufferLineCycleNext", true)
 	else
-		v.nvim_exec(":BufferLineCyclePrev", true)
+		vim.api.nvim_exec(":BufferLineCyclePrev", true)
 	end
 end
 

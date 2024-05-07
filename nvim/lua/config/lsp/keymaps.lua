@@ -57,6 +57,19 @@ for _, protocol in ipairs({
 				},
 			},
 		})
+	elseif protocol == "lua_ls" then
+		lspconfig[protocol].setup({
+			on_attach = on_attach,
+			flags = { debounce_text_changes = 150 },
+			capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+				},
+			},
+		})
 	else
 		lspconfig[protocol].setup({
 			on_attach = on_attach,
