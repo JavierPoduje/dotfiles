@@ -1,4 +1,4 @@
--- Print inspected version of something
+-- Inspected version of `print`
 P = function(x)
 	print(vim.inspect(x))
 	return x

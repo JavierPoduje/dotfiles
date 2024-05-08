@@ -53,6 +53,6 @@ require("nvim-tree").setup({
 
 vim.g.nvim_tree_indent_markers = 1
 
-vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>")
-vim.keymap.set("n", "<leader>R", ":NvimTreeRefresh<CR>")
-vim.keymap.set("n", "<leader>pp", ":NvimTreeFindFileToggle<CR>")
+vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>R", ":NvimTreeRefresh<CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>pp", ":NvimTreeFindFileToggle<CR>", { silent = true, noremap = true })

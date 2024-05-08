@@ -20,4 +20,9 @@ require("nvim-treesitter.configs").setup({
 		"vue",
 		"yaml",
 	},
+	query_linter = {
+		enable = true,
+		use_virtual_text = true,
+		lint_events = { "BufWrite", "CursorHold" },
+	},
 })

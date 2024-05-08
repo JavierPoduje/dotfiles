@@ -29,6 +29,11 @@ vim.g.NERDCustomDelimiters = {
 
 vim.g.NERDDefaultAlign = "left"
 
-vim.keymap.set("n", "<leader>cp", "Vip:call nerdcommenter#Comment('x', 'toggle')<CR>")
-vim.keymap.set("n", "<leader>c}", "V}:call nerdcommenter#Comment('x', 'toggle')<CR>")
-vim.keymap.set("n", "<leader>c{", "V{:call nerdcommenter#Comment('x', 'toggle')<CR>")
+vim.keymap.set(
+	"n",
+	"<leader>cp",
+	"Vip:call nerdcommenter#Comment('x', 'toggle')<CR>",
+	{ silent = true, noremap = true }
+)
+vim.keymap.set("n", "<leader>c}", "V}:call nerdcommenter#Comment('x', 'toggle')<CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>c{", "V{:call nerdcommenter#Comment('x', 'toggle')<CR>", { silent = true, noremap = true })
