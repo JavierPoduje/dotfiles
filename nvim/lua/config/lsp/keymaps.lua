@@ -38,7 +38,6 @@ for _, protocol in ipairs({
 	"intelephense",
 	"lua_ls",
 	"prismals",
-	"pyright",
 	"tailwindcss",
 	"tsserver",
 	"vimls",
