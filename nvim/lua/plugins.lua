@@ -99,4 +99,5 @@ require("lazy").setup({
 	-- Others
 	"vuciv/vim-bujo",
 	"nvim-lua/plenary.nvim",
+	"laytan/cloak.nvim",
 })
