@@ -1,7 +1,6 @@
 require("config.autopair")
 require("config.bufferline")
 require("config.bujo")
-require("config.colorizer")
 require("config.cloak")
 require("config.emmet")
 require("config.formatter")

@@ -39,7 +39,6 @@ require("lazy").setup({
 	-- Syntax highlight
 	"neoclide/jsonc.vim",
 	"nvim-treesitter/nvim-treesitter-context",
-	"norcalli/nvim-colorizer.lua",
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
