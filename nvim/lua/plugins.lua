@@ -46,11 +46,17 @@ require("lazy").setup({
 	},
 
 	-- Files management
-	"akinsho/nvim-bufferline.lua",
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+	},
 	"nvim-lualine/lualine.nvim",
 	"mbbill/undotree",
 	"mhinz/vim-startify",
-	"javierpoduje/taboo",
+	{
+		"javierpoduje/taboo",
+		--dev = true,
+	},
 
 	-- Text management
 	{
@@ -61,9 +67,12 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"onsails/lspkind-nvim",
-			"roginfarrer/cmp-css-variables",
 			"saadparwaiz1/cmp_luasnip",
 		},
+	},
+	{
+		"javierpoduje/cmp-css-variables",
+		dev = true,
 	},
 	"jiangmiao/auto-pairs",
 	"tpope/vim-surround",

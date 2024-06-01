@@ -7,9 +7,9 @@ require("harpoon").setup({
 		enter_on_sendcmd = false,
 		excluded_filetypes = { "harpoon" },
 	},
-	menu = {
-		width = vim.api.nvim_win_get_width(0) - 20,
-	},
+	--menu = {
+	--  width = vim.api.nvim_win_get_width(0) - 20,
+	--},
 })
 
 -- add file

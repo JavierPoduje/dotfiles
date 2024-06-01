@@ -1,5 +1,5 @@
 require("config.autopair")
-require("config.bufferline")
+require("config.bufline")
 require("config.bujo")
 require("config.cloak")
 require("config.emmet")

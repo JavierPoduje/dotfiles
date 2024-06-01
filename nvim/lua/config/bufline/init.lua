@@ -1,4 +1,6 @@
 local g = require("g")
+local customBufline = require("config.bufline.customization")
+local customBuflineStr = "require'config.bufline.customization'"
 
 require("bufferline").setup({
 	options = {
@@ -54,23 +56,15 @@ vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", { silent = true })
 -- Move to last buffer
 vim.keymap.set("n", "<Leader>#", ":e#<CR>", { silent = true })
 
--- Open next/previous buffer on the right using vertical split
-local M = "require'config.bufferline.customization'"
-
-vim.api.nvim_command("command! Vs :lua " .. M .. ".split_and_move('next')")
-vim.api.nvim_command("command! VS :lua " .. M .. ".split_and_move('prev')")
+vim.api.nvim_command("command! Vs :lua " .. customBuflineStr .. ".split_and_move('next')")
+vim.api.nvim_command("command! VS :lua " .. customBuflineStr .. ".split_and_move('prev')")
 
 vim.keymap.set("n", "<Leader>xd", ":bd!<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>bd", ":lua " .. M .. ".sweep()<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>bd", customBufline.sweep, { silent = true })
 
-for char, buff_num in pairs(g.num_by_char) do
+for char, bufnr in pairs(g.num_by_char) do
 	-- go to specific buffer
-	vim.keymap.set("n", "<Leader>b" .. char, ":BufferLineGoToBuffer " .. buff_num .. "<CR>", { silent = true })
+	vim.keymap.set("n", "<Leader>b" .. char, ":BufferLineGoToBuffer " .. bufnr .. "<CR>", { silent = true })
 	-- close specific buffer
-	vim.keymap.set(
-		"n",
-		"<Leader>x" .. char,
-		":lua " .. M .. ".close_buff_by_num(" .. buff_num .. ")<CR>",
-		{ silent = true }
-	)
+	vim.keymap.set("n", "<Leader>x" .. char, customBufline.close(bufnr), { silent = true })
 end

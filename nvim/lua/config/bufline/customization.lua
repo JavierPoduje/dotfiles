@@ -21,10 +21,12 @@ M.split_and_move = function(direction)
 	end
 end
 
-M.close_buff_by_num = function(bufnr)
-	require("bufferline").exec(bufnr, function(buf)
-		vim.cmd("bd!" .. buf.id)
-	end)
+M.close = function(bufnr)
+	return function()
+		require("bufferline").exec(bufnr, function(buf)
+			vim.cmd("bd!" .. buf.id)
+		end)
+	end
 end
 
 return M

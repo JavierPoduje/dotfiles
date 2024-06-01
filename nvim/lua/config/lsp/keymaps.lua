@@ -63,9 +63,21 @@ for _, protocol in ipairs({
 			capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 			settings = {
 				Lua = {
+					runtime = {
+						version = "Lua 5.1",
+					},
 					diagnostics = {
 						globals = { "vim" },
 					},
+				},
+			},
+		})
+	elseif protocol == "eslint" then
+		lspconfig[protocol].setup({
+			settings = {
+				experimental = {
+					 -- check this later. there's probably a better way of handle this
+					useFlatConfig = false,
 				},
 			},
 		})
