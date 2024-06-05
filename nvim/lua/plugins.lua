@@ -72,7 +72,7 @@ require("lazy").setup({
 	},
 	{
 		"javierpoduje/cmp-css-variables",
-		dev = true,
+		--dev = true,
 	},
 	"jiangmiao/auto-pairs",
 	"tpope/vim-surround",

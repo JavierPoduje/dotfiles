@@ -13,6 +13,7 @@ require("nvim-treesitter.configs").setup({
 		"php",
 		"prisma",
 		"scss",
+		"templ",
 		"tsx",
 		"twig",
 		"typescript",

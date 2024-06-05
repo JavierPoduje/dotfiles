@@ -5,10 +5,21 @@ local float_window_width = math.floor(COLS / 2)
 local float_window_height = math.floor(ROWS / 1.5)
 
 local function opts(desc, bufnr)
-	return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+	return {
+		buffer = bufnr,
+		desc = "nvim-tree: " .. desc,
+		noremap = true,
+		nowait = true,
+		silent = true,
+	}
 end
 
 require("nvim-tree").setup({
+	actions = {
+		open_file = {
+			quit_on_open = true,
+		},
+	},
 	sort_by = "case_sensitive",
 	git = {
 		timeout = 500,
@@ -53,8 +64,6 @@ require("nvim-tree").setup({
 		},
 	},
 })
-
-vim.g.nvim_tree_indent_markers = 1
 
 vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>R", ":NvimTreeRefresh<CR>", { silent = true, noremap = true })
