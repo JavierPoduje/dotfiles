@@ -20,6 +20,14 @@ local prettier_args = function(parser)
 	}
 end
 
+local biome_args = function()
+	return {
+		"format",
+		"--write",
+		current_file,
+	}
+end
+
 local vue_args = {
 	"--write",
 	current_file,
@@ -89,8 +97,8 @@ require("formatter").setup({
 		go = { formatter("gofmt", { current_file }, true) },
 		graphql = { formatter("prettier", prettier_args("graphql"), true) },
 		html = { formatter("prettier", prettier_args("html"), false) },
-		javascript = { formatter("prettier", prettier_args("typescript"), false) },
-		javascriptreact = { formatter("prettier", prettier_args("typescript"), false) },
+		javascript = { formatter("biome", biome_args(), false) },
+		javascriptreact = { formatter("biome", biome_args(), false) },
 		json = { formatter("prettier", prettier_args("json"), true) },
 		lua = { formatter("stylua", lua_args, false) },
 		php = { formatter("prettier", php_args, true) },
@@ -99,8 +107,8 @@ require("formatter").setup({
 		rust = { formatter("rustfmt", rust_args, true) },
 		scss = { formatter("prettier", prettier_args("scss"), true) },
 		sql = { formatter("sql-formatter", sql_args, true) },
-		typescript = { formatter("prettier", prettier_args("typescript"), false) },
-		typescriptreact = { formatter("prettier", prettier_args("typescript"), false) },
+		typescript = { formatter("biome", biome_args(), false) },
+		typescriptreact = { formatter("biome", biome_args(), false) },
 		vue = { formatter("prettier", vue_args, true) },
 	},
 })
@@ -110,4 +118,4 @@ require("formatter").setup({
 vim.keymap.set("n", "<Leader>fd", ":! deno fmt % -q<CR>", { silent = true })
 
 -- format every other file
-vim.keymap.set("n", "<leader>ff", ":Format<CR>", { silent = true })
+vim.keymap.set("n", "<leader>ff", ":Format<CR>", { silent = false })
