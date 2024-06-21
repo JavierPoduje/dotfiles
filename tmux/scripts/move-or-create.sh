@@ -11,6 +11,13 @@
 # - Switches to or creates session 3 if $1 is 3.
 # - Switches to or creates session 4 if $1 is 4.
 
+# TODO: Cosider the case in which we're moving to a non-existen session. eg:
+# current sessions: 1, 2, 3
+# remove session 2, leaving: 1, 3
+# go-to session 2.
+# current behavior: there are two sessions, so it tries to move to session 2, but it doesn't exist.
+# expected behaviour: create session 2 and move to it.
+
 NUMBER_OF_SESSIONS=$(tmux list-sessions | wc -l | xargs)
 
 if [ $1 = 1 ]; then
