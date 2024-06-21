@@ -101,6 +101,7 @@ require("lazy").setup({
 	},
 
 	-- colorschemes
+	"rose-pine/neovim",
 	"sainnhe/gruvbox-material",
 	{ "catppuccin/nvim", name = "catppuccin" },
 

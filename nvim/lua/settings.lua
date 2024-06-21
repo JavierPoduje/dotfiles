@@ -29,9 +29,10 @@ vim.api.nvim_command("set laststatus=3")
 vim.api.nvim_command("set shiftwidth=2")
 vim.api.nvim_command("set ignorecase")
 vim.api.nvim_command("set encoding=utf8")
-vim.api.nvim_command("set list")
+vim.opt.list = true
 vim.api.nvim_command([[ set showbreak=↪\ ]])
 vim.api.nvim_command([[ set listchars=eol:⏎,tab:→\ ,trail:␠,nbsp:⎵,space:·,extends:⟩,precedes:⟨ ]])
+--vim.opt.listchars = {}
 
 -- cursorline only in focused buffer
 vim.api.nvim_command([[
@@ -100,7 +101,10 @@ vim.api.nvim_command([[
 	autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 ]])
 
-vim.api.nvim_create_autocmd("BufEnter", { pattern = "*.lua", command = "setlocal noexpandtab" })
+vim.api.nvim_create_autocmd(
+	"BufEnter",
+	{ pattern = "*.lua", command = "setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4" }
+)
 vim.api.nvim_create_autocmd(
 	"BufEnter",
 	{ pattern = "*.go", command = "setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4" }

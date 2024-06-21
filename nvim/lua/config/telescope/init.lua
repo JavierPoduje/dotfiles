@@ -62,6 +62,7 @@ telescope.setup({
 		file_sorter = sorters.get_fuzzy_file,
 		file_ignore_patterns = {
 			"*.pyc",
+			"go.sum",
 			"app/webroot/bower_components",
 			"app/webroot/build",
 			"app/webroot/img",
@@ -110,6 +111,6 @@ vim.keymap.set("n", "<Leader>pd", ":lua require('telescope.builtin').diagnostics
 vim.keymap.set("n", "<Leader>p<Tab>", ":lua " .. custom_finders .. ".browse_quickfix_list()<CR>", silent)
 vim.keymap.set("n", "<Leader>pu", ":lua " .. custom_finders .. ".browse_utils()<CR>", silent)
 vim.keymap.set("n", "<Leader>pn", ":lua " .. custom_finders .. ".browse_nvim()<CR>", silent)
-vim.keymap.set("n", "<Leader>ph", ":lua " .. custom_finders .. ".browse_marks()<CR>", silent)
+--vim.keymap.set("n", "<Leader>pm", ":lua " .. custom_finders .. ".browse_marks()<CR>", silent)
 vim.keymap.set("v", "<Leader>py", ":lua " .. custom_finders .. ".search_visual_selection()<CR>", silent)
 vim.keymap.set("n", "<Leader>pt", ":tabs<CR>", silent)

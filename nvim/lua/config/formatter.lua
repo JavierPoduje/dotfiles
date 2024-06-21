@@ -118,4 +118,4 @@ require("formatter").setup({
 vim.keymap.set("n", "<Leader>fd", ":! deno fmt % -q<CR>", { silent = true })
 
 -- format every other file
-vim.keymap.set("n", "<leader>ff", ":Format<CR>", { silent = false })
+vim.keymap.set("n", "<leader>ff", ":Format<CR>", { silent = true })
