@@ -110,3 +110,6 @@ vim.api.nvim_command("command! W  write")
 
 -- Netrw
 vim.keymap.set("n", "<Leader>pe", ":Vex<CR>", { silent = true })
+
+-- Copy current file path to clipboard
+vim.keymap.set("n", "<Leader>%", ":let @+=expand('%')<CR>", { silent = true })

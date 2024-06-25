@@ -38,7 +38,6 @@ require("lazy").setup({
 
 	-- Syntax highlight
 	"neoclide/jsonc.vim",
-	"nvim-treesitter/nvim-treesitter-context",
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -102,6 +101,7 @@ require("lazy").setup({
 
 	-- colorschemes
 	"rose-pine/neovim",
+	"pineapplegiant/spaceduck",
 	"sainnhe/gruvbox-material",
 	{ "catppuccin/nvim", name = "catppuccin" },
 
