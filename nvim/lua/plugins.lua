@@ -45,10 +45,7 @@ require("lazy").setup({
 	},
 
 	-- Files management
-	{
-		"akinsho/bufferline.nvim",
-		version = "*",
-	},
+	"akinsho/bufferline.nvim",
 	"nvim-lualine/lualine.nvim",
 	"mbbill/undotree",
 	"mhinz/vim-startify",
@@ -106,7 +103,8 @@ require("lazy").setup({
 	{ "catppuccin/nvim", name = "catppuccin" },
 
 	-- Others
-	"vuciv/vim-bujo",
-	"nvim-lua/plenary.nvim",
+	"javierpoduje/kamelbab",
 	"laytan/cloak.nvim",
+	"nvim-lua/plenary.nvim",
+	"vuciv/vim-bujo",
 })
