@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "@appguru/luafmt": "^1.5.0",
+    "@vue/typescript-plugin": "^2.0.5",
     "lua-fmt": "^2.6.0",
-    "remark": "^14.0.2"
+    "remark": "^14.0.2",
+    "vue-tsc": "^2.0.22"
   }
 }
