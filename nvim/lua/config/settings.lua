@@ -120,4 +120,20 @@ vim.api.nvim_create_autocmd(
 
 vim.g.markdown_fenced_languages = { "html", "python", "lua", "vim", "typescript", "javascript" }
 
---vim.cmd.colorscheme("catppuccin")
+-- GLOBAL FUNCTIONS
+
+-- Inspected version of `print`
+P = function(x)
+	print(vim.inspect(x))
+	return x
+end
+
+-- Convert json to php array
+JsonToPhp = function()
+	vim.api.nvim_command([[ :%s/\%V":\s*\"/" => "/ge ]])
+	vim.api.nvim_command([[ :%s/\%V":\s*{/" => [/ge ]])
+	vim.api.nvim_command([[ :%s/\%V":\s*\[/" => [/ge ]])
+	vim.api.nvim_command([[ :%s/\%V{/[/ge ]])
+	vim.api.nvim_command([[ :%s/\%V}/]/ge ]])
+	vim.api.nvim_command([[ :%s/\%V":\s*/" => /ge ]])
+end

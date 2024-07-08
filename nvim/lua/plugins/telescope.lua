@@ -1,3 +1,45 @@
+local browse_nvim = function()
+	require("telescope.builtin").find_files({
+		results_title = "~ Vim ~",
+		cwd = "~/.config/nvim/",
+		previewer = false,
+		prompt_title = false,
+		layout_strategy = "vertical",
+		layout_config = {
+			width = 0.4,
+			height = 0.4,
+		},
+	})
+end
+
+local search_visual_selection = function()
+	local _, start_line, start_col, _ = unpack(vim.fn.getpos("'<"))
+	local _, end_line, end_col, _ = unpack(vim.fn.getpos("'>"))
+	local lines = vim.fn.getline(start_line, end_line)
+
+	if start_line ~= end_line then
+		lines[#lines] = string.sub(lines[#lines], 1, end_col)
+		lines[1] = string.sub(lines[1], start_col)
+	else
+		lines[1] = string.sub(lines[1], start_col, end_col)
+	end
+
+	local selection = table.concat(lines, "\n")
+
+	require("telescope.builtin").grep_string({
+		search = selection,
+	})
+end
+
+local browse_quickfix_list = function()
+	local quickfixList = vim.fn.getqflist()
+	if #quickfixList > 0 then
+		vim.cmd("Telescope quickfix")
+	else
+		print("Empty quickfix list...")
+	end
+end
+
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = {
@@ -138,10 +180,9 @@ return {
 		vim.keymap.set("n", "<Leader>pd", ":lua require('telescope.builtin').diagnostics({ bufnr = 0 })<CR>", silent)
 
 		-- Customs
-		vim.keymap.set("n", "<Leader>p<Tab>", ":lua " .. custom_finders .. ".browse_quickfix_list()<CR>", silent)
-		vim.keymap.set("n", "<Leader>pu", ":lua " .. custom_finders .. ".browse_utils()<CR>", silent)
-		vim.keymap.set("n", "<Leader>pn", ":lua " .. custom_finders .. ".browse_nvim()<CR>", silent)
-		vim.keymap.set("v", "<Leader>py", ":lua " .. custom_finders .. ".search_visual_selection()<CR>", silent)
+		vim.keymap.set("n", "<Leader>p<Tab>", browse_quickfix_list, silent)
+		vim.keymap.set("n", "<Leader>pn", browse_nvim, silent)
+		vim.keymap.set("v", "<Leader>py", search_visual_selection, silent)
 		vim.keymap.set("n", "<Leader>pt", ":tabs<CR>", silent)
 		vim.keymap.set("n", "<Leader>ph", ":Telescope helpgrep<CR>", silent)
 	end,
