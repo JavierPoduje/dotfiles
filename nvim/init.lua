@@ -1,17 +1,19 @@
 -- Global variables
-require("_globals")
+--require("_globals")
 
 -- Native neovim settings
-require("settings")
+--require("settings")
 
 -- Where the pluggins are called
-require("plugins")
+--require("plugins")
 
 -- Pluggins configuration
-require("config")
+--require("config")
 
 -- Keymaps definitions
-require("keymaps")
+--require("keymaps")
 
 -- Theme definitions
-require("theme")
+--require("theme")
+
+require('config.lazy')
