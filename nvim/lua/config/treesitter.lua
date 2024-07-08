@@ -6,6 +6,7 @@ require("nvim-treesitter.configs").setup({
 		"css",
 		"git_rebase",
 		"go",
+		"gotmpl",
 		"html",
 		"javascript",
 		"json",

@@ -50,6 +50,7 @@ require("lazy").setup({
 	"mbbill/undotree",
 	"mhinz/vim-startify",
 	{
+		-- TODO: implement winlayout
 		"javierpoduje/taboo",
 		--dev = true,
 	},
@@ -88,6 +89,7 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
+			{ "catgoose/telescope-helpgrep.nvim" },
 			{ "nvim-lua/popup.nvim" },
 			{ "nvim-telescope/telescope-fzy-native.nvim" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },

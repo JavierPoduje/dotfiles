@@ -1,8 +1,9 @@
-local telescope = require("telescope")
-local sorters = require("telescope.sorters")
-local previewers = require("telescope.previewers")
-local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local actions = require("telescope.actions")
+local builtin = require("telescope.builtin")
+local previewers = require("telescope.previewers")
+local sorters = require("telescope.sorters")
+local telescope = require("telescope")
 local custom_finders = "require'config.telescope.finders'"
 
 local silent = { noremap = true, silent = true }
@@ -81,6 +82,22 @@ telescope.setup({
 		qflist_previewer = previewers.vim_buffer_qflist.new,
 	},
 	extensions = {
+		helpgrep = {
+			ignore_paths = {
+				vim.fn.stdpath("state") .. "/lazy/readme",
+			},
+			mappings = {
+				i = {
+					["<CR>"] = actions.select_default,
+					["<C-v>"] = actions.select_vertical,
+				},
+				n = {
+					["<CR>"] = actions.select_default,
+					["<C-s>"] = actions.select_horizontal,
+				},
+			},
+			default_grep = builtin.live_grep,
+		},
 		fzy_native = {
 			override_generic_sorter = false,
 			override_file_sorter = true,
@@ -92,6 +109,7 @@ telescope.setup({
 })
 
 telescope.load_extension("fzy_native")
+telescope.load_extension("helpgrep")
 
 -- Native
 vim.keymap.set("n", "<Leader>pf", ":Telescope find_files<CR>", silent)
@@ -111,6 +129,6 @@ vim.keymap.set("n", "<Leader>pd", ":lua require('telescope.builtin').diagnostics
 vim.keymap.set("n", "<Leader>p<Tab>", ":lua " .. custom_finders .. ".browse_quickfix_list()<CR>", silent)
 vim.keymap.set("n", "<Leader>pu", ":lua " .. custom_finders .. ".browse_utils()<CR>", silent)
 vim.keymap.set("n", "<Leader>pn", ":lua " .. custom_finders .. ".browse_nvim()<CR>", silent)
---vim.keymap.set("n", "<Leader>pm", ":lua " .. custom_finders .. ".browse_marks()<CR>", silent)
 vim.keymap.set("v", "<Leader>py", ":lua " .. custom_finders .. ".search_visual_selection()<CR>", silent)
 vim.keymap.set("n", "<Leader>pt", ":tabs<CR>", silent)
+vim.keymap.set("n", "<Leader>ph", ":Telescope helpgrep<CR>", silent)
