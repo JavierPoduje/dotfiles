@@ -1,5 +1,66 @@
+local sweep = function()
+	vim.api.nvim_exec(":BufferLineCloseRight", true)
+	vim.api.nvim_exec(":BufferLineCloseLeft", true)
+end
+
+local close = function(bufnr)
+	local bufexec = bufferline.exec
+	return function()
+		bufexec(bufnr, function(buf)
+			vim.cmd("bd!" .. buf.id)
+		end)
+	end
+end
+
+-- Split the window vertically, focus on the new one and move to `next` or
+-- `prev` buffer.
+-- @param direction string: `next` or `prev`, determine where to move.
+-- @return void
+local split_and_move = function(direction)
+	return function()
+		vim.api.nvim_exec(":vs", true)
+		vim.api.nvim_exec(":wincmd l", true)
+		if direction == "next" then
+			vim.api.nvim_exec(":BufferLineCycleNext", true)
+		else
+			vim.api.nvim_exec(":BufferLineCyclePrev", true)
+		end
+	end
+end
+
 return {
 	"akinsho/bufferline.nvim",
+	lazy = false,
+	keys = {
+		-- move buffer tabs
+		{
+			mode = "n",
+			"<Leader>bn",
+			":BufferLineMoveNext<CR>",
+			desc = "move buffer to the right in the bufferline",
+			silent = true,
+		},
+		{
+			mode = "n",
+			"<Leader>bp",
+			":BufferLineMovePrev<CR>",
+			desc = "move buffer to the left in the bufferline",
+			silent = true,
+		},
+		-- Move between buffers
+		{ mode = "n", "<C-l>", ":BufferLineCycleNext<CR>", desc = "move to next buffer", silent = true },
+		{ mode = "n", "<C-h>", ":BufferLineCyclePrev<CR>", desc = "move to the prev buffer", silent = true },
+
+		{ mode = "n", "<Leader>#", ":e#<CR>", desc = "go to the prev buffer", silent = true },
+		{ mode = "n", "<Leader>xd", ":bd!<CR>", desc = "close current buffer", silent = true },
+		{
+			mode = "n",
+			"<Leader>bd",
+			sweep,
+			desc = "close all buffers except the current one",
+			silent = true,
+		},
+	},
 	config = function()
 		local g = require("g")
 		local bufferline = require("bufferline")
@@ -47,53 +108,8 @@ return {
 			},
 		})
 
-		local bufexec = bufferline.exec
-
-		local sweep = function()
-			vim.api.nvim_exec(":BufferLineCloseRight", true)
-			vim.api.nvim_exec(":BufferLineCloseLeft", true)
-		end
-
-		-- Split the window vertically, focus on the new one and move to `next` or
-		-- `prev` buffer.
-		-- @param direction string: `next` or `prev`, determine where to move.
-		-- @return void
-		local split_and_move = function(direction)
-			return function()
-				vim.api.nvim_exec(":vs", true)
-				vim.api.nvim_exec(":wincmd l", true)
-				if direction == "next" then
-					vim.api.nvim_exec(":BufferLineCycleNext", true)
-				else
-					vim.api.nvim_exec(":BufferLineCyclePrev", true)
-				end
-			end
-		end
-
-		local close = function(bufnr)
-			return function()
-				bufexec(bufnr, function(buf)
-					vim.cmd("bd!" .. buf.id)
-				end)
-			end
-		end
-
-		-- Move buffers tabs
-		vim.keymap.set("n", "<Leader>bn", ":BufferLineMoveNext<CR>", { silent = true })
-		vim.keymap.set("n", "<Leader>bp", ":BufferLineMovePrev<CR>", { silent = true })
-
-		-- Move between buffers
-		vim.keymap.set("n", "<C-l>", ":BufferLineCycleNext<CR>", { silent = true })
-		vim.keymap.set("n", "<C-h>", ":BufferLineCyclePrev<CR>", { silent = true })
-
-		-- Move to last buffer
-		vim.keymap.set("n", "<Leader>#", ":e#<CR>", { silent = true })
-
 		vim.api.nvim_create_user_command("Vs", split_and_move("next"), { range = true })
 		vim.api.nvim_create_user_command("VS", split_and_move("prev"), { range = true })
-
-		vim.keymap.set("n", "<Leader>xd", ":bd!<CR>", { silent = true })
-		vim.keymap.set("n", "<Leader>bd", sweep, { silent = true })
 
 		for char, bufnr in pairs(g.num_by_char) do
 			-- go to specific buffer
