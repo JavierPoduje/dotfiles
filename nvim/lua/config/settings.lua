@@ -35,7 +35,6 @@ vim.api.nvim_command("set encoding=utf8")
 vim.opt.list = true
 vim.api.nvim_command([[ set showbreak=↪\ ]])
 vim.api.nvim_command([[ set listchars=eol:⏎,tab:→\ ,trail:␠,nbsp:⎵,space:·,extends:⟩,precedes:⟨ ]])
---vim.opt.listchars = {}
 
 -- cursorline only in focused buffer
 vim.api.nvim_command([[
@@ -73,11 +72,8 @@ vim.api.nvim_command("let &t_ut=''")
 -- I don't know what this things are...
 vim.api.nvim_command("set t_Co=256")
 vim.g.loaded_matchparen = 1
---vim.g.netrw_browse_split = 2
 vim.g.vrfr_rg = "true"
 vim.g.netrw_bufsettings = "noma nomod nu nowrap ro nobl"
---vim.g.netrw_banner = 1
---vim.g.netrw_winsize = 15
 
 -- Remove white spaces on save
 vim.api.nvim_command([[
@@ -137,3 +133,5 @@ JsonToPhp = function()
 	vim.api.nvim_command([[ :%s/\%V}/]/ge ]])
 	vim.api.nvim_command([[ :%s/\%V":\s*/" => /ge ]])
 end
+
+--vim.cmd.colorscheme("lunaperche")

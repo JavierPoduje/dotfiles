@@ -1,33 +1,3 @@
-local sweep = function()
-	vim.api.nvim_exec(":BufferLineCloseRight", true)
-	vim.api.nvim_exec(":BufferLineCloseLeft", true)
-end
-
-local close = function(bufnr)
-	local bufexec = bufferline.exec
-	return function()
-		bufexec(bufnr, function(buf)
-			vim.cmd("bd!" .. buf.id)
-		end)
-	end
-end
-
--- Split the window vertically, focus on the new one and move to `next` or
--- `prev` buffer.
--- @param direction string: `next` or `prev`, determine where to move.
--- @return void
-local split_and_move = function(direction)
-	return function()
-		vim.api.nvim_exec(":vs", true)
-		vim.api.nvim_exec(":wincmd l", true)
-		if direction == "next" then
-			vim.api.nvim_exec(":BufferLineCycleNext", true)
-		else
-			vim.api.nvim_exec(":BufferLineCyclePrev", true)
-		end
-	end
-end
-
 return {
 	"akinsho/bufferline.nvim",
 	lazy = false,
@@ -56,7 +26,10 @@ return {
 		{
 			mode = "n",
 			"<Leader>bd",
-			sweep,
+			function()
+				vim.api.nvim_exec(":BufferLineCloseRight", true)
+				vim.api.nvim_exec(":BufferLineCloseLeft", true)
+			end,
 			desc = "close all buffers except the current one",
 			silent = true,
 		},
@@ -107,6 +80,31 @@ return {
 				sort_by = "id",
 			},
 		})
+
+		local close = function(bufnr)
+			local bufexec = bufferline.exec
+			return function()
+				bufexec(bufnr, function(buf)
+					vim.cmd("bd!" .. buf.id)
+				end)
+			end
+		end
+
+		-- Split the window vertically, focus on the new one and move to `next` or
+		-- `prev` buffer.
+		-- @param direction string: `next` or `prev`, determine where to move.
+		-- @return void
+		local split_and_move = function(direction)
+			return function()
+				vim.api.nvim_exec(":vs", true)
+				vim.api.nvim_exec(":wincmd l", true)
+				if direction == "next" then
+					vim.api.nvim_exec(":BufferLineCycleNext", true)
+				else
+					vim.api.nvim_exec(":BufferLineCyclePrev", true)
+				end
+			end
+		end
 
 		vim.api.nvim_create_user_command("Vs", split_and_move("next"), { range = true })
 		vim.api.nvim_create_user_command("VS", split_and_move("prev"), { range = true })
