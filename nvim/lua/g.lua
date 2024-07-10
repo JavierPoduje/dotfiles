@@ -1,3 +1,22 @@
+-- playing around with tcp sockets...
+--local server = vim.uv.new_tcp()
+--server:bind("127.0.0.1", "12345")
+--server:listen(128, function(err)
+--    assert(not err, err) -- Check for errors.
+--    local sock = vim.uv.new_tcp()
+--    server:accept(sock) -- Accept client connection.
+--    sock:read_start(function(err, chunk)
+--        assert(not err, err) -- Check for errors.
+--        if chunk then
+--            print("reading")
+--            sock:write(chunk) -- Echo received messages to the channel.
+--        else -- EOF (stream closed).
+--            print("closing")
+--            sock:close() -- Always close handles to avoid leaks.
+--        end
+--    end)
+--end)
+
 M = {
 	num_by_char = {
 		m = 1,

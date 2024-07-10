@@ -1,47 +1,6 @@
-local browse_nvim = function()
-	require("telescope.builtin").find_files({
-		results_title = "~ Vim ~",
-		cwd = "~/.config/nvim/",
-		previewer = false,
-		prompt_title = false,
-		layout_strategy = "vertical",
-		layout_config = {
-			width = 0.4,
-			height = 0.4,
-		},
-	})
-end
-
-local search_visual_selection = function()
-	local _, start_line, start_col, _ = unpack(vim.fn.getpos("'<"))
-	local _, end_line, end_col, _ = unpack(vim.fn.getpos("'>"))
-	local lines = vim.fn.getline(start_line, end_line)
-
-	if start_line ~= end_line then
-		lines[#lines] = string.sub(lines[#lines], 1, end_col)
-		lines[1] = string.sub(lines[1], start_col)
-	else
-		lines[1] = string.sub(lines[1], start_col, end_col)
-	end
-
-	local selection = table.concat(lines, "\n")
-
-	require("telescope.builtin").grep_string({
-		search = selection,
-	})
-end
-
-local browse_quickfix_list = function()
-	local quickfixList = vim.fn.getqflist()
-	if #quickfixList > 0 then
-		vim.cmd("Telescope quickfix")
-	else
-		print("Empty quickfix list...")
-	end
-end
-
 return {
 	"nvim-telescope/telescope.nvim",
+	lazy = false,
 	dependencies = {
 		{ "catgoose/telescope-helpgrep.nvim" },
 		{ "nvim-lua/popup.nvim" },
@@ -53,12 +12,9 @@ return {
 	config = function()
 		local action_state = require("telescope.actions.state")
 		local actions = require("telescope.actions")
-		local builtin = require("telescope.builtin")
 		local previewers = require("telescope.previewers")
 		local sorters = require("telescope.sorters")
 		local telescope = require("telescope")
-
-		local silent = { noremap = true, silent = true }
 
 		local fzf_multi_select = function(prompt_bufnr)
 			local picker = action_state.get_current_picker(prompt_bufnr)
@@ -148,7 +104,7 @@ return {
 							["<C-s>"] = actions.select_horizontal,
 						},
 					},
-					default_grep = builtin.live_grep,
+					default_grep = require("telescope.builtin").live_grep,
 				},
 				fzy_native = {
 					override_generic_sorter = false,
@@ -162,26 +118,127 @@ return {
 
 		telescope.load_extension("fzy_native")
 		telescope.load_extension("helpgrep")
-
-		-- Native
-		vim.keymap.set("n", "<Leader>pf", ":Telescope find_files<CR>", silent)
-		vim.keymap.set("n", "<Leader>pb", ":Telescope buffers<CR>", silent)
-		vim.keymap.set(
-			"n",
+	end,
+	keys = {
+		{
+			mode = "n",
+			"<Leader>pf",
+			":Telescope find_files<CR>",
+			desc = "Find files in the current directory",
+			silent = true,
+		},
+		{
+			mode = "n",
+			"<Leader>pb",
+			":Telescope buffers<CR>",
+			desc = "List open buffers",
+			silent = true,
+		},
+		{
+			mode = "n",
 			"<Leader>ps",
 			":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>\"\"<left>",
-			silent
-		)
-		vim.keymap.set("n", "<Leader>pr", builtin.resume, silent)
-		vim.keymap.set("n", "<Leader>pa", ":Telescope grep_string<CR>", silent)
-		vim.keymap.set("n", "<Leader>pgs", ":Telescope live_grep search_dirs=")
-		vim.keymap.set("n", "<Leader>pd", ":lua require('telescope.builtin').diagnostics({ bufnr = 0 })<CR>", silent)
+			desc = "Search by text with args if needed",
+			silent = true,
+		},
+		{
+			mode = "n",
+			"<Leader>pr",
+			require("telescope.builtin").resume,
+			desc = "Resume the last telescope session",
+			silent = true,
+		},
+		{
+			mode = "n",
+			"<Leader>pa",
+			":Telescope grep_string<CR>",
+			desc = "Search for the `word` under the cursor",
+			silent = true,
+		},
+		{
+			mode = "n",
+			"<Leader>pgs",
+			":Telescope live_grep search_dirs=",
+			desc = "Search for a string in a directory scope",
+		},
+		{
+			mode = "n",
+			"<Leader>pd",
+			":lua require('telescope.builtin').diagnostics({ bufnr = 0 })<CR>",
+			desc = "List diagnostics for the current buffer",
+			silent = true,
+		},
+		{
+			mode = "n",
+			"<Leader>p<Tab>",
+			function()
+				local quickfixList = vim.fn.getqflist()
+				if #quickfixList > 0 then
+					vim.cmd("Telescope quickfix")
+				else
+					print("Empty quickfix list...")
+				end
+			end,
+			desc = "Browse quickfix list",
+			silent = true,
+		},
+		{
+			mode = "n",
+			"<Leader>pn",
+			function()
+				require("telescope.builtin").find_files({
+					results_title = "~ Vim ~",
+					cwd = "~/.config/nvim/",
+					previewer = false,
+					prompt_title = false,
+					layout_strategy = "vertical",
+					layout_config = {
+						width = 0.4,
+						height = 0.4,
+					},
+				})
+			end,
+			desc = "search nvim-config files",
+			silent = true,
+		},
+		{
+			mode = "v",
+			"<Leader>py",
+			function()
+				local _, start_line, start_col, _ = unpack(vim.fn.getpos("'<"))
+				local _, end_line, end_col, _ = unpack(vim.fn.getpos("'>"))
+				local lines = vim.fn.getline(start_line, end_line)
 
-		-- Customs
-		vim.keymap.set("n", "<Leader>p<Tab>", browse_quickfix_list, silent)
-		vim.keymap.set("n", "<Leader>pn", browse_nvim, silent)
-		vim.keymap.set("v", "<Leader>py", search_visual_selection, silent)
-		vim.keymap.set("n", "<Leader>pt", ":tabs<CR>", silent)
-		vim.keymap.set("n", "<Leader>ph", ":Telescope helpgrep<CR>", silent)
-	end,
+				if start_line ~= end_line then
+					lines[#lines] = string.sub(lines[#lines], 1, end_col)
+					lines[1] = string.sub(lines[1], start_col)
+				else
+					lines[1] = string.sub(lines[1], start_col, end_col)
+				end
+
+				local selection = table.concat(lines, "\n")
+
+				require("telescope.builtin").grep_string({
+					search = selection,
+				})
+			end,
+			desc = "Search visually selected text",
+			silent = true,
+		},
+		-- TODO: this shouldn't be here, as is not a telescope command
+		{
+			mode = "n",
+			"<Leader>pt",
+			":tabs<CR>",
+			desc = "List open tabs",
+			silent = true,
+		},
+		{
+			mode = "n",
+			"<Leader>ph",
+			":Telescope helpgrep<CR>",
+			desc = "Search string in help files",
+			silent = true,
+		},
+	},
 }

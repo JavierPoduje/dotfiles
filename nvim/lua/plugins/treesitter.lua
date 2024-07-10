@@ -14,6 +14,7 @@ return {
 				"gotmpl",
 				"html",
 				"javascript",
+				"jsdoc",
 				"json",
 				"lua",
 				"php",
