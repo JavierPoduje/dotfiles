@@ -15,7 +15,7 @@ plugins=(
 )
 
 # For streaming
-#ZSH_AUTOSUGGEST_HISTORY_IGNORE=*
+# ZSH_AUTOSUGGEST_HISTORY_IGNORE=*
 
 source $ZSH/oh-my-zsh.sh
 
@@ -35,6 +35,9 @@ if [ -f '/Users/puje/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # psql
 export PATH="/usr/local/opt/libpq/bin:$PATH"
