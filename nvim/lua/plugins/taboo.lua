@@ -1,8 +1,10 @@
 return {
 	"javierpoduje/taboo",
-	--dev = true,
+	keys = {
+		{ "<Leader>tt", ":TabooOpen<CR>", desc = "Display taboo", silent = true },
+	},
 	config = function()
 		require("taboo")
-		vim.keymap.set("n", "<Leader>tt", ":TabooOpen<CR>", { silent = true })
 	end,
+	--dev = true,
 }

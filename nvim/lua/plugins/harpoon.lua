@@ -1,8 +1,12 @@
 return {
 	"ThePrimeagen/harpoon",
+	keys = {
+		{ "<Leader>ya", ":lua require('harpoon.mark').add_file()<CR>", silent = true },
+		{ "<Leader>yt", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", silent = true },
+		{ "<C-PageDown>", ":lua require('harpoon.ui').nav_next()<CR>", silent = true },
+		{ "<C-PageUp>", ":lua require('harpoon.ui').nav_prev()<CR>", silent = true },
+	},
 	config = function()
-		local g = require("g")
-
 		require("harpoon").setup({
 			global_settings = {
 				save_on_toggle = false,
@@ -12,25 +16,7 @@ return {
 			},
 		})
 
-		-- add file
-		vim.keymap.set("n", "<Leader>ya", ":lua require('harpoon.mark').add_file()<CR>", { silent = true, noremap = true })
-
-		-- toggle ui
-		vim.keymap.set(
-			"n",
-			"<Leader>yt",
-			":lua require('harpoon.ui').toggle_quick_menu()<CR>",
-			{ silent = true, noremap = true }
-		)
-
-		-- navigate
-		vim.keymap.set("n", "<Leader>yn", ":lua require('harpoon.ui').nav_next()<CR>", { silent = true, noremap = true })
-		vim.keymap.set("n", "<C-PageDown>", ":lua require('harpoon.ui').nav_next()<CR>", { silent = true, noremap = true })
-
-		vim.keymap.set("n", "<Leader>yp", ":lua require('harpoon.ui').nav_prev()<CR>", { silent = true, noremap = true })
-		vim.keymap.set("n", "<C-PageUp>", ":lua require('harpoon.ui').nav_prev()<CR>", { silent = true, noremap = true })
-
-		for char, num in pairs(g.left_num_by_char) do
+		for char, num in pairs(require("g").left_num_by_char) do
 			vim.keymap.set(
 				"n",
 				"<Leader>y" .. char,

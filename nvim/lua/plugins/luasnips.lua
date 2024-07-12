@@ -8,10 +8,10 @@ return {
 		vim.keymap.set({ "i" }, "<C-K>", function()
 			ls.expand()
 		end, { silent = true })
-		vim.keymap.set({ "i", "s" }, "<C-b>", function()
+		vim.keymap.set({ "i", "s" }, "<C-x>", function()
 			ls.jump(1)
 		end, { silent = true })
-		vim.keymap.set({ "i", "s" }, "<C-x>", function()
+		vim.keymap.set({ "i", "s" }, "<C-b>", function()
 			ls.jump(-1)
 		end, { silent = true })
 

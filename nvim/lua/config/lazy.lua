@@ -17,7 +17,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("config.settings")
-require("config.keymaps")
 
 require("lazy").setup({
 	spec = {
@@ -29,3 +28,7 @@ require("lazy").setup({
 		colorscheme = { "catpuccin" },
 	},
 })
+
+-- my custom keymaps should always be loaded last, so that they can override
+-- any other keymaps that I'm not using
+require("config.keymaps")

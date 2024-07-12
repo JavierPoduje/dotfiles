@@ -225,14 +225,6 @@ return {
 			desc = "Search visually selected text",
 			silent = true,
 		},
-		-- TODO: this shouldn't be here, as is not a telescope command
-		{
-			mode = "n",
-			"<Leader>pt",
-			":tabs<CR>",
-			desc = "List open tabs",
-			silent = true,
-		},
 		{
 			mode = "n",
 			"<Leader>ph",

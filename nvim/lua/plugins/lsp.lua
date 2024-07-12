@@ -1,5 +1,11 @@
 return {
 	"neovim/nvim-lspconfig",
+	keys = {
+		{ "<C-k>", vim.diagnostic.open_float, silent = true },
+		{ "<leader>[", vim.diagnostic.goto_prev, silent = true },
+		{ "<leader>]", vim.diagnostic.goto_next, silent = true },
+		{ "<space>gq", vim.diagnostic.setloclist, silent = true },
+	},
 	config = function()
 		vim.diagnostic.config({
 			virtual_text = true,
@@ -19,13 +25,6 @@ return {
 
 		local lspconfig = require("lspconfig")
 		local cmp = require("cmp_nvim_lsp")
-
-		local opts = { noremap = true, silent = true }
-
-		vim.keymap.set("n", "<C-k>", vim.diagnostic.open_float, opts)
-		vim.keymap.set("n", "<leader>[", vim.diagnostic.goto_prev, opts)
-		vim.keymap.set("n", "<leader>]", vim.diagnostic.goto_next, opts)
-		vim.keymap.set("n", "<space>gq", vim.diagnostic.setloclist, opts)
 
 		local on_attach = function(client, bufnr)
 			local bufopts = { noremap = true, silent = true, buffer = bufnr }

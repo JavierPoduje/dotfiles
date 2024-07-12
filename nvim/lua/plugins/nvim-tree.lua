@@ -1,5 +1,10 @@
 return {
 	"kyazdani42/nvim-tree.lua",
+	keys = {
+		{ "<leader>pv", ":NvimTreeToggle<CR>", desc = "Toggle NvimTree", silent = true },
+		{ "<leader>R", ":NvimTreeRefresh<CR>", desc = "Refresh NvimTree", silent = true },
+		{ "<leader>pp", ":NvimTreeFindFileToggle<CR>", desc = "Open File in NvimTree", silent = true },
+	},
 	config = function()
 		local COLS = vim.o.columns
 		local ROWS = vim.o.lines
@@ -67,9 +72,5 @@ return {
 				},
 			},
 		})
-
-		vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>", { silent = true, noremap = true })
-		vim.keymap.set("n", "<leader>R", ":NvimTreeRefresh<CR>", { silent = true, noremap = true })
-		vim.keymap.set("n", "<leader>pp", ":NvimTreeFindFileToggle<CR>", { silent = true, noremap = true })
 	end,
 }
