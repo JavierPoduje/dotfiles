@@ -9,6 +9,7 @@ alias gsp="git stash pop"
 alias gp="git pull"
 alias gP="git push"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+
 gtheirs() {
   git checkout --theirs $1 && git add $1;
 }

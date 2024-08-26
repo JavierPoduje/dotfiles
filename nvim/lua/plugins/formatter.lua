@@ -91,7 +91,6 @@ return {
 			"--schema=" .. current_file,
 		}
 
-		-- Actual formatter definition
 		require("formatter").setup({
 			logging = false,
 			filetype = {
@@ -100,8 +99,8 @@ return {
 				go = { formatter("gofmt", { current_file }, true) },
 				graphql = { formatter("prettier", prettier_args("graphql"), true) },
 				html = { formatter("prettier", prettier_args("html"), false) },
-				javascript = { formatter("biome", biome_args(), false) },
-				javascriptreact = { formatter("biome", biome_args(), false) },
+				--javascript = { formatter("biome", biome_args(), false) },
+				javascript = { formatter("prettier", prettier_args("typescript"), false) },
 				json = { formatter("prettier", prettier_args("json"), true) },
 				lua = { formatter("stylua", lua_args, false) },
 				php = { formatter("prettier", php_args, true) },
@@ -110,8 +109,9 @@ return {
 				rust = { formatter("rustfmt", rust_args, true) },
 				scss = { formatter("prettier", prettier_args("scss"), true) },
 				sql = { formatter("sql-formatter", sql_args, true) },
-				typescript = { formatter("biome", biome_args(), false) },
-				typescriptreact = { formatter("biome", biome_args(), false) },
+				--typescript = { formatter("biome", biome_args(), false) },
+				typescript = { formatter("prettier", prettier_args("typescript"), false) },
+				--typescriptreact = { formatter("biome", biome_args(), false) },
 				vue = { formatter("prettier", vue_args, true) },
 			},
 		})

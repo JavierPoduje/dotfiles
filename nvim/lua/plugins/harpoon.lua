@@ -1,5 +1,6 @@
 return {
 	"ThePrimeagen/harpoon",
+	lazy = false,
 	keys = {
 		{ "<Leader>ya", ":lua require('harpoon.mark').add_file()<CR>", silent = true },
 		{ "<Leader>yt", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", silent = true },
@@ -13,6 +14,9 @@ return {
 				save_on_change = true,
 				enter_on_sendcmd = false,
 				excluded_filetypes = { "harpoon" },
+			},
+			menu = {
+				width = vim.api.nvim_win_get_width(0) - 10,
 			},
 		})
 

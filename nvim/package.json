@@ -3,6 +3,8 @@
     "@appguru/luafmt": "^1.5.0",
     "@vue/typescript-plugin": "^2.0.5",
     "lua-fmt": "^2.6.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "remark": "^14.0.2",
     "vue-tsc": "^2.0.22"
   }

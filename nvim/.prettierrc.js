@@ -1,5 +1,6 @@
-module.exports = {
+const config = {
   semi: false,
+  "plugins": ["prettier-plugin-tailwindcss"],
   trailingComma: 'none',
   singleQuote: true,
   printWidth: 80,
@@ -9,5 +10,7 @@ module.exports = {
   insertPragma: false,
   useTabs: false,
   proseWrap: 'always',
-  brackerSameLine: false,
+  brackerSameLine: false
 };
+
+export default config;

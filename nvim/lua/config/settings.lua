@@ -27,7 +27,11 @@ vim.opt.foldlevel = 10 -- fix initial folding
 
 vim.api.nvim_command("set hidden")
 vim.api.nvim_command("set noerrorbells")
-vim.api.nvim_command("set tabstop=2 softtabstop=0 expandtab smarttab")
+--vim.api.nvim_command("set tabstop=2 softtabstop=0 noexpandtab smarttab")
+vim.o.expandtab = true -- expand tab input with spaces characters
+vim.o.smartindent = true -- syntax aware indentations for newline inserts
+vim.o.tabstop = 2 -- num of space characters per tab
+vim.o.shiftwidth = 2 -- spaces per indentation level
 vim.api.nvim_command("set laststatus=3")
 vim.api.nvim_command("set shiftwidth=2")
 vim.api.nvim_command("set ignorecase")
@@ -103,6 +107,14 @@ vim.api.nvim_create_autocmd(
 )
 vim.api.nvim_create_autocmd(
 	"BufEnter",
+	{ pattern = "*.js", command = "setlocal shiftwidth=2 softtabstop=2 tabstop=2" }
+)
+--vim.api.nvim_create_autocmd(
+--    "BufEnter",
+--    { pattern = "*.cjs", command = "setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2" }
+--)
+vim.api.nvim_create_autocmd(
+	"BufEnter",
 	{ pattern = "*.go", command = "setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4" }
 )
 vim.api.nvim_create_autocmd(
@@ -133,5 +145,3 @@ JsonToPhp = function()
 	vim.api.nvim_command([[ :%s/\%V}/]/ge ]])
 	vim.api.nvim_command([[ :%s/\%V":\s*/" => /ge ]])
 end
-
---vim.cmd.colorscheme("lunaperche")

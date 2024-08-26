@@ -48,8 +48,8 @@ return {
 				format = require("lspkind").cmp_format({
 					with_text = true,
 					menu = {
-						buffer = "[buf]",
 						nvim_lsp = "[lsp]",
+						buffer = "[buf]",
 						nvim_lua = "[api]",
 						path = "[path]",
 						luasnip = "[lua snips]",

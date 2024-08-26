@@ -15,7 +15,7 @@ plugins=(
 )
 
 # For streaming
-# ZSH_AUTOSUGGEST_HISTORY_IGNORE=*
+#ZSH_AUTOSUGGEST_HISTORY_IGNORE=*
 
 source $ZSH/oh-my-zsh.sh
 
