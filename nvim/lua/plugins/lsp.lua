@@ -46,6 +46,7 @@ return {
 		for _, protocol in ipairs({
 			"cssls",
 			"eslint",
+			"biome",
 			"golangci_lint_ls",
 			"gopls",
 			"intelephense",
