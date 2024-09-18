@@ -44,16 +44,16 @@ return {
 
 		-- iterate over the lsp protocols attaching the commands and the completions
 		for _, protocol in ipairs({
+			"biome",
 			"cssls",
 			"eslint",
-			"biome",
 			"golangci_lint_ls",
 			"gopls",
 			"intelephense",
 			"lua_ls",
 			"prismals",
 			"tailwindcss",
-			"tsserver",
+			"ts_ls",
 			"vimls",
 			"volar",
 		}) do
