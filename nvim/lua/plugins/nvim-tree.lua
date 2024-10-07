@@ -30,7 +30,28 @@ return {
 			},
 			sort_by = "case_sensitive",
 			git = {
-				timeout = 500,
+				enable = true,
+				show_on_dirs = true,
+				show_on_open_dirs = true,
+				disable_for_dirs = {},
+				timeout = 400,
+				cygwin_support = false,
+			},
+			diagnostics = {
+				enable = false,
+				show_on_dirs = false,
+				show_on_open_dirs = true,
+				debounce_delay = 50,
+				severity = {
+					min = vim.diagnostic.severity.HINT,
+					max = vim.diagnostic.severity.ERROR,
+				},
+				icons = {
+					hint = "",
+					info = "",
+					warning = "",
+					error = "",
+				},
 			},
 			update_focused_file = {
 				ignore_list = { "*.pyc" },

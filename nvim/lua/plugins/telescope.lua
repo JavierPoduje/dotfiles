@@ -53,7 +53,7 @@ return {
 				initial_mode = "insert",
 				selection_strategy = "reset",
 				sorting_strategy = "ascending",
-				layout_strategy = "horizontal",
+				layout_strategy = "vertical",
 				layout_config = {
 					horizontal = {
 						width = 0.8,
@@ -62,7 +62,7 @@ return {
 						prompt_position = "top",
 					},
 					vertical = {
-						width = 0.6,
+						width = 0.8,
 						mirror = true,
 						preview_height = 0.5,
 						prompt_position = "top",

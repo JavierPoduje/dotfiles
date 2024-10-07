@@ -92,6 +92,14 @@ return {
 			-- "dark"
 			vim.g.ayucolor = "dark"
 			--vim.cmd("colorscheme ayu")
-		end
-	}
+		end,
+	},
+	{
+		"vague2k/vague.nvim",
+		config = function()
+			require("vague").setup({
+				--vim.cmd.colorscheme("vague")
+			})
+		end,
+	},
 }
