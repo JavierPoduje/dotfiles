@@ -70,6 +70,13 @@ return {
 						},
 					},
 				})
+			elseif protocol == "intelephense" then
+				lspconfig[protocol].setup({
+					on_attach = on_attach,
+					flags = { debounce_text_changes = 150 },
+					capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+					root_dir = lspconfig.util.root_pattern("composer.json", ".git","*.php")
+				})
 			elseif protocol == "lua_ls" then
 				lspconfig[protocol].setup({
 					on_attach = on_attach,

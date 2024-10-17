@@ -26,13 +26,9 @@ vim.keymap.set("n", "<Space>", "<NOP><CR>", { silent = true })
 -- Delete front word in insert mode with CTRL+d
 vim.keymap.set("i", "<C-D>", "X<Esc>ce", { silent = true })
 
--- Better search-and-replace
-vim.keymap.set("n", "<Leader>:", ":%s/<C-R><C-W>//g<Left><Left>", { silent = false })
-
--- Replace all instances of the word under cursor
-vim.keymap.set("n", "<Leader>r", ":%s/<C-r><C-w>//g<Left><Left>", { silent = true })
--- Replace all instances of the word under cursor in visual mode
-vim.keymap.set("v", "<Leader>r", ":s/<C-r><C-w>//g<Left><Left>", { silent = true })
+-- Better search-and-replace for normal and visual modes
+vim.keymap.set("n", "<Leader>:", ":s/<C-R><C-W>/<C-R><C-W>/g<Left><Left>", { silent = false })
+vim.keymap.set("v", "<Leader>:", ":s//g<Left><Left>", { silent = false })
 
 -- Paste but remember
 vim.keymap.set("x", "<Leader>fp", '"_dP', { silent = true })
