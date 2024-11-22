@@ -115,3 +115,12 @@ vim.keymap.set("n", "<Leader>%", ":let @+=expand('%')<CR>", { silent = true })
 
 -- display tabs
 vim.keymap.set("n", "<Leader>pt", ":tabs<CR>", { silent = true })
+
+-- buffers stuff
+-- go to the prev buffer
+vim.keymap.set("n", "<Leader>#", ":e#<CR>", { silent = true })
+-- close current buffer
+vim.keymap.set("n", "<Leader>xd", ":bd!<CR>", { silent = true })
+-- Move between buffers
+vim.keymap.set("n", "<C-l>", ":bnext<CR>", { silent = true, desc = "move to next buffer" })
+vim.keymap.set("n", "<C-h>", ":bprev<CR>", { silent = true, desc = "move to prev buffer" })

@@ -68,7 +68,7 @@ vim.opt.updatetime = 50
 --vim.api.nvim_command("set updatetime=300")
 
 -- Always show tabs on top
-vim.api.nvim_command("set showtabline=2")
+vim.api.nvim_command("set showtabline=0")
 
 -- stable background
 vim.api.nvim_command("let &t_ut=''")

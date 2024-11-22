@@ -71,18 +71,9 @@ return {
 	},
 	{
 		"miikanissi/modus-themes.nvim",
-	},
-	{
-		-- currently broken
-		"comfysage/evergarden",
-		opts = {
-			style = {
-				sign = {},
-			},
-			transparent_background = false,
-			contrast_dark = "hard", -- 'hard'|'medium'|'soft'
-			overrides = {}, -- add custom overrides
-		},
+		config = function()
+			--vim.cmd("colorscheme modus")
+		end,
 	},
 	{
 		"ayu-theme/ayu-vim",

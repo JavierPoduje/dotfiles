@@ -1,5 +1,6 @@
 return {
 	"akinsho/bufferline.nvim",
+	enabled = false,
 	lazy = false,
 	keys = {
 		-- move buffer tabs
@@ -20,9 +21,6 @@ return {
 		-- Move between buffers
 		{ mode = "n", "<C-l>", ":BufferLineCycleNext<CR>", desc = "move to next buffer", silent = true },
 		{ mode = "n", "<C-h>", ":BufferLineCyclePrev<CR>", desc = "move to the prev buffer", silent = true },
-
-		{ mode = "n", "<Leader>#", ":e#<CR>", desc = "go to the prev buffer", silent = true },
-		{ mode = "n", "<Leader>xd", ":bd!<CR>", desc = "close current buffer", silent = true },
 		{
 			mode = "n",
 			"<Leader>bd",
