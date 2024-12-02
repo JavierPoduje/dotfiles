@@ -1,6 +1,6 @@
 return {
 	"akinsho/bufferline.nvim",
-	enabled = false,
+	enabled = true,
 	lazy = false,
 	keys = {
 		-- move buffer tabs
@@ -33,7 +33,7 @@ return {
 		},
 	},
 	config = function()
-		local g = require("g")
+		local utils = require("utils")
 		local bufferline = require("bufferline")
 
 		bufferline.setup({
@@ -107,7 +107,7 @@ return {
 		vim.api.nvim_create_user_command("Vs", split_and_move("next"), { range = true })
 		vim.api.nvim_create_user_command("VS", split_and_move("prev"), { range = true })
 
-		for char, bufnr in pairs(g.num_by_char) do
+		for char, bufnr in pairs(utils.num_by_char) do
 			-- go to specific buffer
 			vim.keymap.set("n", "<Leader>b" .. char, ":BufferLineGoToBuffer " .. bufnr .. "<CR>", { silent = true })
 			-- close specific buffer

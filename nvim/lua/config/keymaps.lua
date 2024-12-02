@@ -1,4 +1,5 @@
-local g = require("g")
+local utils = require("utils")
+local repeat_str = utils.repeat_str
 
 -- set python3 environment
 vim.g.python3_host_prog = "/usr/bin/python3"
@@ -27,8 +28,8 @@ vim.keymap.set("n", "<Space>", "<NOP><CR>", { silent = true })
 vim.keymap.set("i", "<C-D>", "X<Esc>ce", { silent = true })
 
 -- Better search-and-replace for normal and visual modes
-vim.keymap.set("n", "<Leader>:", ":s/<C-R><C-W>/<C-R><C-W>/g<Left><Left>", { silent = false })
-vim.keymap.set("v", "<Leader>:", ":s//g<Left><Left>", { silent = false })
+vim.keymap.set("n", "<Leader>:", ":%s/<C-R><C-W>/<C-R><C-W>/g" .. repeat_str('<left>', 2), { silent = false })
+vim.keymap.set("v", "<Leader>:", ":s//g" .. repeat_str('<left>', 2), { silent = false })
 
 -- Paste but remember
 vim.keymap.set("x", "<Leader>fp", '"_dP', { silent = true })
@@ -63,12 +64,12 @@ vim.keymap.set("n", "<Leader>tx", ":tabclose<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tn", ":tabn<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tp", ":tabp<CR>", { silent = true })
 -- go to tab by number
-for char, buff_num in pairs(g.num_by_char) do
+for char, buff_num in pairs(utils.num_by_char) do
 	vim.keymap.set("n", "<Leader>t" .. char, ":tabn" .. buff_num .. "<CR>", { silent = true })
 end
 
 -- Better marks
-for char, _ in pairs(g.left_num_by_char) do
+for char, _ in pairs(utils.left_num_by_char) do
 	vim.keymap.set("n", "m" .. char, "m" .. char:upper(), { silent = true })
 	vim.keymap.set("n", "<Leader>m" .. char, "`" .. char:upper() .. "<CR>", { silent = true })
 end
@@ -122,5 +123,16 @@ vim.keymap.set("n", "<Leader>#", ":e#<CR>", { silent = true })
 -- close current buffer
 vim.keymap.set("n", "<Leader>xd", ":bd!<CR>", { silent = true })
 -- Move between buffers
-vim.keymap.set("n", "<C-l>", ":bnext<CR>", { silent = true, desc = "move to next buffer" })
-vim.keymap.set("n", "<C-h>", ":bprev<CR>", { silent = true, desc = "move to prev buffer" })
+-- move to next buffer
+vim.keymap.set("n", "<C-l>", ":bnext<CR>", { silent = true })
+-- move to prev buffer
+vim.keymap.set("n", "<C-h>", ":bprev<CR>", { silent = true })
+
+-- close current buffer and return to the previous one
+-- this is useful for when the window is split and you want to close the
+-- current buffer keeping the split
+vim.keymap.set("n", "<Leader>xf", function()
+	local current_bufnr = vim.fn.bufnr()
+	vim.cmd("e#") -- go to the previous buffer
+	vim.cmd("bdelete " .. current_bufnr) -- close the buffer using the bufnr
+end, { desc = "Close current bufer and switch to the previous one", silent = true })

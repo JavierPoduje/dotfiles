@@ -1,3 +1,5 @@
+local repeat_str = require("utils").repeat_str
+
 return {
 	"nvim-telescope/telescope.nvim",
 	lazy = false,
@@ -39,6 +41,15 @@ return {
 					},
 				},
 				vimgrep_arguments = {
+					"rg",
+					"--hidden",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+				},
+				ripgrep_arguments = {
 					"rg",
 					"--hidden",
 					"--no-heading",
@@ -137,7 +148,7 @@ return {
 		{
 			mode = "n",
 			"<Leader>ps",
-			":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>\"\"<left>",
+			":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>\"\" -g*.{*}" .. repeat_str("<left>", 9),
 			desc = "Search by text with args if needed",
 			silent = true,
 		},

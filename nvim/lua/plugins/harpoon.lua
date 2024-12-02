@@ -20,7 +20,7 @@ return {
 			},
 		})
 
-		for char, num in pairs(require("g").left_num_by_char) do
+		for char, num in pairs(require("utils").left_num_by_char) do
 			vim.keymap.set(
 				"n",
 				"<Leader>y" .. char,

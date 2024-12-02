@@ -96,7 +96,7 @@ return {
 			filetype = {
 				css = { formatter("prettier", prettier_args("css"), true) },
 				elixir = { formatter("mix format", { current_file }, false) },
-				go = { formatter("gofmt", { current_file }, true) },
+				go = { formatter("golines", { "-w", current_file }, false) },
 				graphql = { formatter("prettier", prettier_args("graphql"), true) },
 				html = { formatter("prettier", prettier_args("html"), false) },
 				javascript = { formatter("biome", biome_args(), false) },
