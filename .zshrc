@@ -45,6 +45,10 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 # p10k
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
+# go commands
+export GOPATH="$HOME/go"
+export PATH=$PATH:$GOPATH/bin
+
 # Load aliases: keep this at the end of the file to override any aliases defined before
 [ -f "$HOME/.config/aliasrc.sh" ] && source "$HOME/.config/aliasrc.sh"
 [ -f "$HOME/Documents/.utils/Chess/aliasrc.sh" ] && source "$HOME/Documents/.utils/Chess/aliasrc.sh"
