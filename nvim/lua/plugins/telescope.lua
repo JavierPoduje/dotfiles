@@ -148,7 +148,7 @@ return {
 		{
 			mode = "n",
 			"<Leader>ps",
-			":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>\"\" -g*.{*}" .. repeat_str("<left>", 9),
+			":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>\"\"<left>",
 			desc = "Search by text with args if needed",
 			silent = true,
 		},
