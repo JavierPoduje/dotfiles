@@ -27,11 +27,10 @@ vim.opt.foldlevel = 10 -- fix initial folding
 
 vim.api.nvim_command("set hidden")
 vim.api.nvim_command("set noerrorbells")
---vim.api.nvim_command("set tabstop=2 softtabstop=0 noexpandtab smarttab")
-vim.o.expandtab = true -- expand tab input with spaces characters
-vim.o.smartindent = true -- syntax aware indentations for newline inserts
-vim.o.tabstop = 2 -- num of space characters per tab
-vim.o.shiftwidth = 2 -- spaces per indentation level
+vim.opt.expandtab = true -- expand tab input with spaces characters
+vim.opt.smartindent = true -- syntax aware indentations for newline inserts
+vim.opt.tabstop = 2 -- num of space characters per tab
+vim.opt.shiftwidth = 2 -- spaces per indentation level
 vim.api.nvim_command("set laststatus=3")
 vim.api.nvim_command("set shiftwidth=2")
 vim.api.nvim_command("set ignorecase")
@@ -92,20 +91,11 @@ autocmd BufWritePre * :call TrimWhitespace()
 -- open :help menu in a vertical split
 vim.api.nvim_command("autocmd FileType help wincmd L")
 
--- Set indentation for .php, .sql, and .mysql files
 -- and tsconfig.json is actually jsonc, help TypeScript set the correct filetype
 vim.api.nvim_command([[
-	autocmd FileType php setlocal shiftwidth=4 softtabstop=4 expandtab
-	autocmd FileType sql setlocal shiftwidth=4 softtabstop=4 expandtab
-	autocmd FileType mysql setlocal shiftwidth=4 softtabstop=4 expandtab
 	autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 ]])
 
-vim.api.nvim_create_autocmd("BufEnter", { pattern = "*.js", command = "setlocal shiftwidth=2 softtabstop=2 tabstop=2" })
-vim.api.nvim_create_autocmd(
-    "BufEnter",
-    { pattern = "*.go", command = "setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4" }
-)
 vim.api.nvim_create_autocmd(
     "BufEnter",
     { pattern = "*.templ", command = "setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4" }
