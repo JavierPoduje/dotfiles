@@ -65,13 +65,13 @@ vim.keymap.set("n", "<Leader>tn", ":tabn<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tp", ":tabp<CR>", { silent = true })
 -- go to tab by number
 for char, buff_num in pairs(utils.num_by_char) do
-	vim.keymap.set("n", "<Leader>t" .. char, ":tabn" .. buff_num .. "<CR>", { silent = true })
+    vim.keymap.set("n", "<Leader>t" .. char, ":tabn" .. buff_num .. "<CR>", { silent = true })
 end
 
 -- Better marks
 for char, _ in pairs(utils.left_num_by_char) do
-	vim.keymap.set("n", "m" .. char, "m" .. char:upper(), { silent = true })
-	vim.keymap.set("n", "<Leader>m" .. char, "`" .. char:upper() .. "<CR>", { silent = true })
+    vim.keymap.set("n", "m" .. char, "m" .. char:upper(), { silent = true })
+    vim.keymap.set("n", "<Leader>m" .. char, "`" .. char:upper() .. "<CR>", { silent = true })
 end
 
 -- Navigate quickfix list
@@ -132,7 +132,7 @@ vim.keymap.set("n", "<C-h>", ":bprev<CR>", { silent = true })
 -- this is useful for when the window is split and you want to close the
 -- current buffer keeping the split
 vim.keymap.set("n", "<Leader>xf", function()
-	local current_bufnr = vim.fn.bufnr()
-	vim.cmd("e#") -- go to the previous buffer
-	vim.cmd("bdelete " .. current_bufnr) -- close the buffer using the bufnr
+    local current_bufnr = vim.fn.bufnr()
+    vim.cmd("e#") -- go to the previous buffer
+    vim.cmd("bdelete " .. current_bufnr) -- close the buffer using the bufnr
 end, { desc = "Close current bufer and switch to the previous one", silent = true })
