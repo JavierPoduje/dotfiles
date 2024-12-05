@@ -101,18 +101,7 @@ vim.api.nvim_command([[
 	autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 ]])
 
-vim.api.nvim_create_autocmd(
-	"BufEnter",
-	{ pattern = "*.lua", command = "setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4" }
-)
-vim.api.nvim_create_autocmd(
-	"BufEnter",
-	{ pattern = "*.js", command = "setlocal shiftwidth=2 softtabstop=2 tabstop=2" }
-)
---vim.api.nvim_create_autocmd(
---    "BufEnter",
---    { pattern = "*.cjs", command = "setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2" }
---)
+vim.api.nvim_create_autocmd("BufEnter", { pattern = "*.js", command = "setlocal shiftwidth=2 softtabstop=2 tabstop=2" })
 vim.api.nvim_create_autocmd(
 	"BufEnter",
 	{ pattern = "*.go", command = "setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4" }

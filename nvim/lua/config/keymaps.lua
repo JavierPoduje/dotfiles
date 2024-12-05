@@ -28,8 +28,8 @@ vim.keymap.set("n", "<Space>", "<NOP><CR>", { silent = true })
 vim.keymap.set("i", "<C-D>", "X<Esc>ce", { silent = true })
 
 -- Better search-and-replace for normal and visual modes
-vim.keymap.set("n", "<Leader>:", ":%s/<C-R><C-W>/<C-R><C-W>/g" .. repeat_str('<left>', 2), { silent = false })
-vim.keymap.set("v", "<Leader>:", ":s//g" .. repeat_str('<left>', 2), { silent = false })
+vim.keymap.set("n", "<Leader>:", ":%s/<C-R><C-W>/<C-R><C-W>/g" .. repeat_str("<left>", 2), { silent = false })
+vim.keymap.set("v", "<Leader>:", ":s//g" .. repeat_str("<left>", 2), { silent = false })
 
 -- Paste but remember
 vim.keymap.set("x", "<Leader>fp", '"_dP', { silent = true })
