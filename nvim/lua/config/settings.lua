@@ -8,36 +8,35 @@ vim.api.nvim_command("set nocompatible")
 vim.api.nvim_command("set exrc")
 
 vim.o.exrc = true
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-vim.opt.smartindent = true
-vim.opt.showmatch = false
-vim.opt.relativenumber = true
-vim.opt.nu = true
-vim.opt.termguicolors = true
-vim.opt.colorcolumn = "80"
-vim.opt.scrolloff = 6
-vim.opt.wrap = false
-vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
-vim.opt.smartcase = true
+vim.opt.colorcolumn = "80"
+vim.opt.expandtab = true -- expand tab input with spaces characters
 vim.opt.fdm = "indent" -- folding method
 vim.opt.foldenable = false -- disable pre-folding
 vim.opt.foldlevel = 10 -- fix initial folding
-
-vim.api.nvim_command("set hidden")
-vim.api.nvim_command("set noerrorbells")
-vim.opt.expandtab = true -- expand tab input with spaces characters
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.list = true
+vim.opt.mouse = "a"
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 6
+vim.opt.shiftwidth = 2 -- spaces per indentation level
+vim.opt.showmatch = false
+vim.opt.smartcase = true
 vim.opt.smartindent = true -- syntax aware indentations for newline inserts
 vim.opt.tabstop = 2 -- num of space characters per tab
-vim.opt.shiftwidth = 2 -- spaces per indentation level
-vim.api.nvim_command("set laststatus=3")
-vim.api.nvim_command("set shiftwidth=2")
-vim.api.nvim_command("set ignorecase")
+vim.opt.termguicolors = true
+vim.opt.wrap = false
+
 vim.api.nvim_command("set encoding=utf8")
-vim.opt.list = true
-vim.api.nvim_command([[ set showbreak=↪\ ]])
+vim.api.nvim_command("set hidden")
+vim.api.nvim_command("set ignorecase")
+vim.api.nvim_command("set laststatus=3")
+vim.api.nvim_command("set noerrorbells")
+vim.api.nvim_command("set shiftwidth=2")
 vim.api.nvim_command([[ set listchars=eol:⏎,tab:→\ ,trail:␠,nbsp:⎵,space:·,extends:⟩,precedes:⟨ ]])
+vim.api.nvim_command([[ set showbreak=↪\ ]])
 
 -- cursorline only in focused buffer
 vim.api.nvim_command([[

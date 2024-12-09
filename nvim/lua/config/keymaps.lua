@@ -87,6 +87,7 @@ vim.keymap.set("n", "<Leader>u", ":UndotreeShow<CR>", { silent = true })
 
 -- Source configuration
 vim.keymap.set("n", "<Leader><CR>", ":so %<CR>", { silent = false })
+vim.keymap.set("v", "<Leader><CR>", ":lua<CR>", { silent = false })
 
 -- Resize windows
 vim.keymap.set("n", "<S-Up>", ":resize +5<CR>", { silent = true })
@@ -133,6 +134,6 @@ vim.keymap.set("n", "<C-h>", ":bprev<CR>", { silent = true })
 -- current buffer keeping the split
 vim.keymap.set("n", "<Leader>xf", function()
     local current_bufnr = vim.fn.bufnr()
-    vim.cmd("e#") -- go to the previous buffer
+    vim.cmd("e#")                        -- go to the previous buffer
     vim.cmd("bdelete " .. current_bufnr) -- close the buffer using the bufnr
 end, { desc = "Close current bufer and switch to the previous one", silent = true })

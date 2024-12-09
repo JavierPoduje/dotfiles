@@ -4,7 +4,7 @@ return {
     dependencies = { "nvim-treesitter/playground" },
     config = function()
         require("nvim-treesitter.configs").setup({
-            additional_vim_regex_highlighting = true,
+            additional_vim_regex_highlighting = false,
             highlight = { enable = true },
             indent = { enable = true },
             ensure_installed = {

@@ -67,13 +67,13 @@ return {
                 layout_strategy = "vertical",
                 layout_config = {
                     horizontal = {
-                        width = 0.8,
+                        width = 0.9,
                         mirror = false,
                         preview_width = 0.5,
                         prompt_position = "top",
                     },
                     vertical = {
-                        width = 0.8,
+                        width = 0.9,
                         mirror = true,
                         preview_height = 0.5,
                         prompt_position = "top",
@@ -177,6 +177,13 @@ return {
             "<Leader>pd",
             ":lua require('telescope.builtin').diagnostics({ bufnr = 0 })<CR>",
             desc = "List diagnostics for the current buffer",
+            silent = true,
+        },
+        {
+            mode = "n",
+            "<Leader>pw",
+            ":lua require('telescope.builtin').diagnostics()<CR>",
+            desc = "List diagnostics for the entire workspace",
             silent = true,
         },
         {

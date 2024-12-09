@@ -63,10 +63,10 @@ return {
             current_file,
         }
 
-        local lua_args = {
-            "--config-path",
-            "nvim/stylua.toml",
-        }
+        --local lua_args = {
+        --    "--config-path",
+        --    "nvim/stylua.toml",
+        --}
 
         local rust_args = {
             "--emit=stdout",
@@ -94,7 +94,7 @@ return {
                 javascript = { formatter("biome", biome_args(), false) },
                 --javascript = { formatter("prettier", prettier_args("typescript"), false) },
                 json = { formatter("prettier", prettier_args("json"), true) },
-                lua = { formatter("stylua", lua_args, false) },
+                --lua = { formatter("stylua", lua_args, false) },
                 php = { formatter("prettier", php_args, true) },
                 prisma = { formatter("npx", prisma_args, false) },
                 python = { formatter("!black", python_args, true) },
@@ -108,11 +108,7 @@ return {
             },
         })
 
-        -- TODO: all formats should use the same command, the file type shouldn't matter...
-        -- format `deno` files
-        vim.keymap.set("n", "<Leader>fd", ":! deno fmt % -q<CR>", { silent = true })
-
         -- format every other file
-        vim.keymap.set("n", "<leader>ff", ":Format<CR>", { silent = true })
+        vim.keymap.set("n", "<leader>f", ":Format<CR>", { silent = true })
     end,
 }

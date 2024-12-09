@@ -1,9 +1,22 @@
 return {
     "neovim/nvim-lspconfig",
+    dependencies = {
+        {
+            "folke/lazydev.nvim",
+            ft = "lua", -- only load on lua files
+            opts = {
+                library = {
+                    -- See the configuration section for more details
+                    -- Load luvit types when the `vim.uv` word is found
+                    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                },
+            },
+        },
+    },
     keys = {
-        { "<C-k>", vim.diagnostic.open_float, silent = true },
-        { "<leader>[", vim.diagnostic.goto_prev, silent = true },
-        { "<leader>]", vim.diagnostic.goto_next, silent = true },
+        { "<C-k>",     vim.diagnostic.open_float, silent = true },
+        { "<leader>[", vim.diagnostic.goto_prev,  silent = true },
+        { "<leader>]", vim.diagnostic.goto_next,  silent = true },
         { "<space>gq", vim.diagnostic.setloclist, silent = true },
     },
     config = function()
@@ -17,7 +30,7 @@ return {
                 focusable = false,
                 style = "minimal",
                 border = "rounded",
-                source = "always",
+                --source = "always",
                 header = "",
                 prefix = "",
             },
@@ -77,22 +90,6 @@ return {
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
                 })
-            elseif protocol == "lua_ls" then
-                lspconfig[protocol].setup({
-                    on_attach = on_attach,
-                    flags = { debounce_text_changes = 150 },
-                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                    settings = {
-                        Lua = {
-                            runtime = {
-                                version = "Lua 5.1",
-                            },
-                            diagnostics = {
-                                globals = { "vim" },
-                            },
-                        },
-                    },
-                })
             elseif protocol == "eslint" then
                 lspconfig[protocol].setup({
                     settings = {
@@ -112,15 +109,36 @@ return {
         end
 
         -- UI
-        local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-        end
-
+        vim.fn.sign_define("DiagnosticSignError",
+            { text = "", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
+        vim.fn.sign_define("DiagnosticSignWarn",
+            { text = "", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
+        vim.fn.sign_define("DiagnosticSignHint",
+            { text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
+        vim.fn.sign_define("DiagnosticSignInfo",
+            { text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
         vim.lsp.handlers["textDocument/signatureHelp"] =
             vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
+        vim.api.nvim_create_autocmd('LspAttach', {
+            pattern = { "*.lua" },
+            callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
+                if not client then
+                    return
+                end
+
+                if client.supports_method("textDocument/formatting") then
+                    -- format the current buffer on save
+                    vim.api.nvim_create_autocmd('BufWritePre', {
+                        buffer = args.buf,
+                        callback = function()
+                            vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+                        end
+                    })
+                end
+            end
+        })
     end,
 }
