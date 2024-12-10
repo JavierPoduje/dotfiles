@@ -43,6 +43,8 @@ eval "$(zoxide init zsh)"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 # p10k
+# To customize prompt, run `p10k configure` or edit ~/.config/.p10k.zsh.
+[[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # go commands
@@ -54,5 +56,3 @@ export PATH=$PATH:$GOPATH/bin
 [ -f "$HOME/Documents/.utils/Chess/aliasrc.sh" ] && source "$HOME/Documents/.utils/Chess/aliasrc.sh"
 [ -f "$HOME/Documents/.utils/Foris/aliasrc.sh" ] && source "$HOME/Documents/.utils/Foris/aliasrc.sh"
 
-# To customize prompt, run `p10k configure` or edit ~/.config/.p10k.zsh.
-[[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
