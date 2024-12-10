@@ -1,5 +1,3 @@
-local repeat_str = require("utils").repeat_str
-
 return {
     "nvim-telescope/telescope.nvim",
     lazy = false,

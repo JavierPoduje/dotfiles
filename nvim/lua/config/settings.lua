@@ -10,10 +10,10 @@ vim.api.nvim_command("set exrc")
 vim.o.exrc = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.colorcolumn = "80"
-vim.opt.expandtab = true -- expand tab input with spaces characters
-vim.opt.fdm = "indent" -- folding method
+vim.opt.expandtab = true   -- expand tab input with spaces characters
+vim.opt.fdm = "indent"     -- folding method
 vim.opt.foldenable = false -- disable pre-folding
-vim.opt.foldlevel = 10 -- fix initial folding
+vim.opt.foldlevel = 10     -- fix initial folding
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.list = true
@@ -25,7 +25,7 @@ vim.opt.shiftwidth = 2 -- spaces per indentation level
 vim.opt.showmatch = false
 vim.opt.smartcase = true
 vim.opt.smartindent = true -- syntax aware indentations for newline inserts
-vim.opt.tabstop = 2 -- num of space characters per tab
+vim.opt.tabstop = 2        -- num of space characters per tab
 vim.opt.termguicolors = true
 vim.opt.wrap = false
 
@@ -112,14 +112,4 @@ vim.g.markdown_fenced_languages = { "html", "python", "lua", "vim", "typescript"
 P = function(x)
     print(vim.inspect(x))
     return x
-end
-
--- Convert json to php array
-JsonToPhp = function()
-    vim.api.nvim_command([[ :%s/\%V":\s*\"/" => "/ge ]])
-    vim.api.nvim_command([[ :%s/\%V":\s*{/" => [/ge ]])
-    vim.api.nvim_command([[ :%s/\%V":\s*\[/" => [/ge ]])
-    vim.api.nvim_command([[ :%s/\%V{/[/ge ]])
-    vim.api.nvim_command([[ :%s/\%V}/]/ge ]])
-    vim.api.nvim_command([[ :%s/\%V":\s*/" => /ge ]])
 end
