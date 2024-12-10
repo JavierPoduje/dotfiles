@@ -2,10 +2,10 @@ return {
     "ThePrimeagen/harpoon",
     lazy = false,
     keys = {
-        { "<Leader>ya", ":lua require('harpoon.mark').add_file()<CR>", silent = true },
-        { "<Leader>yt", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", silent = true },
-        { "<C-PageDown>", ":lua require('harpoon.ui').nav_next()<CR>", silent = true },
-        { "<C-PageUp>", ":lua require('harpoon.ui').nav_prev()<CR>", silent = true },
+        { "<Leader>ya",   ":lua require('harpoon.mark').add_file()<CR>",        silent = true },
+        { "<Leader>yt",   ":lua require('harpoon.ui').toggle_quick_menu()<CR>", silent = true },
+        { "<C-PageDown>", ":lua require('harpoon.ui').nav_next()<CR>",          silent = true },
+        { "<C-PageUp>",   ":lua require('harpoon.ui').nav_prev()<CR>",          silent = true },
     },
     config = function()
         require("harpoon").setup({

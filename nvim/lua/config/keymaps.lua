@@ -74,10 +74,6 @@ for char, _ in pairs(utils.left_num_by_char) do
     vim.keymap.set("n", "<Leader>m" .. char, "`" .. char:upper() .. "<CR>", { silent = true })
 end
 
--- Navigate quickfix list
-vim.keymap.set("n", "<Leader>cl", ":cnext<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>ch", ":cprev<CR>", { silent = true })
-
 -- More options for paste
 vim.keymap.set("n", "<Leader>po", "o<Esc>p", { silent = true })
 vim.keymap.set("n", "<Leader>PO", "O<Esc>P", { silent = true })
@@ -137,3 +133,9 @@ vim.keymap.set("n", "<Leader>xf", function()
     vim.cmd("e#")                        -- go to the previous buffer
     vim.cmd("bdelete " .. current_bufnr) -- close the buffer using the bufnr
 end, { desc = "Close current bufer and switch to the previous one", silent = true })
+
+-- quickfix management
+vim.keymap.set("n", "<Leader>qo", ":copen<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>qc", ":cclose<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>ql", ":cnext<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>qh", ":cprev<CR>", { silent = true })

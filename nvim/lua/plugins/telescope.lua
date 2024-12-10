@@ -40,15 +40,15 @@ return {
                         ["<CR>"] = fzf_multi_select,
                     },
                 },
-                vimgrep_arguments = {
-                    "rg",
-                    "--hidden",
-                    "--no-heading",
-                    "--with-filename",
-                    "--line-number",
-                    "--column",
-                    "--smart-case",
-                },
+                --vimgrep_arguments = {
+                --    "rg",
+                --    "--hidden",
+                --    "--no-heading",
+                --    "--with-filename",
+                --    "--line-number",
+                --    "--column",
+                --    "--smart-case",
+                --},
                 ripgrep_arguments = {
                     "rg",
                     "--hidden",
@@ -64,7 +64,7 @@ return {
                 initial_mode = "insert",
                 selection_strategy = "reset",
                 sorting_strategy = "ascending",
-                layout_strategy = "vertical",
+                layout_strategy = "horizontal",
                 layout_config = {
                     horizontal = {
                         width = 0.9,
@@ -134,14 +134,14 @@ return {
         {
             mode = "n",
             "<Leader>pf",
-            ":Telescope find_files<CR>",
+            require('telescope.builtin').find_files,
             desc = "Find files in the current directory",
             silent = true,
         },
         {
             mode = "n",
             "<Leader>pb",
-            ":Telescope buffers<CR>",
+            require('telescope.builtin').buffers,
             desc = "List open buffers",
             silent = true,
         },

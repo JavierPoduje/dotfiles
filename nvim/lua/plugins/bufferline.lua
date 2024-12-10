@@ -19,7 +19,7 @@ return {
             silent = true,
         },
         -- Move between buffers
-        { mode = "n", "<C-l>", ":BufferLineCycleNext<CR>", desc = "move to next buffer", silent = true },
+        { mode = "n", "<C-l>", ":BufferLineCycleNext<CR>", desc = "move to next buffer",     silent = true },
         { mode = "n", "<C-h>", ":BufferLineCyclePrev<CR>", desc = "move to the prev buffer", silent = true },
         {
             mode = "n",
@@ -73,7 +73,7 @@ return {
                 show_tab_indicators = true,
                 persist_buffer_sort = true,
                 separator_style = { " ", " " }, -- "slant" | "thick" | "thin"
-                enforce_regular_tabs = false, -- false | true,
+                enforce_regular_tabs = false,   -- false | true,
                 always_show_bufferline = true,
                 sort_by = "id",
             },
