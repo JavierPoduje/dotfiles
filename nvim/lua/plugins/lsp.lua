@@ -17,7 +17,6 @@ return {
         { "<C-k>",     vim.diagnostic.open_float, silent = true },
         { "<leader>[", vim.diagnostic.goto_prev,  silent = true },
         { "<leader>]", vim.diagnostic.goto_next,  silent = true },
-        { "<space>gq", vim.diagnostic.setloclist, silent = true },
     },
     config = function()
         vim.diagnostic.config({

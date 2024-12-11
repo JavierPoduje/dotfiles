@@ -22,7 +22,7 @@ return {
 
             if num_selections > 1 then
                 actions.send_selected_to_qflist(prompt_bufnr)
-                actions.open_qflist()
+                actions.open_qflist(prompt_bufnr)
             else
                 actions.file_edit(prompt_bufnr)
             end
@@ -99,6 +99,7 @@ return {
                 qflist_previewer = previewers.vim_buffer_qflist.new,
             },
             extensions = {
+                fzf = {},
                 helpgrep = {
                     ignore_paths = {
                         vim.fn.stdpath("state") .. "/lazy/readme",
