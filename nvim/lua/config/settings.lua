@@ -78,14 +78,14 @@ vim.g.vrfr_rg = "true"
 vim.g.netrw_bufsettings = "noma nomod nu nowrap ro nobl"
 
 -- Remove white spaces on save
-vim.api.nvim_command([[
-fun! TrimWhitespace()
-  let l:save = winsaveview()
-  keeppatterns %s/\s\+$//e
-  call winrestview(l:save)
-endfun
-autocmd BufWritePre * :call TrimWhitespace()
-]])
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function()
+        local save = vim.fn.winsaveview()
+        vim.cmd([[keeppatterns %s/\s\+$//e]])
+        vim.fn.winrestview(save)
+    end,
+})
 
 -- open :help menu in a vertical split
 vim.api.nvim_command("autocmd FileType help wincmd L")

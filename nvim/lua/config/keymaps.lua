@@ -11,8 +11,8 @@ vim.g.multi_cursor_quit_key = "<C-c>"
 vim.keymap.set("i", "<C-c>", "<ESC><ESC>", { silent = true })
 
 -- more comfortable yanking
-vim.keymap.set("n", "<Leader>yy", 'V"+y', { silent = true })
-vim.keymap.set("v", "<Leader>yy", '"+y', { silent = true })
+--vim.keymap.set("n", "<Leader>yy", 'V"+y', { silent = true })
+--vim.keymap.set("v", "<Leader>yy", '"+y', { silent = true })
 
 -- sort selected lines
 vim.keymap.set("v", "<Leader>s", ":sort<cr>", { silent = true })
