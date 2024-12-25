@@ -23,6 +23,7 @@ vim.opt.relativenumber = true
 vim.opt.scrolloff = 6
 vim.opt.shiftwidth = 2 -- spaces per indentation level
 vim.opt.showmatch = false
+vim.opt.signcolumn = "yes:1"
 vim.opt.smartcase = true
 vim.opt.smartindent = true -- syntax aware indentations for newline inserts
 vim.opt.tabstop = 2        -- num of space characters per tab

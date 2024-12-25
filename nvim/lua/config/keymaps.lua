@@ -10,12 +10,8 @@ vim.g.multi_cursor_quit_key = "<C-c>"
 -- CTRL+C for esc
 vim.keymap.set("i", "<C-c>", "<ESC><ESC>", { silent = true })
 
--- more comfortable yanking
---vim.keymap.set("n", "<Leader>yy", 'V"+y', { silent = true })
---vim.keymap.set("v", "<Leader>yy", '"+y', { silent = true })
-
 -- sort selected lines
-vim.keymap.set("v", "<Leader>s", ":sort<cr>", { silent = true })
+vim.keymap.set("v", "<Leader>s", ":sort | w<cr>")
 
 -- move forward in insert mode
 vim.keymap.set("i", "<C-l>", "<Right>", { silent = true })
@@ -135,7 +131,16 @@ vim.keymap.set("n", "<Leader>xf", function()
 end, { desc = "Close current bufer and switch to the previous one", silent = true })
 
 -- quickfix management
-vim.keymap.set("n", "<Leader>qo", ":copen<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>qc", ":cclose<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>ql", ":cnext<CR>", { silent = true })
-vim.keymap.set("n", "<Leader>qh", ":cprev<CR>", { silent = true })
+vim.keymap.set("n", "<Leader>qo", ":copen<CR>")
+vim.keymap.set("n", "<Leader>qc", ":cclose<CR>")
+vim.keymap.set("n", "<Leader>ql", ":cnext<CR>")
+vim.keymap.set("n", "<Leader>qh", ":cprev<CR>")
+
+-- terminal
+--local openTerminalInRightSplit = function()
+--    vim.cmd("rightbelow vnew")
+--    vim.cmd("terminal")
+--    vim.cmd("startinsert")
+--end
+--vim.keymap.set("n", "<Leader>tt", openTerminalInRightSplit)
+--vim.keymap.set("t", "<C-b>", "<C-\\><C-n>")

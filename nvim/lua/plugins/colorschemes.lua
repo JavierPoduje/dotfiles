@@ -39,7 +39,7 @@ return {
         config = function()
             vim.g.gruvbox_material_palette = "material" -- 'material' | 'mix' | 'original'
 
-            vim.g.gruvbox_material_background = "hard" -- 'hard' | 'medium' (default) | 'soft'
+            vim.g.gruvbox_material_background = "hard"  -- 'hard' | 'medium' (default) | 'soft'
 
             -- Set transparent background
             vim.g.gruvbox_material_transparent_background = 0
@@ -58,7 +58,7 @@ return {
         "rose-pine/neovim",
         config = function()
             require("rose-pine").setup({
-                variant = "moon", -- auto, main, moon, or dawn
+                variant = "moon",      -- auto, main, moon, or dawn
                 dark_variant = "moon", -- main, moon, or dawn
                 styles = {
                     bold = true,

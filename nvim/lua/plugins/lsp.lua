@@ -42,7 +42,7 @@ return {
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
             vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, bufopts)
-            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, bufopts)
+            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition)
             vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
             vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, bufopts)
             vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
@@ -116,6 +116,7 @@ return {
             { text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
         vim.fn.sign_define("DiagnosticSignInfo",
             { text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
+
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
         vim.lsp.handlers["textDocument/signatureHelp"] =
             vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
