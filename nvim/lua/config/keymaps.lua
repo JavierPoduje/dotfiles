@@ -1,9 +1,6 @@
 local utils = require("utils")
 local repeat_str = utils.repeat_str
 
--- set python3 environment
-vim.g.python3_host_prog = "/usr/bin/python3"
-
 -- Multi-cursor exit all cursors by default
 vim.g.multi_cursor_quit_key = "<C-c>"
 

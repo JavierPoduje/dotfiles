@@ -5,8 +5,7 @@ return {
     config = function()
         require("nvim-treesitter.configs").setup({
             additional_vim_regex_highlighting = false,
-            highlight = { enable = true },
-            indent = { enable = true },
+            auto_install = true,
             ensure_installed = {
                 "css",
                 "git_rebase",
@@ -27,11 +26,11 @@ return {
                 "vue",
                 "yaml",
             },
-            query_linter = {
-                enable = true,
-                use_virtual_text = true,
-                lint_events = { "BufWrite", "CursorHold" },
-            },
+            highlight = { enable = true },
+            ignore_install = {},
+            indent = { enable = true },
+            query_linter = { enable = true, use_virtual_text = true, lint_events = { "BufWrite", "CursorHold" }, },
+            sync_install = false,
         })
     end,
 }

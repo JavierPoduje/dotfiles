@@ -9,7 +9,7 @@ vim.api.nvim_command("set exrc")
 
 vim.o.exrc = true
 vim.opt.clipboard = "unnamedplus"
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 vim.opt.expandtab = true   -- expand tab input with spaces characters
 vim.opt.fdm = "indent"     -- folding method
 vim.opt.foldenable = false -- disable pre-folding
@@ -29,6 +29,7 @@ vim.opt.smartindent = true -- syntax aware indentations for newline inserts
 vim.opt.tabstop = 2        -- num of space characters per tab
 vim.opt.termguicolors = true
 vim.opt.wrap = false
+vim.opt.updatetime = 50
 
 vim.api.nvim_command("set encoding=utf8")
 vim.api.nvim_command("set hidden")
@@ -61,10 +62,6 @@ vim.api.nvim_command("set cmdheight=1")
 -- Don't pass messages to |ins-completion-menu|.
 vim.api.nvim_command("set shortmess+=c")
 
--- Having longer update time (default is 4000 ms = 4 sec) leads to noticeable
--- delays and poor user experience.
-vim.opt.updatetime = 50
---vim.api.nvim_command("set updatetime=300")
 
 -- Always show tabs on top
 vim.api.nvim_command("set showtabline=2")
@@ -105,7 +102,7 @@ vim.api.nvim_create_autocmd(
     { pattern = "Makefile", command = "setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4" }
 )
 
-vim.g.markdown_fenced_languages = { "html", "python", "lua", "vim", "typescript", "javascript" }
+vim.g.markdown_fenced_languages = { "html", "lua", "vim", "typescript", "javascript" }
 
 -- GLOBAL FUNCTIONS
 

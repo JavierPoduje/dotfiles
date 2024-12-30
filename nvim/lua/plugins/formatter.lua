@@ -73,10 +73,6 @@ return {
             "--edition=2021",
         }
 
-        local python_args = {
-            "%",
-        }
-
         local prisma_args = {
             "prisma",
             "format",
@@ -97,7 +93,6 @@ return {
                 --lua = { formatter("stylua", lua_args, false) },
                 php = { formatter("prettier", php_args, true) },
                 prisma = { formatter("npx", prisma_args, false) },
-                python = { formatter("!black", python_args, true) },
                 rust = { formatter("rustfmt", rust_args, true) },
                 scss = { formatter("prettier", prettier_args("scss"), true) },
                 sql = { formatter("sql-formatter", sql_args, true) },
