@@ -23,13 +23,15 @@ vim.opt.relativenumber = true
 vim.opt.scrolloff = 6
 vim.opt.shiftwidth = 2 -- spaces per indentation level
 vim.opt.showmatch = false
+vim.opt.showtabline = 2
 vim.opt.signcolumn = "yes:1"
 vim.opt.smartcase = true
 vim.opt.smartindent = true -- syntax aware indentations for newline inserts
 vim.opt.tabstop = 2        -- num of space characters per tab
 vim.opt.termguicolors = true
-vim.opt.wrap = false
 vim.opt.updatetime = 50
+vim.opt.wrap = false
+
 
 vim.api.nvim_command("set encoding=utf8")
 vim.api.nvim_command("set hidden")
@@ -61,10 +63,6 @@ vim.api.nvim_command("set cmdheight=1")
 
 -- Don't pass messages to |ins-completion-menu|.
 vim.api.nvim_command("set shortmess+=c")
-
-
--- Always show tabs on top
-vim.api.nvim_command("set showtabline=2")
 
 -- stable background
 vim.api.nvim_command("let &t_ut=''")
