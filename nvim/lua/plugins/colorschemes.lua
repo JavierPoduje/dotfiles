@@ -1,8 +1,5 @@
 return {
     {
-        "savq/melange-nvim",
-    },
-    {
         "catppuccin/nvim",
         name = "catppuccin",
         config = function()
@@ -19,7 +16,6 @@ return {
                     nvimtree = true,
                     telescope = true,
                     treesitter = true,
-                    treesitter_context = true,
                 },
                 transparent_background = false,
                 custom_highlights = {
@@ -49,33 +45,6 @@ return {
         end,
     },
     {
-        "pineapplegiant/spaceduck",
-        config = function()
-            --vim.cmd("colorscheme spaceduck")
-        end,
-    },
-    {
-        "rose-pine/neovim",
-        config = function()
-            require("rose-pine").setup({
-                variant = "moon",      -- auto, main, moon, or dawn
-                dark_variant = "moon", -- main, moon, or dawn
-                styles = {
-                    bold = true,
-                    italic = true,
-                    transparency = false,
-                },
-            })
-            --vim.cmd("colorscheme rose-pine-moon")
-        end,
-    },
-    {
-        "miikanissi/modus-themes.nvim",
-        config = function()
-            --vim.cmd("colorscheme modus")
-        end,
-    },
-    {
         "ayu-theme/ayu-vim",
         config = function()
             -- "light"
@@ -83,14 +52,6 @@ return {
             -- "dark"
             vim.g.ayucolor = "dark"
             --vim.cmd("colorscheme ayu")
-        end,
-    },
-    {
-        "vague2k/vague.nvim",
-        config = function()
-            require("vague").setup({
-                --vim.cmd.colorscheme("vague")
-            })
         end,
     },
 }
