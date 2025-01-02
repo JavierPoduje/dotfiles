@@ -1,4 +1,5 @@
 {
+  "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "LuaSnip": { "branch": "master", "commit": "33b06d72d220aa56a7ce80a0dd6f06c70cd82b9d" },
   "auto-pairs": { "branch": "master", "commit": "39f06b873a8449af8ff6a3eee716d3da14d63a76" },
   "ayu-vim": { "branch": "master", "commit": "01faacb4cb76e8cf72ad9858c581d80876260ab3" },
@@ -34,6 +35,7 @@
   "nvim-lspconfig": { "branch": "master", "commit": "ace9661c1b673e35e915bbdd88a4fd3723eaa0db" },
   "nvim-tree.lua": { "branch": "master", "commit": "68fc4c20f5803444277022c681785c5edd11916d" },
   "nvim-treesitter": { "branch": "master", "commit": "fc687f38d4ea9a7399707a5a2d57297c2ac17323" },
+  "nvim-ts-context-commentstring": { "branch": "main", "commit": "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f" },
   "nvim-web-devicons": { "branch": "master", "commit": "d42e68608ba11de8567edb6aeaa0b12bdf627cbc" },
   "openingh.nvim": { "branch": "main", "commit": "9131016c1167e23522a8e874b62217829fd327b8" },
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
