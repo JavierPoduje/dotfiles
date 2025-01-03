@@ -30,8 +30,17 @@ local repeat_str = function(str, times)
     return result
 end
 
+local if_else = function(predicate, if_true, if_false)
+    if predicate then
+        return if_true
+    else
+        return if_false
+    end
+end
+
 return {
     num_by_char = num_by_char,
     left_num_by_char = left_num_by_char,
     repeat_str = repeat_str,
+    if_else = if_else,
 }

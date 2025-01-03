@@ -121,23 +121,13 @@ return {
         vim.lsp.handlers["textDocument/signatureHelp"] =
             vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-        vim.api.nvim_create_autocmd('LspAttach', {
-            pattern = { "*.lua" },
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = { "lua" },
             callback = function(args)
-                local client = vim.lsp.get_client_by_id(args.data.client_id)
-                if not client then
-                    return
+                local format = function()
+                    vim.lsp.buf.format({ bufnr = args.buf })
                 end
-
-                if client.supports_method("textDocument/formatting") then
-                    -- format the current buffer on save
-                    vim.api.nvim_create_autocmd('BufWritePre', {
-                        buffer = args.buf,
-                        callback = function()
-                            vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-                        end
-                    })
-                end
+                vim.keymap.set("n", "<leader>f", format, { buffer = 0 })
             end
         })
     end,
