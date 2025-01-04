@@ -16,8 +16,7 @@ gtheirs() {
 gours() {
   git checkout --ours $1 && git add $1;
 }
-#   - Mappings
-#alias ls="exa" # Rust version of `ls` command
+
 #   - Navigation
 alias to-utils="cd ~/Documents/.utils/"
 

@@ -33,7 +33,8 @@ return {
         },
     },
     config = function()
-        local utils = require("utils")
+        local num_by_char = require("utils").num_by_char
+        local if_else = require("utils").if_else
         local bufferline = require("bufferline")
 
         bufferline.setup({
@@ -94,20 +95,16 @@ return {
         -- @return void
         local split_and_move = function(direction)
             return function()
-                vim.api.nvim_exec(":vs", true)
-                vim.api.nvim_exec(":wincmd l", true)
-                if direction == "next" then
-                    vim.api.nvim_exec(":BufferLineCycleNext", true)
-                else
-                    vim.api.nvim_exec(":BufferLineCyclePrev", true)
-                end
+                vim.cmd("vs")
+                vim.cmd("wincmd l")
+                vim.cmd(if_else(direction == "next", "BufferLineCycleNext", "BufferLineCyclePrev"))
             end
         end
 
         vim.api.nvim_create_user_command("Vs", split_and_move("next"), { range = true })
         vim.api.nvim_create_user_command("VS", split_and_move("prev"), { range = true })
 
-        for char, bufnr in pairs(utils.num_by_char) do
+        for char, bufnr in pairs(num_by_char) do
             -- go to specific buffer
             vim.keymap.set("n", "<Leader>b" .. char, ":BufferLineGoToBuffer " .. bufnr .. "<CR>", { silent = true })
             -- close specific buffer

@@ -1,4 +1,7 @@
 local utils = require("utils")
+
+local left_num_by_char = utils.left_num_by_char
+local num_by_char = utils.num_by_char
 local repeat_str = utils.repeat_str
 
 -- Multi-cursor exit all cursors by default
@@ -21,8 +24,8 @@ vim.keymap.set("n", "<Space>", "<NOP><CR>", { silent = true })
 vim.keymap.set("i", "<C-D>", "X<Esc>ce", { silent = true })
 
 -- Better search-and-replace for normal and visual modes
-vim.keymap.set("n", "<Leader>:", ":%s/<C-R><C-W>/<C-R><C-W>/g" .. repeat_str("<left>", 2), { silent = false })
-vim.keymap.set("v", "<Leader>:", ":s//g" .. repeat_str("<left>", 2), { silent = false })
+vim.keymap.set("n", "<Leader>:", ":%s/<C-R><C-W>/<C-R><C-W>/g" .. repeat_str("<left>", 2))
+vim.keymap.set("v", "<Leader>:", ":s//g" .. repeat_str("<left>", 2))
 
 -- Paste but remember
 vim.keymap.set("x", "<Leader>fp", '"_dP', { silent = true })
@@ -57,12 +60,12 @@ vim.keymap.set("n", "<Leader>tx", ":tabclose<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tn", ":tabn<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>tp", ":tabp<CR>", { silent = true })
 -- go to tab by number
-for char, buff_num in pairs(utils.num_by_char) do
+for char, buff_num in pairs(num_by_char) do
     vim.keymap.set("n", "<Leader>t" .. char, ":tabn" .. buff_num .. "<CR>", { silent = true })
 end
 
 -- Better marks
-for char, _ in pairs(utils.left_num_by_char) do
+for char, _ in pairs(left_num_by_char) do
     vim.keymap.set("n", "m" .. char, "m" .. char:upper(), { silent = true })
     vim.keymap.set("n", "<Leader>m" .. char, "`" .. char:upper() .. "<CR>", { silent = true })
 end
@@ -128,16 +131,7 @@ vim.keymap.set("n", "<Leader>xf", function()
 end, { desc = "Close current bufer and switch to the previous one", silent = true })
 
 -- quickfix management
-vim.keymap.set("n", "<Leader>qo", ":copen<CR>")
 vim.keymap.set("n", "<Leader>qc", ":cclose<CR>")
-vim.keymap.set("n", "<Leader>ql", ":cnext<CR>")
 vim.keymap.set("n", "<Leader>qh", ":cprev<CR>")
-
--- terminal
---local openTerminalInRightSplit = function()
---    vim.cmd("rightbelow vnew")
---    vim.cmd("terminal")
---    vim.cmd("startinsert")
---end
---vim.keymap.set("n", "<Leader>tt", openTerminalInRightSplit)
---vim.keymap.set("t", "<C-b>", "<C-\\><C-n>")
+vim.keymap.set("n", "<Leader>ql", ":cnext<CR>")
+vim.keymap.set("n", "<Leader>qo", ":copen<CR>")
