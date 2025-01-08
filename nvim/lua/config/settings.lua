@@ -9,6 +9,7 @@ vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 1
 vim.opt.colorcolumn = "100"
+vim.opt.cursorline = true
 vim.opt.encoding = "utf8"
 vim.opt.errorbells = false
 vim.opt.expandtab = true   -- expand tab input with spaces characters
@@ -42,31 +43,12 @@ vim.opt.undofile = true
 vim.opt.updatetime = 50
 vim.opt.wrap = false
 
--- vim.opt.showbreak = "↪"
-
 -- cursorline only in focused buffer
-vim.opt.cursorline = true
-vim.api.nvim_create_autocmd({ "WinEnter" }, {
-    callback = function() vim.opt_local.cursorline = true end,
-})
-vim.api.nvim_create_autocmd({ "WinLeave" }, {
-    callback = function() vim.opt_local.cursorline = false end,
-})
-
-
--- Handle backup files
+vim.api.nvim_create_autocmd({ "WinEnter" }, { callback = function() vim.opt_local.cursorline = true end })
+vim.api.nvim_create_autocmd({ "WinLeave" }, { callback = function() vim.opt_local.cursorline = false end })
 
 -- Don't pass messages to |ins-completion-menu|.
--- vim.api.nvim_command("set shortmess+=c")
 vim.opt.shortmess:append("c")
-
--- stable background
--- vim.api.nvim_command("let &t_ut=''")
-
--- I don't know what this things are...
--- vim.api.nvim_command("set t_Co=256")
--- vim.g.loaded_matchparen = 1
--- vim.g.vrfr_rg = "true"
 
 -- Remove white spaces on save
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -88,16 +70,14 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.templ", "Makefile" },
-  callback = function()
-    vim.bo.expandtab = false
-    vim.bo.shiftwidth = 4
-    vim.bo.softtabstop = 4
-    vim.bo.tabstop = 4
-  end,
+    pattern = { "*.templ", "Makefile" },
+    callback = function()
+        vim.bo.expandtab = false
+        vim.bo.shiftwidth = 4
+        vim.bo.softtabstop = 4
+        vim.bo.tabstop = 4
+    end,
 })
-
--- GLOBAL FUNCTIONS
 
 -- Inspected version of `print`
 P = function(x)

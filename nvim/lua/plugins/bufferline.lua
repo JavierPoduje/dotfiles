@@ -6,14 +6,14 @@ return {
         -- move buffer tabs
         {
             mode = "n",
-            "<Leader>bn",
+            "<leader>bn",
             ":BufferLineMoveNext<CR>",
             desc = "move buffer to the right in the bufferline",
             silent = true,
         },
         {
             mode = "n",
-            "<Leader>bp",
+            "<leader>bp",
             ":BufferLineMovePrev<CR>",
             desc = "move buffer to the left in the bufferline",
             silent = true,
@@ -23,7 +23,7 @@ return {
         { mode = "n", "<C-h>", ":BufferLineCyclePrev<CR>", desc = "move to the prev buffer", silent = true },
         {
             mode = "n",
-            "<Leader>bd",
+            "<leader>bd",
             function()
                 vim.api.nvim_exec(":BufferLineCloseRight", true)
                 vim.api.nvim_exec(":BufferLineCloseLeft", true)
@@ -106,9 +106,9 @@ return {
 
         for char, bufnr in pairs(num_by_char) do
             -- go to specific buffer
-            vim.keymap.set("n", "<Leader>b" .. char, ":BufferLineGoToBuffer " .. bufnr .. "<CR>", { silent = true })
+            vim.keymap.set("n", "<leader>b" .. char, ":BufferLineGoToBuffer " .. bufnr .. "<CR>", { silent = true })
             -- close specific buffer
-            vim.keymap.set("n", "<Leader>x" .. char, close(bufnr), { silent = true })
+            vim.keymap.set("n", "<leader>x" .. char, close(bufnr), { silent = true })
         end
     end,
 }

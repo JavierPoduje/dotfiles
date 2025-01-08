@@ -12,7 +12,7 @@ return {
         })
 
         for char, num in pairs(require("utils").left_num_by_char) do
-            vim.keymap.set("n", "<Leader>y" .. char, function() harpoon:list():select(num) end)
+            vim.keymap.set("n", "<leader>y" .. char, function() harpoon:list():select(num) end)
         end
 
         vim.keymap.set("n", "<leader>ya", function() harpoon:list():add() end)

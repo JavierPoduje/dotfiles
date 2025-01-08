@@ -132,62 +132,62 @@ return {
     keys = {
         {
             mode = "n",
-            "<Leader>pf",
+            "<leader>pf",
             require('telescope.builtin').find_files,
             desc = "Find files in the current directory",
             silent = true,
         },
         {
             mode = "n",
-            "<Leader>pb",
+            "<leader>pb",
             require('telescope.builtin').buffers,
             desc = "List open buffers",
             silent = true,
         },
         {
             mode = "n",
-            "<Leader>ps",
+            "<leader>ps",
             ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>\"\"<left>",
             desc = "Search by text with args if needed",
             silent = true,
         },
         {
             mode = "n",
-            "<Leader>pr",
+            "<leader>pr",
             require("telescope.builtin").resume,
             desc = "Resume the last telescope session",
             silent = true,
         },
         {
             mode = "n",
-            "<Leader>pa",
+            "<leader>pa",
             ":Telescope grep_string<CR>",
             desc = "Search for the `word` under the cursor",
             silent = true,
         },
         {
             mode = "n",
-            "<Leader>pgs",
+            "<leader>pgs",
             ":Telescope live_grep search_dirs=",
             desc = "Search for a string in a directory scope",
         },
         {
             mode = "n",
-            "<Leader>pd",
+            "<leader>pd",
             ":lua require('telescope.builtin').diagnostics({ bufnr = 0 })<CR>",
             desc = "List diagnostics for the current buffer",
             silent = true,
         },
         {
             mode = "n",
-            "<Leader>pw",
+            "<leader>pw",
             ":lua require('telescope.builtin').diagnostics()<CR>",
             desc = "List diagnostics for the entire workspace",
             silent = true,
         },
         {
             mode = "n",
-            "<Leader>p<Tab>",
+            "<leader>p<Tab>",
             function()
                 local quickfixList = vim.fn.getqflist()
                 if #quickfixList > 0 then
@@ -201,7 +201,7 @@ return {
         },
         {
             mode = "n",
-            "<Leader>pn",
+            "<leader>pn",
             function()
                 require("telescope.builtin").find_files({
                     results_title = "~ Vim ~",
@@ -220,7 +220,7 @@ return {
         },
         {
             mode = "v",
-            "<Leader>py",
+            "<leader>py",
             function()
                 local _, start_line, start_col, _ = unpack(vim.fn.getpos("'<"))
                 local _, end_line, end_col, _ = unpack(vim.fn.getpos("'>"))
@@ -244,7 +244,7 @@ return {
         },
         {
             mode = "n",
-            "<Leader>ph",
+            "<leader>ph",
             ":Telescope helpgrep<CR>",
             desc = "Search string in help files",
             silent = true,
