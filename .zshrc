@@ -48,6 +48,7 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 # To customize prompt, run `p10k configure` or edit ~/.config/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_last
 
 # go commands
 export GOPATH="$HOME/go"
