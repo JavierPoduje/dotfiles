@@ -2,31 +2,16 @@ return {
     "nvim-telescope/telescope.nvim",
     lazy = false,
     dependencies = {
+        -- { "nvim-lua/popup.nvim" },
+        -- { "sharkdp/fd" },
         { "catgoose/telescope-helpgrep.nvim" },
-        { "nvim-lua/popup.nvim" },
         { "nvim-telescope/telescope-fzy-native.nvim" },
         { "nvim-telescope/telescope-live-grep-args.nvim" },
-        { "romgrk/fzy-lua-native" },
-        { "sharkdp/fd" },
     },
     config = function()
-        local action_state = require("telescope.actions.state")
         local actions = require("telescope.actions")
-        local previewers = require("telescope.previewers")
         local sorters = require("telescope.sorters")
         local telescope = require("telescope")
-
-        local fzf_multi_select = function(prompt_bufnr)
-            local picker = action_state.get_current_picker(prompt_bufnr)
-            local num_selections = #picker:get_multi_selection()
-
-            if num_selections > 1 then
-                actions.send_selected_to_qflist(prompt_bufnr)
-                actions.open_qflist(prompt_bufnr)
-            else
-                actions.file_edit(prompt_bufnr)
-            end
-        end
 
         telescope.setup({
             defaults = {
@@ -35,18 +20,8 @@ return {
                         ["<ESC>"] = actions.close,
                         ["<C-q>"] = actions.delete_buffer,
                         ["<Tab>"] = actions.send_to_qflist,
-                        ["<CR>"] = fzf_multi_select,
                     },
                 },
-                --vimgrep_arguments = {
-                --    "rg",
-                --    "--hidden",
-                --    "--no-heading",
-                --    "--with-filename",
-                --    "--line-number",
-                --    "--column",
-                --    "--smart-case",
-                --},
                 ripgrep_arguments = {
                     "rg",
                     "--hidden",
@@ -89,41 +64,13 @@ return {
                     "aws/",
                     "aws/dist",
                 },
-                generic_sorter = sorters.get_generic_fuzzy_sorter,
-                color_devicons = true,
-                use_less = true,
-                path_display = {},
-                set_env = { ["COLORTERM"] = "truecolor" },
-                file_previewer = previewers.vim_buffer_cat.new,
-                grep_previewer = previewers.vim_buffer_vimgrep.new,
-                qflist_previewer = previewers.vim_buffer_qflist.new,
             },
             extensions = {
-                fzf = {},
-                helpgrep = {
-                    ignore_paths = {
-                        vim.fn.stdpath("state") .. "/lazy/readme",
-                    },
-                    mappings = {
-                        i = {
-                            ["<CR>"] = actions.select_default,
-                            ["<C-v>"] = actions.select_vertical,
-                        },
-                        n = {
-                            ["<CR>"] = actions.select_default,
-                            ["<C-s>"] = actions.select_horizontal,
-                        },
-                    },
-                    default_grep = require("telescope.builtin").live_grep,
-                },
                 fzy_native = {
                     override_generic_sorter = false,
                     override_file_sorter = true,
-                },
-                tele_tabby = {
-                    use_highlighter = true,
-                },
-            },
+                }
+            }
         })
 
         telescope.load_extension("fzy_native")

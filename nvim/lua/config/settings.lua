@@ -1,6 +1,3 @@
--- vim.api.cmd("syntax on")
--- vim.api.cmd("filetype plugin on")
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.markdown_fenced_languages = { "html", "lua", "vim", "typescript", "javascript" }
