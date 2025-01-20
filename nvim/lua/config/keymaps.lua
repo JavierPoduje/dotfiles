@@ -138,11 +138,3 @@ vim.keymap.set("n", "<leader>qc", ":cclose<CR>")
 vim.keymap.set("n", "<leader>qh", ":cprev<CR>")
 vim.keymap.set("n", "<leader>ql", ":cnext<CR>")
 vim.keymap.set("n", "<leader>qo", ":copen<CR>")
-
--- test the current '*_spec.lua' file
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*_spec.lua" },
-    callback = function()
-        vim.keymap.set("n", "<leader>tf", ":PlenaryBustedFile %<cr>")
-    end,
-})

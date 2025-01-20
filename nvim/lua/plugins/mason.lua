@@ -19,7 +19,7 @@ return {
         })
 
         require("mason-lspconfig").setup({
-            ensure_installed = { "ts_ls", "eslint", "html", "cssls" },
+            ensure_installed = { "ts_ls", "eslint", "html", "cssls", "vimls" },
         })
     end,
 }

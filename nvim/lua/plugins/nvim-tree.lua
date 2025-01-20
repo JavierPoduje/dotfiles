@@ -61,6 +61,7 @@ return {
                 vim.keymap.set("n", "<C-t>", api.node.open.tab, opts("Open: New Tab", bufnr))
                 vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open", bufnr))
                 vim.keymap.set("n", "<ESC>", api.tree.close, opts("Close", bufnr))
+                vim.keymap.set("n", "q", api.tree.close, opts("Close", bufnr))
                 vim.keymap.set("n", "<Tab>", api.node.open.preview, opts("Open Preview", bufnr))
                 vim.keymap.set("n", "P", api.node.navigate.parent, opts("Parent Directory", bufnr))
                 vim.keymap.set("n", "Y", api.fs.copy.relative_path, opts("Copy Relative Path", bufnr))
