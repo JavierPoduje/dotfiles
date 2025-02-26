@@ -11,8 +11,6 @@
 # - Switches to or creates session 3 if $1 is 3.
 # - Switches to or creates session 4 if $1 is 4.
 
-NUMBER_OF_SESSIONS=$(tmux list-sessions | wc -l | xargs)
-
 if [ $1 = 1 ]; then
     tmux switch -t "1"
 elif [ $1 = 2 ]; then

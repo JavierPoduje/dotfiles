@@ -40,6 +40,13 @@ vim.opt.undofile = true
 vim.opt.updatetime = 50
 vim.opt.wrap = false
 
+-- options:
+-- ayu
+-- catppuccin
+-- gruvbox-material
+-- kanagawa
+vim.g.colorscheme = "catppuccin"
+
 -- cursorline only in focused buffer
 vim.api.nvim_create_autocmd({ "WinEnter" }, { callback = function() vim.opt_local.cursorline = true end })
 vim.api.nvim_create_autocmd({ "WinLeave" }, { callback = function() vim.opt_local.cursorline = false end })
@@ -61,10 +68,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("FileType", { pattern = "help", command = "wincmd L" })
 
 -- and tsconfig.json is actually jsonc, help TypeScript set the correct filetype
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = "tsconfig.json",
-    callback = function() vim.bo.filetype = "jsonc" end,
-})
+-- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+--     pattern = "tsconfig.json",
+--     callback = function() vim.bo.filetype = "jsonc" end,
+-- })
 
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.templ", "Makefile" },

@@ -64,6 +64,7 @@ return {
                         false
                     ) },
                 json = { formatter("prettier", prettier_args("json"), true) },
+                jsonc = { formatter("prettier", prettier_args("jsonc"), true) },
                 scss = { formatter("prettier", prettier_args("scss"), true) },
                 sql = { formatter("sql-formatter", sql_args, true) },
                 typescript = {

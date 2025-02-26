@@ -27,7 +27,9 @@ return {
             })
 
             -- TODO: investigate what's the right place for setting the colorscheme
-            vim.cmd.colorscheme("catppuccin")
+            if vim.g.colorscheme == "catppuccin" then
+                vim.cmd("colorscheme catppuccin")
+            end
         end,
     },
     {
@@ -37,22 +39,30 @@ return {
             vim.g.gruvbox_material_enable_bold = 1
             vim.g.gruvbox_material_palette = "material" -- 'material' | 'mix' | 'original'
             vim.g.gruvbox_material_transparent_background = 0
-            -- vim.cmd.colorscheme("gruvbox-material")
+
+            if vim.g.colorscheme == "gruvbox-material" then
+                vim.cmd.colorscheme("gruvbox-material")
+            end
         end,
     },
     {
         "ayu-theme/ayu-vim",
         config = function()
-            vim.g.ayucolor = "dark" -- "light" | "mirage" | "dark"
-            -- vim.cmd("colorscheme ayu")
+            vim.g.ayucolor = "mirage" -- "light" | "mirage" | "dark"
+            if vim.g.colorscheme == "ayu" then
+                vim.cmd("colorscheme ayu")
+            end
         end,
     },
     {
         "rebelot/kanagawa.nvim",
+        enabled = true,
         config = function()
-            -- vim.cmd("colorscheme kanagawa-dragon")
-            -- vim.cmd("colorscheme kanagawa-lotus")
-            -- vim.cmd("colorscheme kanagawa-wave")
+            if vim.g.colorscheme == "kanagawa" then
+                vim.cmd("colorscheme kanagawa-dragon")
+                -- vim.cmd("colorscheme kanagawa-lotus")
+                -- vim.cmd("colorscheme kanagawa-wave")
+            end
         end,
     },
 }
