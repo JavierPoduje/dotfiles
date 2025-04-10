@@ -14,9 +14,21 @@ return {
         },
     },
     keys = {
-        { "<C-k>",     vim.diagnostic.open_float, silent = true },
-        { "<leader>[", vim.diagnostic.goto_prev,  silent = true },
-        { "<leader>]", vim.diagnostic.goto_next,  silent = true },
+        {
+            "<C-k>",
+            vim.diagnostic.open_float,
+            silent = true,
+        },
+        {
+            "<leader>[",
+            function() vim.diagnostic.jump({ count = -1, float = true }) end,
+            silent = true
+        },
+        {
+            "<leader>]",
+            function() vim.diagnostic.jump({ count = 1, float = true }) end,
+            silent = true,
+        },
     },
     config = function()
         vim.diagnostic.config({
@@ -29,7 +41,6 @@ return {
                 focusable = false,
                 style = "minimal",
                 border = "rounded",
-                --source = "always",
                 header = "",
                 prefix = "",
             },
@@ -89,15 +100,15 @@ return {
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
                 })
-            elseif protocol == "eslint" then
-                lspconfig[protocol].setup({
-                    settings = {
-                        experimental = {
-                            -- check this later. there's probably a better way of handle this
-                            useFlatConfig = false,
-                        },
-                    },
-                })
+            -- elseif protocol == "eslint" then
+            --     lspconfig[protocol].setup({
+            --         settings = {
+            --             experimental = {
+            --                 -- check this later. there's probably a better way of handle this
+            --                 useFlatConfig = false,
+            --             },
+            --         },
+            --     })
             else
                 lspconfig[protocol].setup({
                     on_attach = on_attach,
@@ -117,9 +128,9 @@ return {
         vim.fn.sign_define("DiagnosticSignInfo",
             { text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
 
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.buf.hover, { border = "rounded" })
         vim.lsp.handlers["textDocument/signatureHelp"] =
-            vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+            vim.lsp.with(vim.lsp.buf.signature_help, { border = "rounded" })
 
         vim.api.nvim_create_autocmd('FileType', {
             pattern = { "lua" },
