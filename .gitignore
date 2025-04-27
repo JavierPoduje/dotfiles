@@ -24,3 +24,4 @@
 .zcompdump-puje*
 .zsh_history
 .zsh_sessions
+.env

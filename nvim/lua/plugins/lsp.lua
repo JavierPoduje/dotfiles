@@ -33,7 +33,20 @@ return {
     config = function()
         vim.diagnostic.config({
             virtual_text = true,
-            signs = true,
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = "",
+                    [vim.diagnostic.severity.WARN] = "",
+                    [vim.diagnostic.severity.INFO] = "",
+                    [vim.diagnostic.severity.HINT] = "",
+                },
+                numhl = {
+                    [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                    [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+                    [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+                    [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+                },
+            },
             update_in_insert = false,
             underline = true,
             severity_sort = true,
@@ -100,15 +113,15 @@ return {
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
                 })
-            -- elseif protocol == "eslint" then
-            --     lspconfig[protocol].setup({
-            --         settings = {
-            --             experimental = {
-            --                 -- check this later. there's probably a better way of handle this
-            --                 useFlatConfig = false,
-            --             },
-            --         },
-            --     })
+                -- elseif protocol == "eslint" then
+                --     lspconfig[protocol].setup({
+                --         settings = {
+                --             experimental = {
+                --                 -- check this later. there's probably a better way of handle this
+                --                 useFlatConfig = false,
+                --             },
+                --         },
+                --     })
             else
                 lspconfig[protocol].setup({
                     on_attach = on_attach,
@@ -118,15 +131,16 @@ return {
             end
         end
 
+
         -- UI
-        vim.fn.sign_define("DiagnosticSignError",
-            { text = "", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
-        vim.fn.sign_define("DiagnosticSignWarn",
-            { text = "", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
-        vim.fn.sign_define("DiagnosticSignHint",
-            { text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
-        vim.fn.sign_define("DiagnosticSignInfo",
-            { text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
+        -- vim.fn.sign_define("DiagnosticSignError",
+        --     { text = "", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
+        -- vim.fn.sign_define("DiagnosticSignWarn",
+        --     { text = "", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
+        -- vim.fn.sign_define("DiagnosticSignHint",
+        --     { text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
+        -- vim.fn.sign_define("DiagnosticSignInfo",
+        --     { text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
 
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.buf.hover, { border = "rounded" })
         vim.lsp.handlers["textDocument/signatureHelp"] =
