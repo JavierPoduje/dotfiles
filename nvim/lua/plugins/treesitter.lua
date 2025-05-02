@@ -4,6 +4,7 @@ return {
     dependencies = { "nvim-treesitter/playground" },
     config = function()
         require("nvim-treesitter.configs").setup({
+            modules = {},
             additional_vim_regex_highlighting = false,
             auto_install = true,
             ensure_installed = {
@@ -17,7 +18,6 @@ return {
                 "json",
                 "lua",
                 "php",
-                "prisma",
                 "scss",
                 "templ",
                 "tsx",
@@ -26,10 +26,15 @@ return {
                 "vue",
                 "yaml",
             },
-            highlight = { enable = true },
+            injections = {
+                enable = true,
+            },
+            highlight = {
+                additional_vim_regex_highlighting = false,
+                enable = true,
+            },
             ignore_install = {},
             indent = { enable = true },
-            query_linter = { enable = true, use_virtual_text = true, lint_events = { "BufWrite", "CursorHold" }, },
             sync_install = false,
         })
     end,

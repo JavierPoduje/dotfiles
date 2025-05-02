@@ -87,7 +87,6 @@ return {
             "gopls",
             "intelephense",
             "lua_ls",
-            "prismals",
             "tailwindcss",
             "ts_ls",
             "vimls",

@@ -1,8 +1,9 @@
 return {
     "augmentcode/augment.vim",
+    enabled = false,
     config = function()
         vim.g.augment_workspace_folders = {
-            '/Users/puje/Documents/projects/golang/dummy-project',
+            '~/Documents/projects/neovim/smartsort.nvim',
         }
     end,
 }
