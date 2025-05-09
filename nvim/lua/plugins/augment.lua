@@ -4,6 +4,7 @@ return {
     config = function()
         vim.g.augment_workspace_folders = {
             '~/Documents/projects/neovim/smartsort.nvim',
+            '~/.config',
         }
     end,
 }

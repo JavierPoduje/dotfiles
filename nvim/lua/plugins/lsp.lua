@@ -1,5 +1,7 @@
 return {
     "neovim/nvim-lspconfig",
+    -- TODO: for some reason, this is necessary for LSP to load in lua projects. investigate why
+    lazy = false,
     dependencies = {
         {
             "folke/lazydev.nvim",
@@ -129,17 +131,6 @@ return {
                 })
             end
         end
-
-
-        -- UI
-        -- vim.fn.sign_define("DiagnosticSignError",
-        --     { text = "", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
-        -- vim.fn.sign_define("DiagnosticSignWarn",
-        --     { text = "", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
-        -- vim.fn.sign_define("DiagnosticSignHint",
-        --     { text = "", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
-        -- vim.fn.sign_define("DiagnosticSignInfo",
-        --     { text = "", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
 
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.buf.hover, { border = "rounded" })
         vim.lsp.handlers["textDocument/signatureHelp"] =

@@ -3,7 +3,6 @@ return {
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
     },
-
     config = function()
         require("mason").setup({
             ui = {
@@ -19,7 +18,7 @@ return {
         })
 
         require("mason-lspconfig").setup({
-            ensure_installed = { "ts_ls", "eslint", "html", "cssls", "vimls" },
+            ensure_installed = { "cssls", "eslint", "html", "lua_ls", "ts_ls", "vimls" },
         })
     end,
 }
