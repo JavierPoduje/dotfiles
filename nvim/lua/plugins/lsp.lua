@@ -82,6 +82,7 @@ return {
 
         -- iterate over the lsp protocols attaching the commands and the completions
         for _, protocol in ipairs({
+            "astro",
             "biome",
             "cssls",
             "eslint",

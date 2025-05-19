@@ -3,8 +3,9 @@ return {
     enabled = false,
     config = function()
         vim.g.augment_workspace_folders = {
-            '~/Documents/projects/neovim/smartsort.nvim',
             '~/.config',
+            '~/Documents/projects/neovim/smartsort.nvim',
+            '~/Documents/projects/personal-website',
         }
     end,
 }

@@ -17,7 +17,7 @@ plugins=(
 )
 
 # For streaming
-#ZSH_AUTOSUGGEST_HISTORY_IGNORE=*
+# ZSH_AUTOSUGGEST_HISTORY_IGNORE=*
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,4 +58,3 @@ export PATH=$PATH:$GOPATH/bin
 [ -f "$HOME/.config/aliasrc.sh" ] && source "$HOME/.config/aliasrc.sh"
 [ -f "$HOME/Documents/.utils/Chess/aliasrc.sh" ] && source "$HOME/Documents/.utils/Chess/aliasrc.sh"
 [ -f "$HOME/Documents/.utils/Foris/aliasrc.sh" ] && source "$HOME/Documents/.utils/Foris/aliasrc.sh"
-
