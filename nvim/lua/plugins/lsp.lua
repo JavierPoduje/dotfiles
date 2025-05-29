@@ -86,8 +86,8 @@ return {
             "biome",
             "cssls",
             "eslint",
-            "golangci_lint_ls",
             "gopls",
+            "hls",
             "intelephense",
             "lua_ls",
             "tailwindcss",
@@ -115,15 +115,23 @@ return {
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
                 })
-                -- elseif protocol == "eslint" then
-                --     lspconfig[protocol].setup({
-                --         settings = {
-                --             experimental = {
-                --                 -- check this later. there's probably a better way of handle this
-                --                 useFlatConfig = false,
-                --             },
-                --         },
-                --     })
+            elseif protocol == "gopls" then
+                lspconfig[protocol].setup({
+                    on_attach = on_attach,
+                    flags = { debounce_text_changes = 150 },
+                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                    filetypes = { "go", "gomod", "gotmpl" },
+                    root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
+                    settings = {
+                        gopls = {
+                            analyses = {
+                                unusedparams = true,
+                                shadow = true,
+                            },
+                            staticcheck = true,
+                        },
+                    },
+                })
             else
                 lspconfig[protocol].setup({
                     on_attach = on_attach,

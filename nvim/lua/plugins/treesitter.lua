@@ -13,6 +13,7 @@ return {
                 "git_rebase",
                 "go",
                 "gotmpl",
+                "haskell",
                 "html",
                 "javascript",
                 "jsdoc",

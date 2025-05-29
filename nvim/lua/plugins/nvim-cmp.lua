@@ -36,7 +36,7 @@ return {
                 { name = "nvim_lsp" },
                 { name = "css-variables" },
                 { name = "luasnip" },
-                { name = "buffer", keyword_length = 2 },
+                { name = "buffer",       keyword_length = 2 },
                 { name = "path" },
             },
             snippet = {
@@ -64,6 +64,7 @@ return {
                 { name = "buffer" },
             },
         })
+
         cmp.setup.cmdline(":", {
             sources = cmp.config.sources({
                 { name = "path", keyword_length = 2 },

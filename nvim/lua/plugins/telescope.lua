@@ -2,8 +2,6 @@ return {
     "nvim-telescope/telescope.nvim",
     lazy = false,
     dependencies = {
-        -- { "nvim-lua/popup.nvim" },
-        -- { "sharkdp/fd" },
         { "catgoose/telescope-helpgrep.nvim" },
         { "nvim-telescope/telescope-fzy-native.nvim" },
         { "nvim-telescope/telescope-live-grep-args.nvim" },
@@ -39,16 +37,16 @@ return {
                 sorting_strategy = "ascending",
                 layout_strategy = "horizontal",
                 layout_config = {
-                    horizontal = {
-                        width = 0.9,
-                        mirror = false,
-                        preview_width = 0.5,
-                        prompt_position = "top",
-                    },
                     vertical = {
                         width = 0.9,
                         mirror = true,
                         preview_height = 0.5,
+                        prompt_position = "top",
+                    },
+                    horizontal = {
+                        width = 0.9,
+                        mirror = false,
+                        preview_width = 0.5,
                         prompt_position = "top",
                     },
                 },

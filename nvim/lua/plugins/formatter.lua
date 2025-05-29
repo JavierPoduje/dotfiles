@@ -3,7 +3,8 @@ return {
     config = function()
         local if_else = require("utils").if_else
         local current_file = vim.api.nvim_buf_get_name(0)
-        local prioritze_biome_over_prettier = false
+        local prioritze_biome_over_prettier = true
+        local prioritize_go_temp_over_native_html = true
 
         local formatter = function(formatter, args, stdin)
             return function()
@@ -53,11 +54,19 @@ return {
         require("formatter").setup({
             logging = false,
             filetype = {
-                astro = { formatter("prettier", prettier_args("astro"), true) },
+                astro = { formatter("prettier", prettier_args("astro"), false) },
                 css = { formatter("prettier", prettier_args("css"), true) },
                 elixir = { formatter("mix format", { current_file }, false) },
                 go = { formatter("golines", { "-w", current_file }, false) },
-                html = { formatter("prettier", prettier_args("html"), false) },
+                html = {
+                    formatter(
+                        "prettier",
+                        prettier_args(
+                            if_else(prioritize_go_temp_over_native_html, "go-template", "html")
+                        ),
+                        false
+                    ),
+                },
                 javascript = {
                     formatter(
                         if_else(prioritze_biome_over_prettier, "biome", "prettier"),

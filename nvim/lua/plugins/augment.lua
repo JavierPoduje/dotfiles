@@ -1,6 +1,6 @@
 return {
     "augmentcode/augment.vim",
-    enabled = false,
+    enabled = true,
     config = function()
         vim.g.augment_workspace_folders = {
             '~/.config',

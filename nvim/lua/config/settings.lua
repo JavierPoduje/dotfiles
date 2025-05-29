@@ -1,12 +1,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.markdown_fenced_languages = { "html", "lua", "vim", "typescript", "javascript" }
+vim.g.markdown_fenced_languages = { "html", "javascript", "lua", "typescript", "vim" }
 vim.o.exrc = true
 vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 1
 vim.opt.colorcolumn = "100"
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 vim.opt.encoding = "utf8"
 vim.opt.errorbells = false
 vim.opt.expandtab = true   -- expand tab input with spaces characters
@@ -48,8 +48,8 @@ vim.opt.wrap = false
 vim.g.colorscheme = "catppuccin"
 
 -- cursorline only in focused buffer
-vim.api.nvim_create_autocmd({ "WinEnter" }, { callback = function() vim.opt_local.cursorline = true end })
-vim.api.nvim_create_autocmd({ "WinLeave" }, { callback = function() vim.opt_local.cursorline = false end })
+-- vim.api.nvim_create_autocmd({ "WinEnter" }, { callback = function() vim.opt_local.cursorline = true end })
+-- vim.api.nvim_create_autocmd({ "WinLeave" }, { callback = function() vim.opt_local.cursorline = false end })
 
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
