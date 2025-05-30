@@ -4,7 +4,7 @@ return {
         local if_else = require("utils").if_else
         local current_file = vim.api.nvim_buf_get_name(0)
         local prioritze_biome_over_prettier = true
-        local prioritize_go_temp_over_native_html = true
+        local prioritize_go_temp_over_native_html = false
 
         local formatter = function(formatter, args, stdin)
             return function()
