@@ -73,6 +73,7 @@ return {
 
         telescope.load_extension("fzy_native")
         telescope.load_extension("helpgrep")
+        telescope.load_extension("ui-select")
     end,
     keys = {
         {
