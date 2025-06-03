@@ -88,10 +88,13 @@ vim.keymap.set("n", "<S-Right>", ":vertical resize -5<CR>", { silent = true })
 vim.keymap.set("n", "<S-Left>", ":vertical resize +5<CR>", { silent = true })
 
 --- Don't include leading whitespace
--- vim.keymap.set('o', "a'", "2i'", { remap = true })
--- vim.keymap.set('o', 'a"', '2i"', { remap = true })
--- vim.keymap.set('x', "a'", "2i'", { remap = true })
--- vim.keymap.set('x', 'a"', '2i"', { remap = true })
+--- example:
+---     this will not include the leading whitespace after typing "ciw"
+---     <cursor-is-here> myFunc(somevariable, 'some string')
+vim.keymap.set('o', "a'", "2i'", { remap = true })
+vim.keymap.set('o', 'a"', '2i"', { remap = true })
+vim.keymap.set('x', "a'", "2i'", { remap = true })
+vim.keymap.set('x', 'a"', '2i"', { remap = true })
 
 -- Better saving
 vim.keymap.set("n", "<leader>s", ":write<CR>", { silent = true })
