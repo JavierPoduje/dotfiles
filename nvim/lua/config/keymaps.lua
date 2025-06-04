@@ -10,7 +10,7 @@ vim.g.multi_cursor_quit_key = "<C-c>"
 -- CTRL+C for esc
 vim.keymap.set("i", "<C-c>", "<ESC><ESC>", { silent = true })
 
--- sort selected lines
+-- sort selected lines and save
 vim.keymap.set("v", "<leader>s", ":sort | w<cr>")
 
 -- move forward in insert mode
@@ -99,11 +99,9 @@ vim.keymap.set('x', 'a"', '2i"', { remap = true })
 -- Better saving
 vim.keymap.set("n", "<leader>s", ":write<CR>", { silent = true })
 
--- Better tabbing
+-- Move visual block
 vim.keymap.set("v", "<S-Tab>", "<gv", { silent = true })
 vim.keymap.set("v", "<Tab>", ">gv", { silent = true })
-
--- Move visual block up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 
