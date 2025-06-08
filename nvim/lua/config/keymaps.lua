@@ -25,7 +25,7 @@ vim.keymap.set("i", "<C-D>", "X<Esc>ce", { silent = true })
 
 -- Better search-and-replace for normal and visual modes
 vim.keymap.set("n", "<leader>:", ":%s/<C-R><C-W>/<C-R><C-W>/g" .. repeat_str("<left>", 2))
-vim.keymap.set("v", "<leader>:", ":s//g" .. repeat_str("<left>", 2))
+vim.keymap.set("v", "<leader>:", ":s/\\%V/g" .. repeat_str("<left>", 2))
 
 -- Paste but remember
 vim.keymap.set("x", "<leader>fp", '"_dP', { silent = true })

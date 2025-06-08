@@ -17,7 +17,7 @@ return {
                     telescope = true,
                     treesitter = true,
                 },
-                transparent_background = false,
+                transparent_background = true,
                 custom_highlights = {
                     Comment = { fg = colors.overlay1 },
                     TreesitterContextLineNumber = { fg = colors.sky },
@@ -37,8 +37,8 @@ return {
         config = function()
             vim.g.gruvbox_material_background = "hard"  -- 'hard' | 'medium' (default) | 'soft'
             vim.g.gruvbox_material_enable_bold = 1
-            vim.g.gruvbox_material_palette = "material" -- 'material' | 'mix' | 'original'
-            vim.g.gruvbox_material_transparent_background = 0
+            vim.g.gruvbox_material_palette = "mix" -- 'material' | 'mix' | 'original'
+            vim.g.gruvbox_material_transparent_background = 1
 
             if vim.g.colorscheme == "gruvbox-material" then
                 vim.cmd.colorscheme("gruvbox-material")

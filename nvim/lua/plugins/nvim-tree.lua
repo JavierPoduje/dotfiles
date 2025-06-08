@@ -1,8 +1,11 @@
 return {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
     keys = {
-        { "<leader>pv", ":NvimTreeToggle<CR>", desc = "Toggle NvimTree", silent = true },
-        { "<leader>R", ":NvimTreeRefresh<CR>", desc = "Refresh NvimTree", silent = true },
+        { "<leader>pv", ":NvimTreeToggle<CR>",         desc = "Toggle NvimTree",       silent = true },
+        { "<leader>R",  ":NvimTreeRefresh<CR>",        desc = "Refresh NvimTree",      silent = true },
         { "<leader>pp", ":NvimTreeFindFileToggle<CR>", desc = "Open File in NvimTree", silent = true },
     },
     config = function()
