@@ -26,8 +26,9 @@ alias to-asanapp="cd ~/Documents/projects/asanapp/"
 alias to-config="cd ~/.config/"
 
 # Personal
-alias to-vim="cd ~/.config/nvim/"
-alias to-tmux="cd ~/.config/tmux/"
-alias to-projects="cd ~/Documents/projects"
+alias air="~/go/bin/air"
+alias pilla="~/.config/tmux/scripts/open-project.sh"
 alias templ="/Users/puje/go/bin/templ"
-alias air="/Users/puje/go/bin/air"
+alias to-projects="cd ~/Documents/projects"
+alias to-tmux="cd ~/.config/tmux/"
+alias to-vim="cd ~/.config/nvim/"

@@ -4,7 +4,7 @@
 projects_folder="$HOME/Documents/projects"
 
 # Capture the result
-selected_path=$(ls "$projects_folder" | fzf)
+selected_path=$(find "$projects_folder" -type d -not -path "*/node_modules/*" -not -path "*/.git/*" | sed "s|^$(echo "$projects_folder" | sed 's/\./\\./g')/||" | fzf)
 
 # You can then use 'selected_path' in your script
 if [ -n "$selected_path" ]; then
@@ -17,13 +17,14 @@ if [ -n "$selected_path" ]; then
     echo "Tmux session detected. Creating new windows."
     # Create a new window named "cli" and send it to the selected directory
     cd "$selected_project_path"
-    tmux new-window -n "cli"
+    # tmux new-window -n "cli"
+    tmux rename-window "cli"
 
     # 2. Open another window called "code" and open neovim in it.
     # Create another new window named "code", change to the directory, and start nvim
     tmux new-window -n "code"
-    # open neovim
-    tmux send-keys -t "code" "nvim" C-m
+
+    tmux send-keys -t "code" "nvim" Enter
   else
     echo "No active tmux session found. Starting a new one."
   fi
