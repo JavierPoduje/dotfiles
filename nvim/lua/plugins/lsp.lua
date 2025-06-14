@@ -2,19 +2,19 @@ return {
     "neovim/nvim-lspconfig",
     -- TODO: for some reason, this is necessary for LSP to load in lua projects. investigate why
     lazy = false,
-    -- dependencies = {
-    --     {
-    --         "folke/lazydev.nvim",
-    --         ft = "lua", -- only load on lua files
-    --         opts = {
-    --             library = {
-    --                 -- See the configuration section for more details
-    --                 -- Load luvit types when the `vim.uv` word is found
-    --                 { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-    --             },
-    --         },
-    --     },
-    -- },
+    dependencies = {
+        {
+            "folke/lazydev.nvim",
+            ft = "lua", -- only load on lua files
+            opts = {
+                library = {
+                    -- See the configuration section for more details
+                    -- Load luvit types when the `vim.uv` word is found
+                    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                },
+            },
+        },
+    },
     keys = {
         {
             "<C-k>",
@@ -100,6 +100,7 @@ return {
                     on_attach = on_attach,
                     flags = { debounce_text_changes = 150 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                    filetypes = { "css", "scss", "less" },
                     settings = {
                         css = {
                             lint = {
@@ -115,32 +116,34 @@ return {
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
                 })
-            elseif protocol == "lua_ls" then
-                lspconfig[protocol].setup({
-                    on_attach = on_attach,
-                    flags = { debounce_text_changes = 150 },
-                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                    settings = {
-                        Lua = {
-                            runtime = {
-                                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                                version = "LuaJIT",
-                                path = vim.split(package.path, ";"),
-                            },
-                            diagnostics = {
-                                globals = { "vim" },
-                            },
-                            workspace = {
-                                -- Make the server aware of Neovim runtime files and plugins
-                                library = { vim.env.VIMRUNTIME },
-                                checkThirdParty = false,
-                            },
-                            telemetry = {
-                                enable = false,
-                            },
-                        },
-                    },
-                })
+                -- elseif protocol == "lua_ls" then
+                --     lspconfig[protocol].setup({
+                --         on_attach = on_attach,
+                --         flags = { debounce_text_changes = 150 },
+                --         capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                --         filetypes = { "lua" },
+                --         settings = {
+                --             Lua = {
+                --                 runtime = {
+                --                     -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                --                     version = "LuaJIT",
+                --                     path = vim.split(package.path, ";"),
+                --                 },
+                --                 diagnostics = {
+                --                     globals = { "vim" },
+                --
+                --                 },
+                --                 workspace = {
+                --                     -- Make the server aware of Neovim runtime files and plugins
+                --                     library = { vim.env.VIMRUNTIME },
+                --                     checkThirdParty = false,
+                --                 },
+                --                 telemetry = {
+                --                     enable = false,
+                --                 },
+                --             },
+                --         },
+                --     })
             elseif protocol == "gopls" then
                 lspconfig[protocol].setup({
                     on_attach = on_attach,

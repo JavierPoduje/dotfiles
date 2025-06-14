@@ -10,6 +10,9 @@ vim.g.multi_cursor_quit_key = "<C-c>"
 -- CTRL+C for esc
 vim.keymap.set("i", "<C-c>", "<ESC><ESC>", { silent = true })
 
+-- Delete strings that contain the pattern to enter
+vim.keymap.set("n", "<leader>d", ":g//d" .. repeat_str("<left>", 2))
+
 -- sort selected lines and save
 vim.keymap.set("v", "<leader>s", ":sort | w<cr>")
 
@@ -105,9 +108,6 @@ vim.keymap.set("v", "<Tab>", ">gv", { silent = true })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 
--- By default `W` this calls the fzf's windows preview. I just want to save my file...
-vim.api.nvim_command("command! W  write")
-
 -- Netrw
 vim.keymap.set("n", "<leader>pe", ":Vex<CR>", { silent = true })
 
@@ -138,7 +138,7 @@ vim.keymap.set("n", "<leader>xf", function()
     vim.cmd("e#")
     -- close the buffer using the bufnr
     vim.cmd("bdelete " .. current_bufnr)
-end, { desc = "Close current bufer and switch to the previous one", silent = true })
+end, { silent = true })
 
 -- quickfix management
 vim.keymap.set("n", "<leader>qc", ":cclose<CR>")
