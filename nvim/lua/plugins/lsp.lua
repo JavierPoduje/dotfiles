@@ -61,26 +61,25 @@ return {
             },
         })
 
-        local lspconfig = require("lspconfig")
-        local cmp = require("cmp_nvim_lsp")
-
         local on_attach = function(client, bufnr)
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
+            local set_keymap = function(key, action) vim.keymap.set("n", key, action, bufopts) end
 
-            vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, bufopts)
             vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition)
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-            vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, bufopts)
-            vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
-            vim.keymap.set("n", "<leader>R", vim.lsp.buf.rename, bufopts)
-            vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, bufopts)
-            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, bufopts)
-            vim.keymap.set("n", "<leader>gf", function()
-                vim.lsp.buf.format({ async = true })
-            end, bufopts)
+            set_keymap("<leader>gD", vim.lsp.buf.declaration)
+            set_keymap("<leader>gD", vim.lsp.buf.declaration)
+            set_keymap("K", vim.lsp.buf.hover)
+            set_keymap("<leader>gi", vim.lsp.buf.implementation)
+            set_keymap("<leader>D", vim.lsp.buf.type_definition)
+            set_keymap("<leader>R", vim.lsp.buf.rename)
+            set_keymap("<leader>ga", vim.lsp.buf.code_action)
+            set_keymap("<leader>gr", vim.lsp.buf.references)
+            set_keymap("<leader>gf", function() vim.lsp.buf.format({ async = true }) end)
         end
 
         -- iterate over the lsp protocols attaching the commands and the completions
+        local lspconfig = require("lspconfig")
+        local cmp = require("cmp_nvim_lsp")
         for _, protocol in ipairs({
             "astro",
             "biome",
@@ -116,34 +115,6 @@ return {
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
                 })
-                -- elseif protocol == "lua_ls" then
-                --     lspconfig[protocol].setup({
-                --         on_attach = on_attach,
-                --         flags = { debounce_text_changes = 150 },
-                --         capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                --         filetypes = { "lua" },
-                --         settings = {
-                --             Lua = {
-                --                 runtime = {
-                --                     -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                --                     version = "LuaJIT",
-                --                     path = vim.split(package.path, ";"),
-                --                 },
-                --                 diagnostics = {
-                --                     globals = { "vim" },
-                --
-                --                 },
-                --                 workspace = {
-                --                     -- Make the server aware of Neovim runtime files and plugins
-                --                     library = { vim.env.VIMRUNTIME },
-                --                     checkThirdParty = false,
-                --                 },
-                --                 telemetry = {
-                --                     enable = false,
-                --                 },
-                --             },
-                --         },
-                --     })
             elseif protocol == "gopls" then
                 lspconfig[protocol].setup({
                     on_attach = on_attach,
