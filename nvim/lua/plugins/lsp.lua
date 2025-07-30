@@ -67,7 +67,6 @@ return {
 
             vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition)
             set_keymap("<leader>gD", vim.lsp.buf.declaration)
-            set_keymap("<leader>gD", vim.lsp.buf.declaration)
             set_keymap("K", vim.lsp.buf.hover)
             set_keymap("<leader>gi", vim.lsp.buf.implementation)
             set_keymap("<leader>D", vim.lsp.buf.type_definition)
@@ -92,7 +91,9 @@ return {
             "tailwindcss",
             "ts_ls",
             "vimls",
-            "volar",
+            -- "volar",
+            -- "vue_ls",
+            -- "vtsls",
         }) do
             if protocol == "cssls" then
                 lspconfig[protocol].setup({
@@ -114,6 +115,29 @@ return {
                     flags = { debounce_text_changes = 150 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
+                })
+            elseif protocol == "vtsls" then
+                local vue_language_server_path = '/Users/puje/.config/nvim/node_modules/@vue/language-server'
+                local vue_plugin = {
+                    name = '@vue/typescript-plugin',
+                    location = vue_language_server_path,
+                    languages = { 'vue' },
+                    configNamespace = 'typescript',
+                }
+                lspconfig[protocol].setup({
+                    on_attach = on_attach,
+                    flags = { debounce_text_changes = 150 },
+                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                    settings = {
+                        vtsls = {
+                            tsserver = {
+                                globalPlugins = {
+                                    vue_plugin,
+                                },
+                            },
+                        },
+                    },
+                    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
                 })
             elseif protocol == "gopls" then
                 lspconfig[protocol].setup({

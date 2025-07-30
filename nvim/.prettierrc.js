@@ -1,9 +1,8 @@
 const config = {
-  semi: false,
-  "plugins": ["prettier-plugin-tailwindcss"],
+  semi: true,
   trailingComma: 'none',
   singleQuote: true,
-  printWidth: 80,
+  printWidth: 100,
   tabWidth: 2,
   bracketSpacing: true,
   arrowParens: 'avoid',
