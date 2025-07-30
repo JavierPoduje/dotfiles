@@ -5,8 +5,7 @@ alias gcp="git cherry-pick"
 alias gp="git pull"
 alias gs="git stash"
 alias gsp="git stash pop"
-alias templ="/Users/puje/go/bin/templ"
-alias to-asanapp="cd ~/Documents/projects/asanapp/"
+alias templ="~/go/bin/templ"
 alias to-config="cd ~/.config/"
 alias to-projects="cd ~/Documents/projects"
 alias to-tmux="cd ~/.config/tmux/"
@@ -22,4 +21,4 @@ gours() {
 }
 
 ## mira esta wea
-alias pilla="~/.config/scripts/open-project.sh"
+alias pilla="~/.config/scripts/open-projects.sh"
