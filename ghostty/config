@@ -1,0 +1,14 @@
+background-blur-radius = 15
+background-opacity = 0.65
+cursor-opacity = 0.6
+font-family = FiraCode Nerd Font Mono SemBd
+font-family-bold = FiraCode Nerd Font Mono Bold
+font-size = 15.3
+theme = catppuccin-mocha
+
+window-decoration = none
+
+macos-option-as-alt = false
+
+keybind = alt+left=unbind
+keybind = alt+right=unbind
