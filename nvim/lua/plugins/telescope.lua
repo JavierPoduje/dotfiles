@@ -5,6 +5,7 @@ return {
         { "catgoose/telescope-helpgrep.nvim" },
         { "nvim-telescope/telescope-fzy-native.nvim" },
         { "nvim-telescope/telescope-live-grep-args.nvim" },
+        { "nvim-telescope/telescope-ui-select.nvim" }
     },
     config = function()
         local actions = require("telescope.actions")
@@ -162,30 +163,6 @@ return {
                 })
             end,
             desc = "search nvim-config files",
-            silent = true,
-        },
-        {
-            mode = "v",
-            "<leader>py",
-            function()
-                local _, start_line, start_col, _ = unpack(vim.fn.getpos("'<"))
-                local _, end_line, end_col, _ = unpack(vim.fn.getpos("'>"))
-                local lines = vim.fn.getline(start_line, end_line)
-
-                if start_line ~= end_line then
-                    lines[#lines] = string.sub(lines[#lines], 1, end_col)
-                    lines[1] = string.sub(lines[1], start_col)
-                else
-                    lines[1] = string.sub(lines[1], start_col, end_col)
-                end
-
-                local selection = table.concat(lines, "\n")
-
-                require("telescope.builtin").grep_string({
-                    search = selection,
-                })
-            end,
-            desc = "Search visually selected text",
             silent = true,
         },
         {
