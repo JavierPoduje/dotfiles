@@ -12,6 +12,7 @@ alias to-tmux="cd ~/.config/tmux/"
 alias to-utils="cd ~/Documents/.utils/"
 alias to-vim="cd ~/.config/nvim/"
 alias v="/opt/homebrew/bin/nvim"
+alias pilla="~/.config/scripts/open-projects.sh"
 
 gtheirs() {
   git checkout --theirs $1 && git add $1;
@@ -19,6 +20,3 @@ gtheirs() {
 gours() {
   git checkout --ours $1 && git add $1;
 }
-
-## mira esta wea
-alias pilla="~/.config/scripts/open-projects.sh"
