@@ -4,9 +4,10 @@ cursor-opacity = 0.6
 font-family = FiraCode Nerd Font Mono SemBd
 font-family-bold = FiraCode Nerd Font Mono Bold
 font-size = 15.3
+mouse-hide-while-typing = true
 theme = catppuccin-mocha
 
-window-decoration = none
+macos-titlebar-style = hidden
 
 macos-option-as-alt = false
 

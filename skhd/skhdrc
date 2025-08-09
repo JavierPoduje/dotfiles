@@ -29,3 +29,9 @@ cmd + alt + ctrl - h: yabai -m window --space prev;
 # Open apps
 cmd + alt - return: kitty # open terminal
 cmd + alt - p: open ~/Documents/shots/ # open shots folder
+
+# balance windows
+cmd + alt + ctrl - b: yabai -m space --balance
+
+# rotate
+alt - m: yabai -m space --rotate 270
