@@ -61,25 +61,95 @@ return {
             },
         })
 
-        local on_attach = function(client, bufnr)
-            local bufopts = { noremap = true, silent = true, buffer = bufnr }
-            local set_keymap = function(key, action) vim.keymap.set("n", key, action, bufopts) end
-
-            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition)
-            set_keymap("<leader>gD", vim.lsp.buf.declaration)
-            set_keymap("K", vim.lsp.buf.hover)
-            set_keymap("<leader>gi", vim.lsp.buf.implementation)
-            set_keymap("<leader>D", vim.lsp.buf.type_definition)
-            set_keymap("<leader>R", vim.lsp.buf.rename)
-            set_keymap("<leader>ga", vim.lsp.buf.code_action)
-            set_keymap("<leader>gr", vim.lsp.buf.references)
-            set_keymap("<leader>gf", function() vim.lsp.buf.format({ async = true }) end)
-        end
-
-        -- iterate over the lsp protocols attaching the commands and the completions
         local lspconfig = require("lspconfig")
         local cmp = require("cmp_nvim_lsp")
-        for _, protocol in ipairs({
+
+        vim.lsp.config("lua_ls", {
+            flags = { debounce_text_changes = 150 },
+            capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" }, -- recognize vim as a global variable
+                    },
+                    workspace = {
+                        library = vim.api.nvim_get_runtime_file("", true), -- include runtime files in the workspace
+                    },
+                },
+            },
+        })
+        vim.lsp.config("ts_ls", {
+            flags = { debounce_text_changes = 150 },
+            capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+            settings = {
+                ts_ls = {
+                    completions = {
+                        completeFunctionCalls = true,
+                    },
+                    format = {
+                        enable = true,
+                    },
+                },
+            },
+        })
+        vim.lsp.config("cssls", {
+            flags = { debounce_text_changes = 150 },
+            capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+            settings = {
+                css = {
+                    validate = true,
+                },
+                scss = {
+                    validate = true,
+                },
+                less = {
+                    validate = true,
+                },
+            },
+        })
+
+        vim.lsp.config("gopls", {
+            flags = { debounce_text_changes = 150 },
+            capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                        shadow = true,
+                    },
+                    staticcheck = true,
+                },
+            },
+        })
+
+        vim.lsp.config("intelephense", {
+            flags = { debounce_text_changes = 150 },
+            capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+            root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
+        })
+
+        vim.lsp.config('vtsls', {
+            settings = {
+                vtsls = {
+                    tsserver = {
+                        globalPlugins = {
+                            name = '@vue/typescript-plugin',
+                            location = '/Users/puje/.nvm/versions/node/v22.14.0/lib/node_modules/@vue/language-server',
+                            languages = { 'vue' },
+                            configNamespace = 'typescript',
+                        },
+                    },
+                },
+            },
+            filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        })
+
+        vim.lsp.config("*", {
+            flags = { debounce_text_changes = 150 },
+            capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        })
+
+        vim.lsp.enable({
             "astro",
             "biome",
             "cssls",
@@ -91,83 +161,20 @@ return {
             "tailwindcss",
             "ts_ls",
             "vimls",
-            -- "volar",
-            -- "vue_ls",
-            -- "vtsls",
-        }) do
-            if protocol == "cssls" then
-                lspconfig[protocol].setup({
-                    on_attach = on_attach,
-                    flags = { debounce_text_changes = 150 },
-                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                    filetypes = { "css", "scss", "less" },
-                    settings = {
-                        css = {
-                            lint = {
-                                unknownAtRules = "ignore",
-                            },
-                        },
-                    },
-                })
-            elseif protocol == "intelephense" then
-                lspconfig[protocol].setup({
-                    on_attach = on_attach,
-                    flags = { debounce_text_changes = 150 },
-                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                    root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
-                })
-            elseif protocol == "vtsls" then
-                local vue_language_server_path = '/Users/puje/.config/nvim/node_modules/@vue/language-server'
-                local vue_plugin = {
-                    name = '@vue/typescript-plugin',
-                    location = vue_language_server_path,
-                    languages = { 'vue' },
-                    configNamespace = 'typescript',
-                }
-                lspconfig[protocol].setup({
-                    on_attach = on_attach,
-                    flags = { debounce_text_changes = 150 },
-                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                    settings = {
-                        vtsls = {
-                            tsserver = {
-                                globalPlugins = {
-                                    vue_plugin,
-                                },
-                            },
-                        },
-                    },
-                    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-                })
-            elseif protocol == "gopls" then
-                lspconfig[protocol].setup({
-                    on_attach = on_attach,
-                    flags = { debounce_text_changes = 150 },
-                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                    filetypes = { "go", "gomod", "gotmpl" },
-                    root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
-                    settings = {
-                        gopls = {
-                            analyses = {
-                                unusedparams = true,
-                                shadow = true,
-                            },
-                            staticcheck = true,
-                        },
-                    },
-                })
-            else
-                lspconfig[protocol].setup({
-                    on_attach = on_attach,
-                    flags = { debounce_text_changes = 150 },
-                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                })
-            end
-        end
+            "vtsls",
+        })
 
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.buf.hover, { border = "rounded" })
-        vim.lsp.handlers["textDocument/signatureHelp"] =
-            vim.lsp.with(vim.lsp.buf.signature_help, { border = "rounded" })
+        vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { noremap = true, silent = true })
+        vim.keymap.set("n", "K", function()
+            return vim.lsp.buf.hover({ border = "rounded" })
+        end, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>R", vim.lsp.buf.rename, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.format({ async = true }) end)
 
         vim.api.nvim_create_autocmd('FileType', {
             pattern = { "lua" },
