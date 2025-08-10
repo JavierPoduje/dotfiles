@@ -89,13 +89,9 @@ return {
             "tailwindcss",
             "ts_ls",
             "vimls",
-            -- "volar",
-            -- "vue_ls",
-            -- "vtsls",
         }) do
             if protocol == "cssls" then
                 lspconfig[protocol].setup({
-                    on_attach = on_attach,
                     flags = { debounce_text_changes = 150 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     filetypes = { "css", "scss", "less" },
@@ -109,7 +105,6 @@ return {
                 })
             elseif protocol == "intelephense" then
                 lspconfig[protocol].setup({
-                    on_attach = on_attach,
                     flags = { debounce_text_changes = 150 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
@@ -123,7 +118,6 @@ return {
                     configNamespace = 'typescript',
                 }
                 lspconfig[protocol].setup({
-                    on_attach = on_attach,
                     flags = { debounce_text_changes = 150 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     settings = {
@@ -169,7 +163,6 @@ return {
                 })
             elseif protocol == "gopls" then
                 lspconfig[protocol].setup({
-                    on_attach = on_attach,
                     flags = { debounce_text_changes = 150 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     filetypes = { "go", "gomod", "gotmpl" },
@@ -186,7 +179,6 @@ return {
                 })
             else
                 lspconfig[protocol].setup({
-                    on_attach = on_attach,
                     flags = { debounce_text_changes = 150 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                 })
