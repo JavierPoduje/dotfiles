@@ -45,7 +45,7 @@ vim.opt.wrap = false
 -- catppuccin
 -- gruvbox-material
 -- kanagawa
-vim.g.colorscheme = "catppuccin"
+vim.g.colorscheme = "gruvbox-material"
 
 -- cursorline only in focused buffer
 -- vim.api.nvim_create_autocmd({ "WinEnter" }, { callback = function() vim.opt_local.cursorline = true end })

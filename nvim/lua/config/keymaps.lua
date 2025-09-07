@@ -92,7 +92,7 @@ vim.keymap.set("n", "<S-Left>", ":vertical resize +5<CR>", { silent = true })
 
 --- Don't include leading whitespace
 --- example:
----     this will not include the leading whitespace after typing "ciw"
+---     this will not include the leading whitespace after typing "ca'"
 ---     <cursor-is-here> myFunc(somevariable, 'some string')
 vim.keymap.set('o', "a'", "2i'", { remap = true })
 vim.keymap.set('o', 'a"', '2i"', { remap = true })

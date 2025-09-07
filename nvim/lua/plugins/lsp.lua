@@ -88,6 +88,7 @@ return {
             "lua_ls",
             "tailwindcss",
             "ts_ls",
+            "basedpyright",
             "vimls",
         }) do
             if protocol == "cssls" then
@@ -108,6 +109,21 @@ return {
                     flags = { debounce_text_changes = 150 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
+                })
+            elseif protocol == "basedpyright" then
+                lspconfig[protocol].setup({
+                    flags = { debounce_text_changes = 150 },
+                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
+                    settings = {
+                        basedpyright = {
+                            analysis = {
+                                autoSearchPaths = true,
+                                diagnosticMode = "openFilesOnly",
+                                useLibraryCodeForTypes = true
+                            }
+                        }
+                    }
                 })
             elseif protocol == "vtsls" then
                 local vue_language_server_path = '/Users/puje/.config/nvim/node_modules/@vue/language-server'

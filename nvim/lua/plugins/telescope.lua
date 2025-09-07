@@ -134,6 +134,13 @@ return {
         },
         {
             mode = "n",
+            "<leader>pc",
+            ":lua require('telescope.builtin').lsp_document_symbols({ symbols='function' })<CR>",
+            desc = "Search for functions in the current buffer",
+            silent = true,
+        },
+        {
+            mode = "n",
             "<leader>p<Tab>",
             function()
                 local quickfixList = vim.fn.getqflist()
