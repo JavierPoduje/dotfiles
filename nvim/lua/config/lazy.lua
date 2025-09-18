@@ -29,11 +29,6 @@ require("lazy").setup({
     dev = {
         path = "/Users/puje/Documents/projects/neovim",
     },
-    -- Configure any other settings here. See the documentation for more details.
-    -- colorscheme that will be used when installing plugins.
-    install = {
-        colorscheme = { "catpuccin" },
-    },
 })
 
 -- my custom keymaps should always be loaded last, so that they can override

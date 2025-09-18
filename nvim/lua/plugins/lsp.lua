@@ -92,8 +92,8 @@ return {
             "vimls",
         }) do
             if protocol == "cssls" then
-                lspconfig[protocol].setup({
-                    flags = { debounce_text_changes = 150 },
+                vim.lsp.config.css = {
+                    flags = { debounce_text_changes = 150, exit_timeout = 5000 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     filetypes = { "css", "scss", "less" },
                     settings = {
@@ -103,16 +103,29 @@ return {
                             },
                         },
                     },
-                })
+                }
+
+                vim.lsp.config.scss = {
+                    flags = { debounce_text_changes = 150, exit_timeout = 5000 },
+                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                    filetypes = { "css", "scss", "less" },
+                    settings = {
+                        css = {
+                            lint = {
+                                unknownAtRules = "ignore",
+                            },
+                        },
+                    },
+                }
             elseif protocol == "intelephense" then
-                lspconfig[protocol].setup({
-                    flags = { debounce_text_changes = 150 },
+                vim.lsp.config.php = {
+                    flags = { debounce_text_changes = 150, exit_timeout = 5000 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_dir = lspconfig.util.root_pattern("composer.json", ".git", "*.php"),
-                })
+                }
             elseif protocol == "basedpyright" then
-                lspconfig[protocol].setup({
-                    flags = { debounce_text_changes = 150 },
+                vim.lsp.config.python = {
+                    flags = { debounce_text_changes = 150, exit_timeout = 5000 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
                     settings = {
@@ -124,7 +137,21 @@ return {
                             }
                         }
                     }
-                })
+                }
+                vim.lsp.config.py = {
+                    flags = { debounce_text_changes = 150, exit_timeout = 5000 },
+                    capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
+                    settings = {
+                        basedpyright = {
+                            analysis = {
+                                autoSearchPaths = true,
+                                diagnosticMode = "openFilesOnly",
+                                useLibraryCodeForTypes = true
+                            }
+                        }
+                    }
+                }
             elseif protocol == "vtsls" then
                 local vue_language_server_path = '/Users/puje/.config/nvim/node_modules/@vue/language-server'
                 local vue_plugin = {
@@ -133,7 +160,7 @@ return {
                     languages = { 'vue' },
                     configNamespace = 'typescript',
                 }
-                lspconfig[protocol].setup({
+                local vueconfig = {
                     flags = { debounce_text_changes = 150 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     settings = {
@@ -175,11 +202,11 @@ return {
                         },
                     },
                     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-
-                })
+                }
+                vim.lsp.config.vue = vueconfig
             elseif protocol == "gopls" then
-                lspconfig[protocol].setup({
-                    flags = { debounce_text_changes = 150 },
+                vim.lsp.config.go = {
+                    flags = { debounce_text_changes = 150, exit_timeout = 5000 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                     filetypes = { "go", "gomod", "gotmpl" },
                     root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
@@ -192,9 +219,9 @@ return {
                             staticcheck = true,
                         },
                     },
-                })
+                }
             else
-                lspconfig[protocol].setup({
+                vim.lsp.config("*", {
                     flags = { debounce_text_changes = 150 },
                     capabilities = cmp.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                 })
@@ -209,6 +236,21 @@ return {
                 end
                 vim.keymap.set("n", "<leader>f", format, { buffer = 0 })
             end
+        })
+
+        vim.lsp.enable({
+            "astro",
+            "biome",
+            "cssls",
+            "eslint",
+            "gopls",
+            "hls",
+            "intelephense",
+            "lua_ls",
+            "tailwindcss",
+            "ts_ls",
+            "basedpyright",
+            "vimls",
         })
     end,
 }
