@@ -7,9 +7,17 @@ return {
             local colors = require("catppuccin.palettes").get_palette(flavour)
 
             require("catppuccin").setup({
+                custom_highlights = {
+                    Comment = { fg = colors.overlay1 },
+                    TreesitterContextLineNumber = { fg = colors.sky },
+                    LineNr = { fg = colors.overlay0 },
+                    CursorLineNr = { fg = colors.sky, style = { "bold" } },
+                },
                 flavour = flavour,
-                styles = { comments = { "italic" }, conditionals = { "italic" } },
-                term_colors = true,
+                float = {
+                    solid = false,
+                    transparent = true,
+                },
                 integrations = {
                     cmp = true,
                     gitsigns = true,
@@ -17,13 +25,9 @@ return {
                     telescope = true,
                     treesitter = true,
                 },
+                styles = { comments = { "italic" }, conditionals = { "italic" } },
+                term_colors = true,
                 transparent_background = true,
-                custom_highlights = {
-                    Comment = { fg = colors.overlay1 },
-                    TreesitterContextLineNumber = { fg = colors.sky },
-                    LineNr = { fg = colors.overlay0 },
-                    CursorLineNr = { fg = colors.sky, style = { "bold" } },
-                },
             })
 
             -- TODO: investigate what's the right place for setting the colorscheme
