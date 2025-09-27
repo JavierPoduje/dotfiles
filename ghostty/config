@@ -5,7 +5,7 @@ font-family = FiraCode Nerd Font Mono SemBd
 font-family-bold = FiraCode Nerd Font Mono Bold
 font-size = 15.3
 mouse-hide-while-typing = true
-theme = Gruvbox Material
+theme = Catppuccin Mocha
 
 macos-titlebar-style = hidden
 

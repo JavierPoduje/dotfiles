@@ -13,6 +13,8 @@ alias to-tmux="cd ~/.config/tmux/"
 alias to-utils="cd ~/Documents/.utils/"
 alias to-vim="cd ~/.config/nvim/"
 alias v="/opt/homebrew/bin/nvim"
+alias posting="~/.local/bin/posting"
+
 
 gtheirs() {
   git checkout --theirs $1 && git add $1;

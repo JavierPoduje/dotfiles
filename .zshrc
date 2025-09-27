@@ -57,6 +57,7 @@ export PATH=$PATH:$GOPATH/bin
 # Load aliases: keep this at the end of the file to override any aliases defined before
 [ -f "$HOME/.config/aliasrc.sh" ] && source "$HOME/.config/aliasrc.sh"
 [ -f "$HOME/Documents/.utils/personal/index.sh" ] && source "$HOME/Documents/.utils/personal/index.sh"
+[ -f "$HOME/Documents/.utils/espais/aliasrc.sh" ] && source "$HOME/Documents/.utils/espais/aliasrc.sh"
 [ -f "$HOME/Documents/.utils/Chess/aliasrc.sh" ] && source "$HOME/Documents/.utils/Chess/aliasrc.sh"
 [ -f "$HOME/Documents/.utils/Foris/aliasrc.sh" ] && source "$HOME/Documents/.utils/Foris/aliasrc.sh"
 
