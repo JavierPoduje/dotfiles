@@ -14,6 +14,7 @@ alias to-utils="cd ~/Documents/.utils/"
 alias to-vim="cd ~/.config/nvim/"
 alias v="/opt/homebrew/bin/nvim"
 alias posting="~/.local/bin/posting"
+alias mc="~/aistor-binaries/mc"
 
 
 gtheirs() {

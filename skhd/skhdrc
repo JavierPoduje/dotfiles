@@ -33,5 +33,11 @@ cmd + alt - p: open ~/Documents/shots/ # open shots folder
 # balance windows
 cmd + alt + ctrl - b: yabai -m space --balance
 
+# navigate to space
+## upper screen: from 5 to 8
+cmd + alt + ctrl - u: yabai -m space --focus 5
+cmd + alt + ctrl - k: yabai -m space --focus 6
+cmd + alt + ctrl - o: yabai -m space --focus 7
+
 # rotate
 alt - m: yabai -m space --rotate 270
