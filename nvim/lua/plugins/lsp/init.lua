@@ -33,46 +33,8 @@ return {
         },
     },
     config = function()
-        vim.diagnostic.config({
-            virtual_text = true,
-            signs = {
-                text = {
-                    [vim.diagnostic.severity.ERROR] = "",
-                    [vim.diagnostic.severity.WARN] = "",
-                    [vim.diagnostic.severity.INFO] = "",
-                    [vim.diagnostic.severity.HINT] = "",
-                },
-                numhl = {
-                    [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
-                    [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
-                    [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
-                    [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
-                },
-            },
-            update_in_insert = false,
-            underline = true,
-            severity_sort = true,
-            float = {
-                focusable = false,
-                style = "minimal",
-                border = "rounded",
-                header = "",
-                prefix = "",
-            },
-        })
-
-        -- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { noremap = true, silent = true })
-        -- vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { noremap = true, silent = true })
-        -- vim.keymap.set("n", "K", function()
-        --     return vim.lsp.buf.hover({ border = "rounded" })
-        -- end, { noremap = true, silent = true })
-        -- vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { noremap = true, silent = true })
-        -- vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { noremap = true, silent = true })
-        -- vim.keymap.set("n", "<leader>R", vim.lsp.buf.rename, { noremap = true, silent = true })
-        -- vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, { noremap = true, silent = true })
-        -- vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { noremap = true, silent = true })
-        -- vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.format({ async = true }) end,
-        --     { noremap = true, silent = true })
+        local diagnostics_config = require('plugins.lsp.diagnostics')
+        vim.diagnostic.config(diagnostics_config)
 
         for _, protocol in ipairs({
             "astro",
@@ -123,6 +85,7 @@ return {
 
         vim.lsp.enable({
             "astro",
+            "basedpyright",
             "biome",
             "cssls",
             "eslint",
@@ -132,7 +95,6 @@ return {
             "lua_ls",
             "tailwindcss",
             "ts_ls",
-            "basedpyright",
             "vimls",
         })
 
@@ -154,3 +116,4 @@ return {
         })
     end,
 }
+
